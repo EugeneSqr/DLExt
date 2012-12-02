@@ -18,22 +18,29 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <ListBox Name="locations" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Width="120" VerticalContentAlignment="Center" Margin="5" >
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <CheckBox Content="{Binding Name}" IsChecked="{Binding IsSelected}" ></CheckBox>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-                <StackPanel Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Orientation="Horizontal" FlowDirection="LeftToRight" Height="38">
-                    <ComboBox Grid.Column="1" Name="persons" VerticalAlignment="Top" Width="200" Margin="5" DisplayMemberPath="DisplayName" SelectedValuePath="DisplayName" />
-                    <Button Content="Exclude" Grid.Column="1" Name="Exclude" VerticalAlignment="Top" Width="75" Margin="5" Click="ExcludePerson" />
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <Label Content="Locations:" HorizontalAlignment="Left"/>
+                    <ListBox Name="locations"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="200"  Width="120" VerticalContentAlignment="Center" Margin="5" ToolTip="Locations">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox Content="{Binding Name}" IsChecked="{Binding IsSelected}" ></CheckBox>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </StackPanel>
-                <ListBox Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,35,5,5" Name="personsToExclude" VerticalAlignment="Stretch" DisplayMemberPath="DisplayName" />
+                <StackPanel Grid.Column="1">
+                    <Label Content="All persons:" HorizontalAlignment="Left"/>
+                    <StackPanel  HorizontalAlignment="Stretch" VerticalAlignment="Top" Orientation="Horizontal" FlowDirection="LeftToRight">
+                        <ComboBox Name="persons" VerticalAlignment="Top" Width="200" Margin="5" DisplayMemberPath="DisplayName" SelectedValuePath="DisplayName" ToolTip="All persons" />
+                        <Button Content="Exclude" Name="Exclude" VerticalAlignment="Top" Width="75" Margin="5" Click="ExcludePerson" />
+                    </StackPanel>
+                    <Label Content="Excluded persons:" HorizontalAlignment="Left"/>
+                    <ListBox HorizontalAlignment="Stretch" Height="142" Margin="5" Name="personsToExclude" DisplayMemberPath="DisplayName" ToolTip="Excluded persons" />
+                </StackPanel>                
                 <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" FlowDirection="RightToLeft" VerticalAlignment="Stretch" Orientation="Horizontal">
                     <Button Content="Cancel" Grid.Column="1" Grid.Row="1" Margin="5" Name="Cancel" Width="75" Click="CloseForm" />
                     <Button Content="Compose" Grid.Column="1" Grid.Row="1" Margin="5" Name="Compose" Width="75" Click="ComposeEmail" />
-                </StackPanel>
+                </StackPanel>                
             </Grid>
         </DockPanel>
         <DockPanel VerticalAlignment="Center"  Visibility="{Binding IsProcessing, Converter={StaticResource AnimationVisible}, UpdateSourceTrigger=PropertyChanged}">
