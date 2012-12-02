@@ -183,6 +183,14 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Converters\BooleanConverter.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="LoadingControl\Block.xaml.cs">
+      <DependentUpon>Block.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoadingControl\LoadingAnimation.xaml.cs">
+      <DependentUpon>LoadingAnimation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -219,6 +227,14 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="LoadingControl\Block.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoadingControl\LoadingAnimation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
