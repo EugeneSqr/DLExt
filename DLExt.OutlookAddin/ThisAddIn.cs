@@ -43,7 +43,7 @@ namespace DLExt.OutlookAddin
         
         #endregion
 
-        private const string MenuToolbarTag = "DLExtBar";
+        private const string MenuToolbarTag = "Distribution List Addin";
         private CommandBar toolBar;
         private CommandBarButton toolBarButton;
 

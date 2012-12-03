@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLExt.Builder", "DLExt.Buil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLExt.OutlookAddin", "DLExt.OutlookAddin\DLExt.OutlookAddin.csproj", "{01D1EC74-4F99-40A5-8165-40243700F15F}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DLExt.OutlookAddin.Setup", "DLExt.OutlookAddin.Setup\DLExt.OutlookAddin.Setup.vdproj", "{34438289-8D46-41F8-9EBF-1544D17E8D2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,12 @@ Global
 		{01D1EC74-4F99-40A5-8165-40243700F15F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{01D1EC74-4F99-40A5-8165-40243700F15F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{01D1EC74-4F99-40A5-8165-40243700F15F}.Release|x86.ActiveCfg = Release|Any CPU
+		{34438289-8D46-41F8-9EBF-1544D17E8D2D}.Debug|Any CPU.ActiveCfg = Debug
+		{34438289-8D46-41F8-9EBF-1544D17E8D2D}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{34438289-8D46-41F8-9EBF-1544D17E8D2D}.Debug|x86.ActiveCfg = Debug
+		{34438289-8D46-41F8-9EBF-1544D17E8D2D}.Release|Any CPU.ActiveCfg = Release
+		{34438289-8D46-41F8-9EBF-1544D17E8D2D}.Release|Mixed Platforms.ActiveCfg = Release
+		{34438289-8D46-41F8-9EBF-1544D17E8D2D}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

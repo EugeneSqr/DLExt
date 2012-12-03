@@ -15,7 +15,7 @@ namespace DLExt.OutlookAddin {
     /// 
     [Microsoft.VisualStudio.Tools.Applications.Runtime.StartupObjectAttribute(0)]
     [global::System.Security.Permissions.PermissionSetAttribute(global::System.Security.Permissions.SecurityAction.Demand, Name="FullTrust")]
-    public sealed partial class ThisAddIn : Microsoft.Office.Tools.Outlook.OutlookAddInBase {
+    public sealed partial class ThisAddIn : Microsoft.Office.Tools.Outlook.OutlookAddIn, Microsoft.VisualStudio.Tools.Office.IOfficeEntryPoint {
         
         internal Microsoft.Office.Tools.CustomTaskPaneCollection CustomTaskPanes;
         
@@ -28,9 +28,8 @@ namespace DLExt.OutlookAddin {
         /// 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public ThisAddIn(global::Microsoft.Office.Tools.Outlook.Factory factory, global::System.IServiceProvider serviceProvider) : 
-                base(factory, serviceProvider, "AddIn", "ThisAddIn") {
-            Globals.Factory = factory;
+        public ThisAddIn() : 
+                base("AddIn", "ThisAddIn") {
         }
         
         /// 
@@ -96,6 +95,7 @@ namespace DLExt.OutlookAddin {
         
         /// 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "10.0.0.0")]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         private void StartCaching(string MemberName) {
             this.DataHost.StartCaching(this, MemberName);
@@ -103,6 +103,7 @@ namespace DLExt.OutlookAddin {
         
         /// 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "10.0.0.0")]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         private void StopCaching(string MemberName) {
             this.DataHost.StopCaching(this, MemberName);
@@ -110,6 +111,7 @@ namespace DLExt.OutlookAddin {
         
         /// 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "10.0.0.0")]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         private bool IsCached(string MemberName) {
             return this.DataHost.IsCached(this, MemberName);
@@ -138,7 +140,7 @@ namespace DLExt.OutlookAddin {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "10.0.0.0")]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         private void InitializeControls() {
-            this.CustomTaskPanes = Globals.Factory.CreateCustomTaskPaneCollection(null, null, "CustomTaskPanes", "CustomTaskPanes", this);
+            this.CustomTaskPanes = new Microsoft.Office.Tools.CustomTaskPaneCollection(this.ItemProvider, this.HostContext, "CustomTaskPanes", this, "CustomTaskPanes");
         }
         
         /// 
@@ -150,6 +152,7 @@ namespace DLExt.OutlookAddin {
         
         /// 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "10.0.0.0")]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         private bool NeedsFill(string MemberName) {
             return this.DataHost.NeedsFill(this, MemberName);
@@ -176,10 +179,8 @@ namespace DLExt.OutlookAddin {
         
         private static ThisAddIn _ThisAddIn;
         
-        private static global::Microsoft.Office.Tools.Outlook.Factory _factory;
-        
         private static ThisRibbonCollection _ThisRibbonCollection;
-
+        
         private static ThisFormRegionCollection _ThisFormRegionCollection;
         
         internal static ThisAddIn ThisAddIn {
@@ -196,24 +197,10 @@ namespace DLExt.OutlookAddin {
             }
         }
         
-        internal static global::Microsoft.Office.Tools.Outlook.Factory Factory {
-            get {
-                return _factory;
-            }
-            set {
-                if ((_factory == null)) {
-                    _factory = value;
-                }
-                else {
-                    throw new System.NotSupportedException();
-                }
-            }
-        }
-        
         internal static ThisRibbonCollection Ribbons {
             get {
                 if ((_ThisRibbonCollection == null)) {
-                    _ThisRibbonCollection = new ThisRibbonCollection(_factory.GetRibbonFactory());
+                    _ThisRibbonCollection = new ThisRibbonCollection();
                 }
                 return _ThisRibbonCollection;
             }
@@ -232,12 +219,7 @@ namespace DLExt.OutlookAddin {
     /// 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "10.0.0.0")]
-    internal sealed partial class ThisRibbonCollection : Microsoft.Office.Tools.Ribbon.RibbonCollectionBase {
-        
-        /// 
-        internal ThisRibbonCollection(global::Microsoft.Office.Tools.Ribbon.RibbonFactory factory) : 
-                base(factory) {
-        }
+    internal sealed partial class ThisRibbonCollection : Microsoft.Office.Tools.Ribbon.RibbonReadOnlyCollection {
         
         internal ThisRibbonCollection this[Microsoft.Office.Interop.Outlook.Inspector inspector] {
             get {
@@ -254,7 +236,7 @@ namespace DLExt.OutlookAddin {
     
     /// 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    internal sealed partial class ThisFormRegionCollection : Microsoft.Office.Tools.Outlook.FormRegionCollectionBase {
+    internal sealed partial class ThisFormRegionCollection : Microsoft.Office.Tools.Outlook.FormRegionReadOnlyCollection {
         
         /// 
         public ThisFormRegionCollection(System.Collections.Generic.IList<Microsoft.Office.Tools.Outlook.IFormRegion> list) : 
@@ -263,24 +245,19 @@ namespace DLExt.OutlookAddin {
         
         internal WindowFormRegionCollection this[Microsoft.Office.Interop.Outlook.Explorer explorer] {
             get {
-                return ((WindowFormRegionCollection)(Globals.ThisAddIn.GetFormRegions(explorer, typeof(WindowFormRegionCollection))));
+                return Globals.ThisAddIn.GetFormRegions<WindowFormRegionCollection>(explorer);
             }
         }
         
         internal WindowFormRegionCollection this[Microsoft.Office.Interop.Outlook.Inspector inspector] {
             get {
-                return ((WindowFormRegionCollection)(Globals.ThisAddIn.GetFormRegions(inspector, typeof(WindowFormRegionCollection))));
+                return Globals.ThisAddIn.GetFormRegions<WindowFormRegionCollection>(inspector);
             }
         }
     }
     
     /// 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    internal sealed partial class WindowFormRegionCollection : Microsoft.Office.Tools.Outlook.FormRegionCollectionBase {
-        
-        /// 
-        public WindowFormRegionCollection(System.Collections.Generic.IList<Microsoft.Office.Tools.Outlook.IFormRegion> list) : 
-                base(list) {
-        }
+    internal sealed partial class WindowFormRegionCollection : Microsoft.Office.Tools.Outlook.FormRegionReadOnlyCollection {
     }
 }

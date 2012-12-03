@@ -9,6 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace DLExt.OutlookAddin.Properties {
+    using System;
     
     
     /// <summary>
