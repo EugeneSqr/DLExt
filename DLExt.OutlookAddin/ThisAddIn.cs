@@ -6,9 +6,22 @@ namespace DLExt.OutlookAddin
 {
     public partial class ThisAddIn
     {
+        static readonly Timer Timer = new Timer();
+        
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {
-            CreateToolbar();
+            // HACK: looks like it is the only way to deal with minimized outlook startup
+            Timer.Interval = 100;
+            Timer.Tick += (o, args) =>
+                              {
+                                  var activeExplorer = Application.ActiveExplorer();
+                                  if (activeExplorer != null)
+                                  {
+                                      Timer.Stop();
+                                      CreateToolbar();
+                                  }
+                              };
+            Timer.Start();
         }
 
         private void ThisAddIn_Shutdown(object sender, EventArgs e)
