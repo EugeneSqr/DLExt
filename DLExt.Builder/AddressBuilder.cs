@@ -18,8 +18,6 @@ namespace DLExt.Builder
 
         public string ResultAddress { get; private set; }
 
-        public IList<string> PersonsToExclude { get; set; }
-
         public AddressBuilder(string server, IEnumerable<Location> locations, IEnumerable<Person> personsToExclude)
         {
             Server = server;
