@@ -1,20 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.DirectoryServices;
 using System.Linq;
 using DLExt.Builder.Model;
 
 namespace DLExt.Builder.Retrievers
 {
-    public class PersonsRetriever : IRetriever<Person>
+    public class PersonsRetriever : Retriever<Person>
     {
-        public string Server { get; private set; }
-
-        public PersonsRetriever(string server)
+        public PersonsRetriever(string server) : base(server)
         {
-            Server = server;
         }
 
-        public IList<Person> Retrieve(string path)
+        public override IList<Person> Retrieve(string path)
         {
             var result = new List<Person>();
             try
@@ -23,17 +21,18 @@ namespace DLExt.Builder.Retrievers
                 {
                     using (DirectorySearcher searcher = new DirectorySearcher(entry, "(objectCategory=Person)"))
                     {
-                        SearchResultCollection locations = searcher.FindAll();
-                        if (locations.Count == 0)
+                        SearchResultCollection persons = searcher.FindAll();
+                        if (persons.Count == 0)
                         {
                             return result;
                         }
 
-                        result.AddRange(from SearchResult location in locations
-                                        orderby location.Properties["displayName"][0].ToString()
+                        result.AddRange(from SearchResult person in persons
+                                        where IsPropertyValid(person, "displayName") && IsPropertyValid(person, "mail")
+                                        orderby person.Properties["displayName"].ToString()
                                         select new Person(
-                                            location.Properties["displayName"][0].ToString(),
-                                            location.Properties["mail"][0].ToString()));
+                                            person.Properties["displayName"][0].ToString(), 
+                                            person.Properties["mail"][0].ToString()));
                     }
                 }
             }
@@ -41,7 +40,7 @@ namespace DLExt.Builder.Retrievers
             {
             }
 
-            return result;
+            return result.OrderBy(person => person.DisplayName).ToList();
         }
     }
 }

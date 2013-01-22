@@ -38,13 +38,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddressBuilder.cs" />
-    <Compile Include="Retrievers\IRetriever.cs" />
     <Compile Include="Model\Location.cs" />
     <Compile Include="Retrievers\LocationsRetriever.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="PersonEqualityComparer.cs" />
     <Compile Include="Retrievers\PersonsRetriever.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Retrievers\Retriever.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

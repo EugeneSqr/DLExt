@@ -5,16 +5,13 @@ using DLExt.Builder.Model;
 
 namespace DLExt.Builder.Retrievers
 {
-    public class LocationsRetriever :IRetriever<Location>
+    public class LocationsRetriever : Retriever<Location>
     {
-        public string Server { get; private set; }
-
-        public LocationsRetriever(string server)
+        public LocationsRetriever(string server) : base(server)
         {
-            Server = server;
         }
 
-        public virtual IList<Location> Retrieve(string path)
+        public override IList<Location> Retrieve(string path)
         {
             var result = new List<Location>();
             try
@@ -29,7 +26,8 @@ namespace DLExt.Builder.Retrievers
                             return result;
                         }
 
-                        result.AddRange(from SearchResult location in locations 
+                        result.AddRange(from SearchResult location in locations
+                                        where IsPropertyValid(location, "name") && IsPropertyValid(location, "distinguishedName")
                                         select new Location(
                                             location.Properties["name"][0].ToString(), 
                                             location.Properties["distinguishedName"][0].ToString()));

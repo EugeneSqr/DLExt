@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
-using System.DirectoryServices;
 using System.Linq;
 using System.Text;
 using DLExt.Builder.Model;
+using DLExt.Builder.Retrievers;
 
 namespace DLExt.Builder
 {
     public class AddressBuilder
     {
-        private readonly IList<DirectoryEntry> containersToSearch;
+        private readonly IList<string> containersToSearch;
         private readonly IList<Location> locationsToSearch;
         private readonly List<Person> extractedPersons;
         private readonly IList<Person> personsToExclude;
@@ -24,7 +24,7 @@ namespace DLExt.Builder
             locationsToSearch = locations.ToList();
             this.personsToExclude = personsToExclude.ToList();
 
-            containersToSearch = new List<DirectoryEntry>();
+            containersToSearch = new List<string>();
             extractedPersons = new List<Person>();
             filteredPersons = new List<Person>();
             ResultAddress = string.Empty;
@@ -49,27 +49,16 @@ namespace DLExt.Builder
         {
             foreach (Location location in locations)
             {
-                containersToSearch.Add(new DirectoryEntry(string.Format("LDAP://{0}/{1},{2}", Server, "OU=Users", location.Path)));
+                containersToSearch.Add(string.Format("{0},{1}", "OU=Users", location.Path));
             }
         }
 
         protected virtual void GetPersons()
         {
-            foreach (DirectoryEntry container in containersToSearch)
+            var personsRetriever = new PersonsRetriever(Server);
+            foreach (string containerPath in containersToSearch)
             {
-                using (var directorySearcher = new DirectorySearcher(container, "(objectCategory=Person)"))
-                {
-                    SearchResultCollection results = directorySearcher.FindAll();
-                    if (results.Count == 0)
-                    {
-                        return;
-                    }
-
-                    extractedPersons.AddRange((from SearchResult result in results
-                                select new Person(
-                                    result.Properties["displayName"][0].ToString(), 
-                                    result.Properties["mail"][0].ToString())).ToList());
-                }
+                extractedPersons.AddRange(personsRetriever.Retrieve(containerPath));
             }
         }
 
@@ -91,10 +80,6 @@ namespace DLExt.Builder
 
         protected virtual void FinalizeBuilder()
         {
-            foreach (DirectoryEntry container in containersToSearch)
-            {
-                container.Dispose();
-            }
         }
     }
 }
