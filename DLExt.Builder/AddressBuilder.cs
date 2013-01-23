@@ -45,6 +45,13 @@ namespace DLExt.Builder
             }
         }
 
+        public IList<Person> ExtractPersons()
+        {
+            LocateContainersToSearch(locationsToSearch);
+            GetPersons();
+            return extractedPersons;
+        }
+
         protected virtual void LocateContainersToSearch(IList<Location> locations)
         {
             foreach (Location location in locations)

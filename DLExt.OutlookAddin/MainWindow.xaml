@@ -23,7 +23,7 @@
                     <ListBox Name="locations"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="200"  Width="120" VerticalContentAlignment="Center" Margin="5" ToolTip="Locations">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <CheckBox Content="{Binding Name}" IsChecked="{Binding IsSelected}" ></CheckBox>
+                                <CheckBox Content="{Binding Name}" IsChecked="{Binding IsSelected}" Click="CheckBox_Click"></CheckBox>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
@@ -35,16 +35,31 @@
                         <Button Content="Exclude" Name="Exclude" VerticalAlignment="Top" Width="75" Margin="5" Click="ExcludePerson" />
                     </StackPanel>
                     <Label Content="Excluded persons:" HorizontalAlignment="Left"/>
-                    <ListBox HorizontalAlignment="Stretch" Height="142" Margin="5" Name="personsToExclude" DisplayMemberPath="DisplayName" ToolTip="Excluded persons" />
-                </StackPanel>                
+                    <ListBox HorizontalAlignment="Stretch" Height="142" Margin="5" 
+                             Name="personsToExclude"
+                             ToolTip="Excluded persons"
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal">
+                                    <Label Content="{Binding Path=DisplayName}" HorizontalAlignment="Left"/>
+                                    <Label  Content="delete" Foreground="Blue" Cursor="Hand" HorizontalAlignment="Right" MouseUp="Label_MouseUp"/>
+                                </StackPanel>
+                            </DataTemplate>
+                            
+                        </ListBox.ItemTemplate>
+                        <ListBoxItem></ListBoxItem>
+                    </ListBox>
+
+                </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" FlowDirection="RightToLeft" VerticalAlignment="Stretch" Orientation="Horizontal">
                     <Button Content="Cancel" Grid.Column="1" Grid.Row="1" Margin="5" Name="Cancel" Width="75" Click="CloseForm" />
                     <Button Content="Compose" Grid.Column="1" Grid.Row="1" Margin="5" Name="Compose" Width="75" Click="ComposeEmail" />
-                </StackPanel>                
+                </StackPanel>
             </Grid>
         </DockPanel>
         <DockPanel VerticalAlignment="Center"  Visibility="{Binding IsProcessing, Converter={StaticResource AnimationVisible}, UpdateSourceTrigger=PropertyChanged}">
             <LoadingControl:LoadingAnimation />
-        </DockPanel>        
+        </DockPanel>
     </Grid>
 </Window>

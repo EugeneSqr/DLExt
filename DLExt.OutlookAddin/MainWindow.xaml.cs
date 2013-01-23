@@ -7,6 +7,7 @@ using DLExt.Builder;
 using DLExt.Builder.Model;
 using DLExt.Builder.Retrievers;
 using Microsoft.Office.Interop.Outlook;
+using System.Windows.Controls;
 
 namespace DLExt.OutlookAddin
 {
@@ -14,9 +15,11 @@ namespace DLExt.OutlookAddin
     {
         private readonly BackgroundWorker loadingWorker;
         private readonly BackgroundWorker composeWorker;
+        private readonly BackgroundWorker filterWorker;
         private AddressBuilder builder;
         private IList<Location> locationsList;
         private IList<Person> personsList;
+        private IList<Person> localPersonsList;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -56,6 +59,23 @@ namespace DLExt.OutlookAddin
             {
                 locations.ItemsSource = locationsList;
                 persons.ItemsSource = personsList;
+                IsProcessing = false;
+            };
+
+            filterWorker = new BackgroundWorker();
+            filterWorker.DoWork += (sender, args) =>
+            {
+                IsProcessing = true;
+                builder = new AddressBuilder(
+                    Server,
+                    locations.Items.OfType<Location>().Where(loc => loc.IsSelected),
+                    personsToExclude.Items.OfType<Person>());
+                localPersonsList = builder.ExtractPersons();
+            };
+
+            filterWorker.RunWorkerCompleted += (sender, args) =>
+            {
+                persons.ItemsSource = localPersonsList;
                 IsProcessing = false;
             };
 
@@ -121,6 +141,17 @@ namespace DLExt.OutlookAddin
             {
                 loadingWorker.CancelAsync();
             }
+        }
+
+        private void Label_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            personsToExclude.Items.Remove(personsToExclude.SelectedItem);
+        }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+
+            filterWorker.RunWorkerAsync();
         }
     }
 }
