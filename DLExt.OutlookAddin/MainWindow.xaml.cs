@@ -7,7 +7,6 @@ using DLExt.Builder;
 using DLExt.Builder.Model;
 using DLExt.Builder.Retrievers;
 using Microsoft.Office.Interop.Outlook;
-using System.Windows.Controls;
 
 namespace DLExt.OutlookAddin
 {
@@ -143,14 +142,13 @@ namespace DLExt.OutlookAddin
             }
         }
 
-        private void Label_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void LabelMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             personsToExclude.Items.Remove(personsToExclude.SelectedItem);
         }
 
-        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        private void CheckBoxClick(object sender, RoutedEventArgs e)
         {
-
             filterWorker.RunWorkerAsync();
         }
     }

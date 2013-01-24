@@ -1,6 +1,6 @@
 ﻿<Window x:Class="DLExt.OutlookAddin.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:OutlookAddin="clr-namespace:DLExt.OutlookAddin"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:LoadingControl="clr-namespace:DLExt.OutlookAddin.LoadingControl"
         xmlns:Converters="clr-namespace:DLExt.OutlookAddin.Converters" Height="300" Width="450" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Title="Create distribution list" Loaded="WindowLoaded" Closing="WindowClosing">
     <Window.Resources>
@@ -23,7 +23,7 @@
                     <ListBox Name="locations"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="200"  Width="120" VerticalContentAlignment="Center" Margin="5" ToolTip="Locations">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <CheckBox Content="{Binding Name}" IsChecked="{Binding IsSelected}" Click="CheckBox_Click"></CheckBox>
+                                <CheckBox Content="{Binding Name}" IsChecked="{Binding IsSelected}" Click="CheckBoxClick"></CheckBox>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
@@ -43,7 +43,7 @@
                             <DataTemplate>
                                 <StackPanel  Orientation="Horizontal">
                                     <Label Content="{Binding Path=DisplayName}" HorizontalAlignment="Left"/>
-                                    <Label  Content="delete" Foreground="Blue" Cursor="Hand" HorizontalAlignment="Right" MouseUp="Label_MouseUp"/>
+                                    <Label  Content="delete" Foreground="Blue" Cursor="Hand" HorizontalAlignment="Right" MouseUp="LabelMouseUp"/>
                                 </StackPanel>
                             </DataTemplate>
                             
