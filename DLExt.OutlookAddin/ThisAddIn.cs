@@ -29,11 +29,6 @@ namespace DLExt.OutlookAddin
             RemoveToolbar();
         }
 
-        protected override IRibbonExtensibility CreateRibbonExtensibilityObject()
-        {
-            return new DLExtRibbonTab();
-        }
-
         #region VSTO generated code
 
         /// <summary>

@@ -208,7 +208,6 @@
   <ItemGroup>
     <Compile Include="Converters\BooleanConverter.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
-    <Compile Include="DLExtRibbonTab.cs" />
     <Compile Include="LoadingControl\Block.xaml.cs">
       <DependentUpon>Block.xaml</DependentUpon>
     </Compile>
@@ -271,9 +270,6 @@
       <Project>{E9611B82-5FA3-42B2-9055-776CFE1D7048}</Project>
       <Name>DLExt.Builder</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DLExtRibbonTab.xml" />
   </ItemGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
