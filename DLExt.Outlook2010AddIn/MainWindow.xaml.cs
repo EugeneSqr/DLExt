@@ -133,7 +133,7 @@ namespace DLExt.Outlook2010AddIn
 
         private void ExcludePerson(object sender, RoutedEventArgs e)
         {
-            if (!personsToExclude.Items.Contains(persons.SelectedItem))
+            if (!personsToExclude.Items.Contains(persons.SelectedItem) && persons.SelectedItem != null)
             {
                 personsToExclude.Items.Add(persons.SelectedItem);
             }
