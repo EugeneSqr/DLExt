@@ -14,7 +14,7 @@ namespace DLExt.RestService
             this.repository = new ActiveDirectoryReadOnlyRepository();
         }
 
-        public string GetDistributionList(FilterRequest filterRequest)
+        public string GetDistributionListPost(FilterRequest filterRequest)
         {
             var persons = this.repository.GetPersonsByLocations(filterRequest.Locations.Select(Mapper.ToBusinessObject));
             var resultPersons = persons.Except(filterRequest.ExcludedPersons.Select(Mapper.ToBusinessObject), new PersonEqualityComparer());
@@ -33,7 +33,19 @@ namespace DLExt.RestService
             return this.repository.GetPersonsByLocations(this.repository.AllLocations).Select(Mapper.ToDataTransferObject);
         }
 
-        public IEnumerable<PersonDto> GetPersons(FilterRequest filterRequest)
+        public IEnumerable<PersonDto> GetPersons(string filterRequest)
+        {
+            var request = Utils.ParseJson<FilterRequest>(filterRequest);
+            return this.GetPersonsPost(request);
+        }
+
+        public string GetDistributionList(string filterRequest)
+        {
+            var request = Utils.ParseJson<FilterRequest>(filterRequest);
+            return this.GetDistributionListPost(request);
+        }
+
+        public IEnumerable<PersonDto> GetPersonsPost(FilterRequest filterRequest)
         {
             var persons = this.repository.GetPersonsByLocations(filterRequest.Locations.Select(Mapper.ToBusinessObject));
             var resultPersons = persons.Except(filterRequest.ExcludedPersons.Select(Mapper.ToBusinessObject), new PersonEqualityComparer());

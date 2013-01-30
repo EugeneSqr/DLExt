@@ -1,11 +1,11 @@
-﻿using System.IO;
-using System.Net;
-using System.Runtime.Serialization.Json;
-using System.Text;
-
-namespace DLExt.WebApplication
+﻿namespace DLExt.RestService
 {
-    internal static class Utils
+    using System.IO;
+    using System.Net;
+    using System.Runtime.Serialization.Json;
+    using System.Text;
+
+    public static class Utils
     {
         public static string CallRestGet(string uri)
         {
@@ -60,10 +60,8 @@ namespace DLExt.WebApplication
             }
         }
 
-        public static byte[] FormatJson(object obj)
+        public static string FormatJson(object obj)
         {
-            byte[] data;
-
             var serializer = new DataContractJsonSerializer(obj.GetType());
             using (var stream = new MemoryStream())
             {
@@ -71,10 +69,8 @@ namespace DLExt.WebApplication
                 stream.Flush();
                 stream.Seek(0, SeekOrigin.Begin);
                 var reader = new StreamReader(stream);
-                data = Encoding.UTF8.GetBytes(reader.ReadToEnd());
+                return reader.ReadToEnd();
             }
-
-            return data;
         }
     }
 }

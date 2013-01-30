@@ -31,10 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDirectoryService.cs" />
@@ -45,6 +47,7 @@
     <Compile Include="PersonDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestUri.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DLExt.DataAccess\DLExt.DataAccess.csproj">

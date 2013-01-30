@@ -4,6 +4,8 @@ using System.Linq;
 
 namespace DLExt.WebApplication
 {
+    using System.Text;
+
     using DLExt.Domain;
     using DLExt.RestService;
 
@@ -43,8 +45,8 @@ namespace DLExt.WebApplication
                     ExcludedPersons = this.excludedPersons.Select(Mapper.ToDataTransferObject).ToList(),
                     Locations = this.locations.Select(Mapper.ToDataTransferObject).Where(l => l.IsSelected).ToList()
                 };
-            var data = Utils.FormatJson(request);
-            var responce = Utils.CallRestPost(serviceUrl + RestUri.GetDistributionList, data);
+            var urlArgument = Utils.FormatJson(request);
+            var responce = Utils.CallRestGet(serviceUrl + RestUri.GetDistributionList + "?Request=" + urlArgument);
 
             var emailList = responce.TrimStart('"').TrimEnd('"');
             count = emailList.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries).Length;
@@ -68,8 +70,8 @@ namespace DLExt.WebApplication
                         ExcludedPersons = new List<PersonDto>(),
                         Locations = locations.Where(l => l.IsSelected).Select(Mapper.ToDataTransferObject).ToList(),
                     };
-                var data = Utils.FormatJson(request);
-                result = Utils.CallRestPost(serviceUrl + RestUri.GetPersons, data);
+                var urlArgument = Utils.FormatJson(request);
+                result = Utils.CallRestGet(serviceUrl + RestUri.GetPersons + "?Request=" + urlArgument);
             }
             else
             {

@@ -8,19 +8,27 @@ namespace DLExt.RestService
     public interface IAppDirectoryService
     {
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "/GetDistributionList", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        string GetDistributionList(FilterRequest filterRequest);
-
-        [OperationContract]
-        [WebGet(UriTemplate = "/GetLocations", ResponseFormat = WebMessageFormat.Json)]
+        [WebGet(UriTemplate = RestUri.GetLocations, ResponseFormat = WebMessageFormat.Json)]
         IEnumerable<LocationDto> GetLocations();
 
         [OperationContract]
-        [WebGet(UriTemplate = "/GetAllPersons", ResponseFormat = WebMessageFormat.Json)]
+        [WebGet(UriTemplate = RestUri.GetAllPersons, ResponseFormat = WebMessageFormat.Json)]
         IEnumerable<PersonDto> GetAllPersons();
 
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "/GetPersons", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        IEnumerable<PersonDto> GetPersons(FilterRequest filterRequest);
+        [WebGet(UriTemplate = RestUri.GetPersons + "?Request={filterRequest}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        IEnumerable<PersonDto> GetPersons(string filterRequest);
+        
+        [OperationContract]
+        [WebGet(UriTemplate = RestUri.GetDistributionList + "?Request={filterRequest}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string GetDistributionList(string filterRequest);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = RestUri.GetPersons, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        IEnumerable<PersonDto> GetPersonsPost(FilterRequest filterRequest);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = RestUri.GetDistributionList, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string GetDistributionListPost(FilterRequest filterRequest);
     }
 }
