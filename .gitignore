@@ -6,3 +6,13 @@ DLExt.OutlookAddin/obj
 DLExt.OutlookAddin/bin
 DLExt.OUtlookAddin.Setup/Debug
 DLExt.OUtlookAddin.Setup/Release
+DLExt.Outlook2010AddIn.Setup\Debug
+DLExt.Outlook2010AddIn.Setup\Release
+DLExt.DataAccess/bin
+DLExt.DataAccess/obj
+DLExt.Domain/bin
+DLExt.Domain/obj
+DLExt.RestService/bin
+DLExt.RestService/obj
+DLExt.WebApplication/bin
+DLExt.WebApplication/obj

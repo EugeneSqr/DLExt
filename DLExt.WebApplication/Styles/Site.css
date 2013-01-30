@@ -1,0 +1,86 @@
+﻿body   
+{
+    background: #ffffff;
+    font-size: .80em;
+    font-family: "Segoe UI";
+    width: 600px;
+    margin: 0px auto;
+}
+
+a:link, a:visited, a:active
+{
+    color: #034af3;
+}
+
+a:hover
+{
+    color: #1d60ff;
+    text-decoration: none;
+}
+
+td.locations
+{
+    width: 100px;
+    height: auto;
+    vertical-align: text-top;
+    border-style: none;
+    border-color: transparent;
+    margin: 15px;
+}
+
+td.generate 
+{
+    height: auto;
+    vertical-align: text-top;
+}
+
+td.list {
+    
+}
+
+div.header {
+    font-weight: bold;
+    font-size: 110%;
+    margin-bottom: 10px;
+}
+
+table 
+{
+    margin-top: 20px;
+    display: inline-block;
+    table-layout: fixed;
+    height: 300px;
+    width: 100%;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    border-collapse: separate;
+    border-spacing: 15px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.locationsBox 
+{
+    margin-top: 0px;
+    padding-left: 15px;
+    text-align: left;
+    height: auto;
+    border-color: transparent;
+    border-style: none;
+    border-spacing: 0px;
+}
+
+.personList 
+{
+    display: inline-block;
+    overflow: auto;
+}
+
+.rigthAlign {
+    text-align: right;
+}
