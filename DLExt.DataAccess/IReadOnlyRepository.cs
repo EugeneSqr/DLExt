@@ -4,9 +4,7 @@ using DLExt.Domain;
 
 namespace DLExt.DataAccess
 {
-    
-    public interface IReadOnlyRepository
-    {
+    public interface IReadOnlyRepository    {
         ReadOnlyCollection<Location> AllLocations { get; }
 
         ReadOnlyCollection<Person> GetPersonsByLocations(IEnumerable<Location> selectedLocations);

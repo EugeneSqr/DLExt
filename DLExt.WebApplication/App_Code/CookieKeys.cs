@@ -1,6 +1,6 @@
 ﻿namespace DLExt.WebApplication
 {
-    public static class CookieKeys
+    internal static class CookieKeys
     {
         public const string ExcludedPersons = "Persons";
     }

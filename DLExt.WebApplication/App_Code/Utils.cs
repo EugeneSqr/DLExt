@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DLExt.WebApplication
 {
-    public static class Utils
+    internal static class Utils
     {
         public static string CallRestGet(string uri)
         {

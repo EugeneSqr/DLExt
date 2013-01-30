@@ -1,11 +1,10 @@
-﻿namespace DLExt.RestService
+﻿using System.Collections.Generic;
+using System.Linq;
+using DLExt.DataAccess;
+using DLExt.Domain;
+
+namespace DLExt.RestService
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using DLExt.DataAccess;
-    using DLExt.Domain;
-
     public class AppDirectoryService : IAppDirectoryService
     {
         private readonly IReadOnlyRepository repository;

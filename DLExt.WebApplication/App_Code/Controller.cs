@@ -7,7 +7,7 @@ namespace DLExt.WebApplication
     using DLExt.Domain;
     using DLExt.RestService;
 
-    public class Controller
+    internal class Controller
     {
         private readonly IList<Person> excludedPersons;
 
@@ -38,14 +38,12 @@ namespace DLExt.WebApplication
 
         public string GetEmailList(out int count)
         {
-            var data =
-                Utils.FormatJson(
-                    new FilterRequest
-                    {
-                        ExcludedPersons = this.excludedPersons.Select(Mapper.ToDataTransferObject).ToList(),
-                        Locations =
-                            this.locations.Select(Mapper.ToDataTransferObject).Where(l => l.IsSelected).ToList()
-                    });
+            var request = new FilterRequest
+                {
+                    ExcludedPersons = this.excludedPersons.Select(Mapper.ToDataTransferObject).ToList(),
+                    Locations = this.locations.Select(Mapper.ToDataTransferObject).Where(l => l.IsSelected).ToList()
+                };
+            var data = Utils.FormatJson(request);
             var responce = Utils.CallRestPost(serviceUrl + RestUri.GetDistributionList, data);
 
             var emailList = responce.TrimStart('"').TrimEnd('"');
@@ -65,14 +63,12 @@ namespace DLExt.WebApplication
             string result;
             if (locations.Any(l => l.IsSelected))
             {
-                var data =
-                    Utils.FormatJson(
-                        new FilterRequest
-                            {
-                                ExcludedPersons = new List<PersonDto>(),
-                                Locations =
-                                    locations.Where(l => l.IsSelected).Select(Mapper.ToDataTransferObject).ToList(),
-                            });
+                var request = new FilterRequest
+                    {
+                        ExcludedPersons = new List<PersonDto>(),
+                        Locations = locations.Where(l => l.IsSelected).Select(Mapper.ToDataTransferObject).ToList(),
+                    };
+                var data = Utils.FormatJson(request);
                 result = Utils.CallRestPost(serviceUrl + RestUri.GetPersons, data);
             }
             else

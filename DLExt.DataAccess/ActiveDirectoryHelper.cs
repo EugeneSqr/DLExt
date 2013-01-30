@@ -2,7 +2,7 @@ using System.DirectoryServices;
 
 namespace DLExt.DataAccess
 {
-    public static class ActiveDirectoryHelper
+    internal static class ActiveDirectoryHelper
     {
         public static SearchResultCollection Read(string fullPath, string filter)
         {

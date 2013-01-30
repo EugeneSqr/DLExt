@@ -5,7 +5,7 @@ namespace DLExt.DataAccess
 {
     using System;
 
-    public static class Mapper
+    internal static class Mapper
     {
         public static bool TryParseLocation(this SearchResult searchResult, out Location location)
         {
