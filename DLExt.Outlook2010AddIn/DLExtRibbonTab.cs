@@ -35,7 +35,7 @@ namespace DLExt.Outlook2010AddIn
         public void OnDLExtClick(Office.IRibbonControl control)
         {
             MainWindow window = new MainWindow(
-                "NNVDC01",
+                "domain.corp",
                 "OU=Sites,OU=Company,DC=domain,DC=corp",
                 "OU=Sites,OU=Company,DC=domain,DC=corp");
             window.Show();
