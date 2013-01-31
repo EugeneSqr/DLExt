@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using System.DirectoryServices;
 using System.Linq;
 using DLExt.Builder.Model;
+using log4net;
 
 namespace DLExt.Builder.Retrievers
 {
     public class PersonsRetriever : Retriever<Person>
     {
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(PersonsRetriever));
+
         public PersonsRetriever(string server) : base(server)
         {
         }
 
         public override IList<Person> Retrieve(string path)
         {
+            Logger.Info("PersonsRetriever: Retrieve method has been invoked.");
             var result = new List<Person>();
             try
             {
@@ -36,8 +40,9 @@ namespace DLExt.Builder.Retrievers
                     }
                 }
             }
-            catch
+            catch(Exception exception)
             {
+                Logger.Error("PersonsRetriever: error retrieving persons", exception);
             }
 
             return result.OrderBy(person => person.DisplayName).ToList();

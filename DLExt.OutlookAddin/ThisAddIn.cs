@@ -1,24 +1,32 @@
 ﻿using System;
 using System.Windows.Forms;
 using Microsoft.Office.Core;
+using log4net;
 
 namespace DLExt.OutlookAddin
 {
     public partial class ThisAddIn
     {
         static readonly Timer Timer = new Timer();
+
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(ThisAddIn));
         
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {
+            Logger.Info("Startup: plugin startup logic has been triggered.");
             // HACK: looks like it is the only way to deal with minimized outlook startup
             Timer.Interval = 100;
             Timer.Tick += (o, args) =>
                               {
+                                  Logger.Info("Startup: getting appropriate ActiveExplorer");
                                   var activeExplorer = Application.ActiveExplorer();
                                   if (activeExplorer != null)
                                   {
+                                      Logger.Info("Startup: explorer found.");
                                       Timer.Stop();
+                                      Logger.Info("Startup: creation toolbar...");
                                       CreateToolbar();
+                                      Logger.Info("Startup: creating toolbar. Done.");
                                   }
                               };
             Timer.Start();
@@ -26,7 +34,9 @@ namespace DLExt.OutlookAddin
 
         private void ThisAddIn_Shutdown(object sender, EventArgs e)
         {
+            Logger.Info("Shutdown: plugin deactivation. Removing toolbar.");
             RemoveToolbar();
+            Logger.Info("Shutdown: plugin deactivation. Done.");
         }
 
         #region VSTO generated code

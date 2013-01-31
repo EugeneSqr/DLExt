@@ -7,11 +7,14 @@ using DLExt.Builder;
 using DLExt.Builder.Model;
 using DLExt.Builder.Retrievers;
 using Microsoft.Office.Interop.Outlook;
+using log4net;
 
 namespace DLExt.OutlookAddin
 {
     public partial class MainWindow : INotifyPropertyChanged
     {
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(MainWindow));
+        
         private readonly BackgroundWorker loadingWorker;
         private readonly BackgroundWorker composeWorker;
         private readonly BackgroundWorker filterWorker;
@@ -42,6 +45,12 @@ namespace DLExt.OutlookAddin
 
         public MainWindow(string server, string locationsRootPath, string personsRootPath)
         {
+            Logger.InfoFormat(
+                "GUI: main window has been created. Parameters: {0}, {1}, {2}", 
+                server, 
+                locationsRootPath, 
+                personsRootPath);
+
             Server = server;
             LocationsRootPath = locationsRootPath;
             PersonsRootPath = personsRootPath;
@@ -50,14 +59,18 @@ namespace DLExt.OutlookAddin
             loadingWorker.DoWork += (o, args) =>
             {
                 IsProcessing = true;
+                Logger.Info("WorkerThread: retrieving locations.");
                 locationsList = new LocationsRetriever(Server).Retrieve(LocationsRootPath);
+                Logger.Info("WorkerThread: retrieving persons.");
                 personsList = new PersonsRetriever(Server).Retrieve(PersonsRootPath);
             };
 
             loadingWorker.RunWorkerCompleted += (sender, args) =>
             {
+                Logger.Info("GUI: loading of locations and persons completed.");
                 locations.ItemsSource = locationsList;
                 persons.ItemsSource = personsList;
+                Logger.Info("GUI: persons and locations data has been saved.");
                 IsProcessing = false;
             };
 
@@ -86,11 +99,14 @@ namespace DLExt.OutlookAddin
                     Server,
                     locations.Items.OfType<Location>().Where(loc => loc.IsSelected),
                     personsToExclude.Items.OfType<Person>());
+                Logger.Info("WorkerThread: composing email address string");
                 builder.Build();
+                Logger.Info("WorkerThread: email address has been assembled.");
             };
 
             composeWorker.RunWorkerCompleted += (sender, args) =>
             {
+                Logger.Info("GUI: creating result email");
                 IsProcessing = false;
                 try
                 {
@@ -101,9 +117,11 @@ namespace DLExt.OutlookAddin
                     mailItem.Display(true);
 
                 }
-                catch (COMException)
+                catch (COMException exception)
                 {
+                    Logger.Error("Error creating email: ", exception);
                 }
+                Logger.Info("GUI: email has been created.");
             };
 
             loadingWorker.WorkerSupportsCancellation = true;
