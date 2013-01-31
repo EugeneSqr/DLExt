@@ -1,27 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.ComponentModel;
 using Microsoft.Office.Interop.Outlook;
 using System.Runtime.InteropServices;
 using DLExt.Builder;
 using DLExt.Builder.Model;
 using DLExt.Builder.Retrievers;
+using log4net;
 
 namespace DLExt.Outlook2010AddIn
 {
-     public partial class MainWindow : INotifyPropertyChanged
+    public partial class MainWindow : INotifyPropertyChanged
     {
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(MainWindow));
+
         private readonly BackgroundWorker loadingWorker;
         private readonly BackgroundWorker composeWorker;
         private readonly BackgroundWorker filterWorker;
@@ -111,8 +104,9 @@ namespace DLExt.Outlook2010AddIn
                     mailItem.Display(true);
 
                 }
-                catch (COMException)
+                catch (COMException exception)
                 {
+                    Logger.Error("Error creating email: ", exception);
                 }
             };
 
