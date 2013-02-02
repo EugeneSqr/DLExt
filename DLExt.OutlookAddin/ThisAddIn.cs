@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Windows.Forms;
 using Microsoft.Office.Core;
 using log4net;
@@ -13,6 +14,9 @@ namespace DLExt.OutlookAddin
         
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {
+            log4net.Config.XmlConfigurator.Configure(
+                Assembly.GetExecutingAssembly().GetManifestResourceStream("DLExt.OutlookAddin.log4net.config"));
+            
             Logger.Info("Startup: plugin startup logic has been triggered.");
             // HACK: looks like it is the only way to deal with minimized outlook startup
             Timer.Interval = 100;
