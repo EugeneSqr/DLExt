@@ -41,7 +41,7 @@
                 <br />
                 <asp:Label ID="LabelExcluded" runat="server" ReadOnly="True" Height="150" Width="300"
                     CssClass="personList" Visible="False"></asp:Label>
-                <asp:Panel ID="PanelRepeater" runat="server" ScrollBars="Vertical" Height="170">
+               <div style="width:340px; height: 170px; overflow: auto">
                     <asp:Repeater ID="RepeaterPersons" runat="server" OnItemCommand="OnLinkButtonCommand">
                         <ItemTemplate>
                             <asp:Label runat="server"><%#Eval("DisplayName")%></asp:Label>
@@ -50,7 +50,7 @@
                         <SeparatorTemplate>
                             </br></SeparatorTemplate>
                     </asp:Repeater>
-                </asp:Panel>
+                </div>
             </td>
         </tr>
     </table>
