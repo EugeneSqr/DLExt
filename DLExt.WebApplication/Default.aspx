@@ -25,8 +25,7 @@
             </td>
             <td class="generate">
                 <asp:Label ID="Label1" runat="server" Text="Количество людей в рассылке:"></asp:Label>
-                <asp:TextBox ID="TextBoxPersonsCount" runat="server" ReadOnly="True" Width="55px"
-                    CssClass="rigthAlign">0</asp:TextBox>
+                <asp:Label ID="LabelPersonsCount" runat="server" Text="0"></asp:Label>
                 <br />
                 <asp:HyperLink ID="HyperLinkMailTo" runat="server">Отправить письмо</asp:HyperLink>
             </td>
@@ -42,14 +41,16 @@
                 <br />
                 <asp:Label ID="LabelExcluded" runat="server" ReadOnly="True" Height="150" Width="300"
                     CssClass="personList" Visible="False"></asp:Label>
-                <asp:Repeater ID="RepeaterPersons" runat="server" OnItemCommand="OnLinkButtonCommand">
-                    <ItemTemplate>
-                        <asp:Label runat="server"><%#Eval("DisplayName")%></asp:Label>
-                        <asp:LinkButton runat="server" CommandName="Delete" CommandArgument='<%#Eval("Email")%>'>удалить</asp:LinkButton>
-                    </ItemTemplate>
-                    <SeparatorTemplate>
-                        </br></SeparatorTemplate>
-                </asp:Repeater>
+                <asp:Panel ID="PanelRepeater" runat="server" ScrollBars="Vertical" Height="170">
+                    <asp:Repeater ID="RepeaterPersons" runat="server" OnItemCommand="OnLinkButtonCommand">
+                        <ItemTemplate>
+                            <asp:Label runat="server"><%#Eval("DisplayName")%></asp:Label>
+                            <asp:LinkButton runat="server" CommandName="Delete" CommandArgument='<%#Eval("Email")%>'>удалить</asp:LinkButton>
+                        </ItemTemplate>
+                        <SeparatorTemplate>
+                            </br></SeparatorTemplate>
+                    </asp:Repeater>
+                </asp:Panel>
             </td>
         </tr>
     </table>

@@ -76,7 +76,7 @@ namespace DLExt.WebApplication
             }
 
             HyperLinkMailTo.NavigateUrl = "mailto:" + emailList;
-            TextBoxPersonsCount.Text = personsInList.ToString(CultureInfo.InvariantCulture);
+            LabelPersonsCount.Text = personsInList.ToString(CultureInfo.InvariantCulture);
 
             RepeaterPersons.DataSource = controller.ExcludedPersons;
             RepeaterPersons.DataBind();
