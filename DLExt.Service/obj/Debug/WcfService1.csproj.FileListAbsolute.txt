@@ -1,0 +1,5 @@
+C:\GIT\DLExt\WcfService1\bin\WcfService1.dll
+C:\GIT\DLExt\WcfService1\bin\WcfService1.pdb
+C:\GIT\DLExt\WcfService1\obj\Debug\ResolveAssemblyReference.cache
+C:\GIT\DLExt\WcfService1\obj\Debug\WcfService1.dll
+C:\GIT\DLExt\WcfService1\obj\Debug\WcfService1.pdb

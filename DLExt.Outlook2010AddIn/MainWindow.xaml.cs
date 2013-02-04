@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Windows;
 using System.ComponentModel;
+using System.Windows.Controls;
+using DLExt.Infrastructure;
+using DLExt.Model;
 using Microsoft.Office.Interop.Outlook;
 using System.Runtime.InteropServices;
-using DLExt.Builder;
-using DLExt.Builder.Model;
-using DLExt.Builder.Retrievers;
 using log4net;
 
 namespace DLExt.Outlook2010AddIn
@@ -16,20 +16,10 @@ namespace DLExt.Outlook2010AddIn
         private static readonly ILog Logger = LogManager.GetLogger(typeof(MainWindow));
 
         private readonly BackgroundWorker loadingWorker;
-        private readonly BackgroundWorker composeWorker;
-        private readonly BackgroundWorker filterWorker;
-        private AddressBuilder builder;
-        private IList<Location> locationsList;
-        private IList<Person> personsList;
-        private IList<Person> localPersonsList;
+        private IList<Person> allPersons;
+        private IList<Location> locations;
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public string Server { get; private set; }
-
-        public string LocationsRootPath { get; private set; }
-
-        public string PersonsRootPath { get; private set; }
 
         private bool isProcessing;
 
@@ -43,71 +33,33 @@ namespace DLExt.Outlook2010AddIn
             }
         }
 
-        public MainWindow(string server, string locationsRootPath, string personsRootPath)
+        public MainWindow(string server)
         {
-            Server = server;
-            LocationsRootPath = locationsRootPath;
-            PersonsRootPath = personsRootPath;
+            var repository = new Repository(server);
+
+            Logger.InfoFormat(
+                "GUI: main window has been created. Parameters: {0}",
+                server);
 
             loadingWorker = new BackgroundWorker();
             loadingWorker.DoWork += (o, args) =>
             {
                 IsProcessing = true;
-                locationsList = new LocationsRetriever(Server).Retrieve(LocationsRootPath);
-                personsList = new PersonsRetriever(Server).Retrieve(PersonsRootPath);
+                Logger.Info("WorkerThread: retrieving locations.");
+                locations = repository
+                    .GetLocations()
+                    .Select(item => new Location { Name = item })
+                    .ToList();
+                Logger.Info("WorkerThread: retrieving persons.");
+                allPersons = repository.GetPersons();
             };
 
             loadingWorker.RunWorkerCompleted += (sender, args) =>
             {
-                locations.ItemsSource = locationsList;
-                persons.ItemsSource = personsList;
+                Logger.Info("GUI: loading of locations and persons completed.");
+                lbLocations.ItemsSource = locations;
+                Logger.Info("GUI: persons and locations data has been saved.");
                 IsProcessing = false;
-            };
-
-            filterWorker = new BackgroundWorker();
-            filterWorker.DoWork += (sender, args) =>
-            {
-                IsProcessing = true;
-                builder = new AddressBuilder(
-                    Server,
-                    locations.Items.OfType<Location>().Where(loc => loc.IsSelected),
-                    personsToExclude.Items.OfType<Person>());
-                localPersonsList = builder.ExtractPersons();
-            };
-
-            filterWorker.RunWorkerCompleted += (sender, args) =>
-            {
-                persons.ItemsSource = localPersonsList;
-                IsProcessing = false;
-            };
-
-            composeWorker = new BackgroundWorker();
-            composeWorker.DoWork += (sender, args) =>
-            {
-                IsProcessing = true;
-                builder = new AddressBuilder(
-                    Server,
-                    locations.Items.OfType<Location>().Where(loc => loc.IsSelected),
-                    personsToExclude.Items.OfType<Person>());
-                builder.Build();
-            };
-
-            composeWorker.RunWorkerCompleted += (sender, args) =>
-            {
-                IsProcessing = false;
-                try
-                {
-                    var app = new Microsoft.Office.Interop.Outlook.Application();
-                    var mailItem = (MailItem)app.CreateItem(OlItemType.olMailItem);
-
-                    mailItem.To = builder.ResultAddress;
-                    mailItem.Display(true);
-
-                }
-                catch (COMException exception)
-                {
-                    Logger.Error("Error creating email: ", exception);
-                }
             };
 
             loadingWorker.WorkerSupportsCancellation = true;
@@ -122,14 +74,33 @@ namespace DLExt.Outlook2010AddIn
 
         private void ComposeEmail(object sender, RoutedEventArgs e)
         {
-            composeWorker.RunWorkerAsync();
+            Logger.Info("GUI: creating result email");
+            IsProcessing = false;
+            try
+            {
+                var app = new Microsoft.Office.Interop.Outlook.Application();
+                var mailItem = (MailItem)app.CreateItem(OlItemType.olMailItem);
+                var builder = new AddressBuilder(cbPersons.Items.OfType<Person>().ToList());
+                builder.Build();
+                mailItem.To = builder.ResultAddress;
+                mailItem.Display(true);
+
+            }
+            catch (COMException exception)
+            {
+                Logger.Error("Error creating email: ", exception);
+            }
+
+            Logger.Info("GUI: email has been created.");
         }
 
         private void ExcludePerson(object sender, RoutedEventArgs e)
         {
-            if (!personsToExclude.Items.Contains(persons.SelectedItem) && persons.SelectedItem != null)
+            var personToExclude = cbPersons.SelectedItem as Person;
+            if (personToExclude != null && !lbPersonsToExclude.Items.Contains(personToExclude))
             {
-                personsToExclude.Items.Add(persons.SelectedItem);
+                lbPersonsToExclude.Items.Add(personToExclude);
+                cbPersons.Items.Remove(cbPersons.SelectedItem);
             }
         }
 
@@ -148,12 +119,49 @@ namespace DLExt.Outlook2010AddIn
 
         private void LabelMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            personsToExclude.Items.Remove(personsToExclude.SelectedItem);
+            lbPersonsToExclude.Items.Remove(lbPersonsToExclude.SelectedItem);
+            cbPersons.Items.Clear();
+            foreach (Location location in lbLocations.Items)
+            {
+                if (location.IsSelected)
+                {
+                    foreach (var person in allPersons)
+                    {
+                        if (person.Location == location.Name && !lbPersonsToExclude.Items.Contains(person))
+                        {
+                            cbPersons.Items.Add(person);
+                        }
+                    }
+                }
+            }
         }
 
         private void CheckBoxClick(object sender, RoutedEventArgs e)
         {
-            filterWorker.RunWorkerAsync();
+            var checkBox = sender as CheckBox;
+            if (checkBox != null && checkBox.IsChecked.HasValue)
+            {
+                if (checkBox.IsChecked.Value)
+                {
+                    foreach (var person in allPersons)
+                    {
+                        if (person.Location == checkBox.Content.ToString() && !lbPersonsToExclude.Items.Contains(person))
+                        {
+                            cbPersons.Items.Add(person);
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (var person in allPersons)
+                    {
+                        if (person.Location == checkBox.Content.ToString())
+                        {
+                            cbPersons.Items.Remove(person);
+                        }
+                    }
+                }
+            }
         }
     }
 }

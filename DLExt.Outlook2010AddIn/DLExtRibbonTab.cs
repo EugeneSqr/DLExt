@@ -11,10 +11,6 @@ namespace DLExt.Outlook2010AddIn
     {
         private Office.IRibbonUI ribbon;
 
-        public DLExtRibbonTab()
-        {
-        }
-
         #region IRibbonExtensibility Members
 
         public string GetCustomUI(string ribbonID)
@@ -28,16 +24,13 @@ namespace DLExt.Outlook2010AddIn
 
         public void Ribbon_Load(Office.IRibbonUI ribbonUI)
         {
-            this.ribbon = ribbonUI;
-            this.ribbon.ActivateTab("DLEext");
+            ribbon = ribbonUI;
+            ribbon.ActivateTab("DLEext");
         }
 
         public void OnDLExtClick(Office.IRibbonControl control)
         {
-            MainWindow window = new MainWindow(
-                "domain.corp",
-                "OU=Sites,OU=Company,DC=domain,DC=corp",
-                "OU=Sites,OU=Company,DC=domain,DC=corp");
+            MainWindow window = new MainWindow("domain.corp");
             window.Show();
         }
 
@@ -49,16 +42,13 @@ namespace DLExt.Outlook2010AddIn
         {
             Assembly asm = Assembly.GetExecutingAssembly();
             string[] resourceNames = asm.GetManifestResourceNames();
-            for (int i = 0; i < resourceNames.Length; ++i)
+            foreach (string t in resourceNames)
             {
-                if (string.Compare(resourceName, resourceNames[i], StringComparison.OrdinalIgnoreCase) == 0)
+                if (string.Compare(resourceName, t, StringComparison.OrdinalIgnoreCase) == 0)
                 {
-                    using (StreamReader resourceReader = new StreamReader(asm.GetManifestResourceStream(resourceNames[i])))
+                    using (StreamReader resourceReader = new StreamReader(asm.GetManifestResourceStream(t)))
                     {
-                        if (resourceReader != null)
-                        {
-                            return resourceReader.ReadToEnd();
-                        }
+                        return resourceReader.ReadToEnd();
                     }
                 }
             }

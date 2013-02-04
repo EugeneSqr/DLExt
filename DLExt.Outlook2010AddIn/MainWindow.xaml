@@ -20,7 +20,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Row="0" Grid.Column="0">
                     <Label Content="Locations:" HorizontalAlignment="Left"/>
-                    <ListBox Name="locations"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="200"  Width="120" VerticalContentAlignment="Center" Margin="5" ToolTip="Locations">
+                    <ListBox Name="lbLocations"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="200"  Width="120" VerticalContentAlignment="Center" Margin="5" ToolTip="Locations">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <CheckBox Content="{Binding Name}" IsChecked="{Binding IsSelected}" Click="CheckBoxClick"></CheckBox>
@@ -31,22 +31,21 @@
                 <StackPanel Grid.Column="1">
                     <Label Content="All persons:" HorizontalAlignment="Left"/>
                     <StackPanel  HorizontalAlignment="Stretch" VerticalAlignment="Top" Orientation="Horizontal" FlowDirection="LeftToRight">
-                        <ComboBox Name="persons" VerticalAlignment="Top" Width="200" Margin="5" DisplayMemberPath="DisplayName" SelectedValuePath="DisplayName" ToolTip="All persons" />
+                        <ComboBox Name="cbPersons" VerticalAlignment="Top" Width="200" Margin="5" DisplayMemberPath="Name" SelectedValuePath="Name" ToolTip="All persons" />
                         <Button Content="Exclude" Name="Exclude" VerticalAlignment="Top" Width="75" Margin="5" Click="ExcludePerson" />
                     </StackPanel>
                     <Label Content="Excluded persons:" HorizontalAlignment="Left"/>
                     <ListBox HorizontalAlignment="Stretch" Height="142" Margin="5" 
-                             Name="personsToExclude"
+                             Name="lbPersonsToExclude"
                              ToolTip="Excluded persons"
                             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel  Orientation="Horizontal">
-                                    <Label Content="{Binding Path=DisplayName}" HorizontalAlignment="Left"/>
+                                    <Label Content="{Binding Path=Name}" HorizontalAlignment="Left"/>
                                     <Label  Content="delete" Foreground="Blue" Cursor="Hand" HorizontalAlignment="Right" MouseUp="LabelMouseUp"/>
                                 </StackPanel>
                             </DataTemplate>
-
                         </ListBox.ItemTemplate>
                         <ListBoxItem></ListBoxItem>
                     </ListBox>

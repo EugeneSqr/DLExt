@@ -188,6 +188,7 @@
     <Compile Include="LoadingControl\LoadingAnimation.xaml.cs">
       <DependentUpon>LoadingAnimation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Location.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -244,9 +245,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DLExt.Builder\DLExt.Builder.csproj">
+    <ProjectReference Include="..\DLExt.Infrastructure\DLExt.Infrastructure.csproj">
       <Project>{E9611B82-5FA3-42B2-9055-776CFE1D7048}</Project>
-      <Name>DLExt.Builder</Name>
+      <Name>DLExt.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DLExt.Model\DLExt.Model.csproj">
+      <Project>{861C2CC1-4DA3-4756-84FE-80DB59711138}</Project>
+      <Name>DLExt.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <!-- Include the build rules for a C# project. -->

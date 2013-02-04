@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Message</h2>
+<div class="locations-box">
+    Locations:
+    <div data-bind="visible : locationsLoading">
+        <img style="background: transparent; border: 0px" src="/Content/Images/AreaLoader.gif" alt="loading"/>
+    </div>
+    <div data-bind="visible : locationsLoadingCompleted">
+        <ul data-bind="foreach: locations">
+            <li>
+                <input type="checkbox" data-bind="value: $data, checked: $parent.checkedLocations" />
+                <span data-bind="text: $data"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="persons-box">
+    <div class="all-persons-box">
+        <select data-bind="options: filteredPersons, optionsText: 'name', value: personToExclude, optionsCaption: 'Choose a person to exclude'"></select>
+        <input type="button" value="Exclude" data-bind="event: {click: excludePerson }" />
+    </div>
+    <div class="persons-to-exclude-box">
+        <select data-bind="options: excludedPersons, optionsText: 'name', value: personToInclude" size="3"></select>
+        <input type="button" value="Include" data-bind="event: {click: includePerson }" />
+    </div>
+</div>
+<div class="create-list-box">
+    <input type="button" value="Create List" data-bind="event: {click: createAddress}"/>
+</div>
+<div class="address-list">
+    <a data-bind="attr: { href: addressList }, visible: addressListBuilt">Click this link to send an email</a>
+</div>
+<script type="text/javascript">
+    ko.applyBindings(new ListGeneratorViewModel());
+</script>
