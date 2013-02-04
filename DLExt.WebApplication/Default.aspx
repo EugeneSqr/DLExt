@@ -25,7 +25,7 @@
             </td>
             <td class="generate">
                 <asp:Label ID="Label1" runat="server" Text="Количество людей в рассылке:"></asp:Label>
-                <asp:Label ID="LabelPersonsCount" runat="server" Text="0"></asp:Label>
+                <asp:Label ID="LabelPersonsCount" runat="server" Text="0" CssClass="rigthAlign" Width="40"></asp:Label>
                 <br />
                 <asp:HyperLink ID="HyperLinkMailTo" runat="server">Отправить письмо</asp:HyperLink>
             </td>
