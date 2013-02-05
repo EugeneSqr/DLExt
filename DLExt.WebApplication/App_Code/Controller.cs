@@ -8,12 +8,13 @@ namespace DLExt.WebApplication
 
     using DLExt.Domain;
     using DLExt.RestService;
+    using System.Configuration;
 
     internal class Controller
     {
         private readonly IList<Person> excludedPersons;
 
-        private readonly string serviceUrl = @"http://dlext.ru/Service.svc";
+        private readonly string serviceUrl = ConfigurationSettings.AppSettings["ServiceUrl"];
         private IList<Location> locations;
         private IEnumerable<Person> persons;
 
