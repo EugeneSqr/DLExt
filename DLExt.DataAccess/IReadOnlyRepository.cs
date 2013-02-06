@@ -8,5 +8,7 @@ namespace DLExt.DataAccess
         ReadOnlyCollection<Location> AllLocations { get; }
 
         ReadOnlyCollection<Person> GetPersonsByLocations(IEnumerable<Location> selectedLocations);
+
+        IDictionary<Location, IEnumerable<Person>> GetPersonsGroupedByLocation();
     }
 }

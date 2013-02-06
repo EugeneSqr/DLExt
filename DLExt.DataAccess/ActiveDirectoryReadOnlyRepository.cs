@@ -64,6 +64,18 @@ namespace DLExt.DataAccess
             return new ReadOnlyCollection<Person>(list.OrderBy(p => p.DisplayName).ToList());
         }
 
+        public IDictionary<Location, IEnumerable<Person>> GetPersonsGroupedByLocation()
+        {
+            var dictionary = new Dictionary<Location, IEnumerable<Person>>();
+
+            foreach (var location in AllLocations)
+            {
+                dictionary.Add(location, GetPersonsByLocations(new[] { location }));
+            }
+
+            return dictionary;
+        }
+
         private string CreateADPathString(string relativePath)
         {
             return string.Format("LDAP://{0}/{1}", this.server, relativePath);

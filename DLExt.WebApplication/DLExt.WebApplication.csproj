@@ -33,14 +33,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\ThirdParty\log4net\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="Scripts\other.js" />
+    <Content Include="Scripts\default.js" />
+    <Content Include="Scripts\GetPersonsPost.html" />
     <Content Include="Scripts\GetPersons.html" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.8.3-vsdoc.js" />
+    <Content Include="Scripts\json2.js" />
+    <Content Include="Scripts\LoadXmlDoc.js" />
     <Content Include="Service.svc" />
     <Content Include="Styles\Site.css" />
     <Content Include="Web.config" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using log4net;
 
 namespace DLExt.WebApplication
 {
@@ -12,7 +13,7 @@ namespace DLExt.WebApplication
 
         void Application_Start(object sender, EventArgs e)
         {
-            // Code that runs on application startup
+            log4net.Config.XmlConfigurator.Configure();
 
         }
 

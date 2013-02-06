@@ -1,13 +1,13 @@
 ﻿namespace DLExt.RestService
 {
-    using System.IO;
+    using System;    using System.IO;
     using System.Net;
     using System.Runtime.Serialization.Json;
     using System.Text;
-
-    public static class Utils
+    using System.Web.Script.Serialization;
+    using Newtonsoft.Json;    using log4net;    public static class Utils
     {
-        public static string CallRestGet(string uri)
+        private static ILog logger = LogManager.GetLogger(typeof(Utils));        public static string CallRestGet(string uri)
         {
             var request = (HttpWebRequest)WebRequest.Create(uri);
             request.Proxy = WebRequest.GetSystemWebProxy();
@@ -32,7 +32,7 @@
             var request = (HttpWebRequest)WebRequest.Create(uri);
             request.Proxy = WebRequest.GetSystemWebProxy();
             request.Method = "POST";
-            request.ContentType = "text/json";
+            request.ContentType = "application/json";
             request.PreAuthenticate = true;
             request.Credentials = CredentialCache.DefaultCredentials;
 

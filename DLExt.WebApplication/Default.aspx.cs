@@ -29,7 +29,7 @@ namespace DLExt.WebApplication
 
         protected void ButtonExcludeClick(object sender, EventArgs e)
         {
-            this.controller.AddExcludedPersonByEmail(DropDownListPersons.SelectedItem.Value);
+            //this.controller.AddExcludedPersonByEmail(DropDownListPersons.SelectedItem.Value);
         }
 
         protected void OnLinkButtonCommand(object sender, CommandEventArgs e)
@@ -43,11 +43,11 @@ namespace DLExt.WebApplication
         private void OnLoad(object sender, EventArgs eventArgs)
         {
             controller.LoadAvailableLocations();
-            foreach (RepeaterItem item in RepeaterLocations.Items)
-            {
-                var location = (CheckBox)item.FindControl("CheckBoxLocation");
-                controller.SetLocationSelected(location.Text, location.Checked);
-            }
+            //foreach (RepeaterItem item in RepeaterLocations.Items)
+            //{
+            //    var location = (CheckBox)item.FindControl("CheckBoxLocation");
+            //    controller.SetLocationSelected(location.Text, location.Checked);
+            //}
 
             controller.LoadPersonsList();
 
@@ -58,41 +58,41 @@ namespace DLExt.WebApplication
         {
             ExcludedPersonsCookie = controller.ConvertExcludedPersonsToCookieValue();
 
-            RepeaterLocations.DataSource = controller.Locations;
-            RepeaterLocations.DataBind();
+            //RepeaterLocations.DataSource = controller.Locations;
+            //RepeaterLocations.DataBind();
 
-            int personsInList;
-            var emailList = this.controller.GetEmailList(out personsInList);
+            //int personsInList;
+            //var emailList = this.controller.GetEmailList(out personsInList);
 
-            if (emailList.Equals(string.Empty))
-            {
-                HyperLinkMailTo.Enabled = false;
-                HyperLinkMailTo.Text = "Выберите хотя бы одно отделение";
-            }
-            else
-            {
-                HyperLinkMailTo.Enabled = true;
-                HyperLinkMailTo.Text = "Отправить письмо";
-            }
+            //if (emailList.Equals(string.Empty))
+            //{
+            //    HyperLinkMailTo.Enabled = false;
+            //    HyperLinkMailTo.Text = "Выберите хотя бы одно отделение";
+            //}
+            //else
+            //{
+            //    HyperLinkMailTo.Enabled = true;
+            //    HyperLinkMailTo.Text = "Отправить письмо";
+            //}
 
-            HyperLinkMailTo.NavigateUrl = "mailto:" + emailList;
-            TextBoxPersonsCount.Text = personsInList.ToString(CultureInfo.InvariantCulture);
+            //HyperLinkMailTo.NavigateUrl = "mailto:" + emailList;
+            //TextBoxPersonsCount.Text = personsInList.ToString(CultureInfo.InvariantCulture);
 
-            RepeaterPersons.DataSource = controller.ExcludedPersons;
-            RepeaterPersons.DataBind();
+            //RepeaterPersons.DataSource = controller.ExcludedPersons;
+            //RepeaterPersons.DataBind();
 
-            if (DropDownListPersons.DataSource == null)
-            {
-                CreatePersonDropDownList();
-            }
+            //if (DropDownListPersons.DataSource == null)
+            //{
+            //    CreatePersonDropDownList();
+            //}
         }
 
         private void CreatePersonDropDownList()
         {
-            this.DropDownListPersons.DataSource = this.controller.Persons;
-            this.DropDownListPersons.DataTextField = "DisplayName";
-            this.DropDownListPersons.DataValueField = "Email";
-            this.DropDownListPersons.DataBind();
+            //this.DropDownListPersons.DataSource = this.controller.Persons;
+            //this.DropDownListPersons.DataTextField = "DisplayName";
+            //this.DropDownListPersons.DataValueField = "Email";
+            //this.DropDownListPersons.DataBind();
         }
 
         private string ExcludedPersonsCookie
