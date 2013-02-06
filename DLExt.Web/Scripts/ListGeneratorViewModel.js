@@ -1,13 +1,4 @@
-﻿function Person(data) {
-    var self = this;
-
-    self.id = data.Id;
-    self.name = data.Name;
-    self.email = data.Email;
-    self.location = data.Location;
-}
-
-function ListGeneratorViewModel() {
+﻿function ListGeneratorViewModel() {
     var self = this;
 
     self.persons = [];
@@ -35,18 +26,20 @@ function ListGeneratorViewModel() {
     self.addressListBuilt = ko.observable(false);
 
     self.filterByLocation = function (locations) {
-        self.filteredPersons.removeAll();
+        var filteredPersons = [];
         for (i in locations) {
             var location = locations[i];
             for (j in self.persons) {
                 var person = self.persons[j];
                 if (person.location == location) {
                     if (!self.containsPerson(self.excludedPersons(), person)) {
-                        self.filteredPersons.push(person);
+                        filteredPersons.push(person);
                     }
                 }
             }
         }
+
+        self.filteredPersons(filteredPersons);
     };
 
     self.excludePerson = function () {
@@ -117,7 +110,7 @@ function ListGeneratorViewModel() {
         dataType: 'jsonp',
         success: function (data) {
             for (index in data) {
-                self.persons.push(new Person(data[index]));
+                self.persons.push(data[index]);
             }
 
             self.personsLoading(false);

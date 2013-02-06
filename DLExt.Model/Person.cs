@@ -5,16 +5,16 @@ namespace DLExt.Model
     [DataContract]
     public class Person
     {
-        [DataMember]
+        [DataMember(Name = "id")]
         public int Id { get; set; }
         
-        [DataMember]
+        [DataMember(Name = "name")]
         public string Name { get; set; }
 
-        [DataMember]
+        [DataMember(Name = "email")]
         public string Email { get; set; }
 
-        [DataMember]
+        [DataMember(Name = "location")]
         public string Location { get; set; }
 
         public Person(int id, string name, string email, string location)
