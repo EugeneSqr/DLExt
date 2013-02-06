@@ -3,7 +3,6 @@
     background: #ffffff;
     font-size: .80em;
     font-family: "Segoe UI";
-    width: 600px;
     margin: 0px auto;
 }
 
@@ -44,26 +43,6 @@ div.header {
     margin-bottom: 10px;
 }
 
-table 
-{
-    margin-top: 20px;
-    display: inline-block;
-    table-layout: fixed;
-    height: 300px;
-    width: 100%;
-    border-width: 1px;
-    border-color: black;
-    border-style: solid;
-    border-collapse: separate;
-    border-spacing: 15px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -o-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -khtml-border-radius: 10px;
-    border-radius: 10px;
-}
-
 .locationsBox 
 {
     margin-top: 0px;
@@ -83,4 +62,8 @@ table
 
 .rigthAlign {
     text-align: right;
+}
+
+.handCursor {
+    cursor: hand;   
 }

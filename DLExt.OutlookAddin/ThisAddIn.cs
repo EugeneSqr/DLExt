@@ -79,7 +79,7 @@ namespace DLExt.OutlookAddin
                 toolBarButton.Click += (CommandBarButton ctrl, ref bool @default) =>
                 {
                     MainWindow window = new MainWindow(
-                        "NNVDC01",
+                        "domain.corp",
                         "OU=Sites,OU=Company,DC=domain,DC=corp",
                         "OU=Sites,OU=Company,DC=domain,DC=corp");
                     window.Show();

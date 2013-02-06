@@ -18,7 +18,7 @@ namespace DLExt.DataAccess
 
         public ActiveDirectoryReadOnlyRepository()
         {
-            this.server = "NNVDC01";
+            this.server = "domain.corp";
             this.rootPath = "OU=Sites,OU=Company,DC=domain,DC=corp";
             locationFilter = "(objectClass=organizationalUnit)";
             personsFilter = "(objectCategory=Person)";
