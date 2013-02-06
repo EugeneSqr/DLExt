@@ -15,6 +15,18 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_09CDDC91713137647E03E4D63D6E6758"
+        "OwnerKey" = "8:_5C5B1A82B2BD46A6A192990A4801D287"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_09CDDC91713137647E03E4D63D6E6758"
+        "OwnerKey" = "8:_7794D3D32E8CDC170AC1B4FEF7F82123"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_17B775E51FF6B11F22375F6880D25FE0"
         "OwnerKey" = "8:_5C5B1A82B2BD46A6A192990A4801D287"
         "MsmSig" = "8:_UNDEFINED"
@@ -23,6 +35,30 @@
         {
         "MsmKey" = "8:_17B775E51FF6B11F22375F6880D25FE0"
         "OwnerKey" = "8:_7794D3D32E8CDC170AC1B4FEF7F82123"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_207F93F64918117F2BA28C1F15EDBC56"
+        "OwnerKey" = "8:_5C5B1A82B2BD46A6A192990A4801D287"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_207F93F64918117F2BA28C1F15EDBC56"
+        "OwnerKey" = "8:_8100B5E23D71FE5FEF473CB214E717DD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_26EAFEB64CEF79DEFFC5482FB024A59C"
+        "OwnerKey" = "8:_8100B5E23D71FE5FEF473CB214E717DD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_26EAFEB64CEF79DEFFC5482FB024A59C"
+        "OwnerKey" = "8:_5C5B1A82B2BD46A6A192990A4801D287"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -64,6 +100,12 @@
         "Entry"
         {
         "MsmKey" = "8:_5091FDE76A1583FFBF643EEF12522FCE"
+        "OwnerKey" = "8:_09CDDC91713137647E03E4D63D6E6758"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5091FDE76A1583FFBF643EEF12522FCE"
         "OwnerKey" = "8:_17B775E51FF6B11F22375F6880D25FE0"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -81,12 +123,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_75FC4EB8CE9C2916DEDCC6B6540DAE6D"
-        "OwnerKey" = "8:_5C5B1A82B2BD46A6A192990A4801D287"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_77462889A9B33BBE88E3A6B84C231566"
         "OwnerKey" = "8:_17B775E51FF6B11F22375F6880D25FE0"
         "MsmSig" = "8:_UNDEFINED"
@@ -99,25 +135,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_8591140F1B2B4242BD6FD35F26D6025E"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A5FB47B5999580418C842F5F7ED9CB5E"
-        "OwnerKey" = "8:_E800FB8021A92ACC9196F8DBC8D8C751"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A5FB47B5999580418C842F5F7ED9CB5E"
+        "MsmKey" = "8:_8100B5E23D71FE5FEF473CB214E717DD"
         "OwnerKey" = "8:_5C5B1A82B2BD46A6A192990A4801D287"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_AE73A7ADFEB841509180E437EC4D237F"
+        "MsmKey" = "8:_8591140F1B2B4242BD6FD35F26D6025E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -129,7 +153,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C0CCD322AA13A7B5AEA4CF316EA35721"
+        "MsmKey" = "8:_C5D83F7459408354067F4B22019D39A0"
         "OwnerKey" = "8:_7794D3D32E8CDC170AC1B4FEF7F82123"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -153,12 +177,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E800FB8021A92ACC9196F8DBC8D8C751"
-        "OwnerKey" = "8:_5C5B1A82B2BD46A6A192990A4801D287"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_EB5EC51413314FD1806AE2E81C9AE034"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -166,7 +184,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AE73A7ADFEB841509180E437EC4D237F"
+        "OwnerKey" = "8:_26EAFEB64CEF79DEFFC5482FB024A59C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_8100B5E23D71FE5FEF473CB214E717DD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -184,7 +208,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C0CCD322AA13A7B5AEA4CF316EA35721"
+        "OwnerKey" = "8:_C5D83F7459408354067F4B22019D39A0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -220,31 +244,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5091FDE76A1583FFBF643EEF12522FCE"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_77462889A9B33BBE88E3A6B84C231566"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E800FB8021A92ACC9196F8DBC8D8C751"
+        "OwnerKey" = "8:_09CDDC91713137647E03E4D63D6E6758"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A5FB47B5999580418C842F5F7ED9CB5E"
+        "OwnerKey" = "8:_5091FDE76A1583FFBF643EEF12522FCE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_75FC4EB8CE9C2916DEDCC6B6540DAE6D"
+        "OwnerKey" = "8:_207F93F64918117F2BA28C1F15EDBC56"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -265,6 +283,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -281,6 +307,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -310,6 +344,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_09CDDC91713137647E03E4D63D6E6758"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:Microsoft.Office.Interop.Outlook, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+                "ScatterAssemblies"
+                {
+                    "_09CDDC91713137647E03E4D63D6E6758"
+                    {
+                    "Name" = "8:Microsoft.Office.Interop.Outlook.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Microsoft.Office.Interop.Outlook.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D0E21066E0B2468C829BB852032F0B3C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_17B775E51FF6B11F22375F6880D25FE0"
             {
             "AssemblyRegister" = "3:1"
@@ -324,6 +389,58 @@
                     }
                 }
             "SourcePath" = "8:Microsoft.Office.Tools.Common.v9.0.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D0E21066E0B2468C829BB852032F0B3C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_207F93F64918117F2BA28C1F15EDBC56"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                }
+            "SourcePath" = "8:log4net.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D0E21066E0B2468C829BB852032F0B3C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_26EAFEB64CEF79DEFFC5482FB024A59C"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DLExt.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                }
+            "SourcePath" = "8:DLExt.Model.DLL"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D0E21066E0B2468C829BB852032F0B3C"
@@ -410,11 +527,6 @@
             "AssemblyAsmDisplayName" = "8:DLExt.Outlook2010AddIn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_5C5B1A82B2BD46A6A192990A4801D287"
-                    {
-                    "Name" = "8:DLExt.Outlook2010AddIn.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:..\\DLExt.Outlook2010AddIn\\bin\\Release\\DLExt.Outlook2010AddIn.dll"
             "TargetName" = "8:"
@@ -448,37 +560,6 @@
                     }
                 }
             "SourcePath" = "8:Microsoft.VisualStudio.Tools.Applications.ServerDocument.v9.0.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_D0E21066E0B2468C829BB852032F0B3C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_75FC4EB8CE9C2916DEDCC6B6540DAE6D"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DLExt.Builder, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_75FC4EB8CE9C2916DEDCC6B6540DAE6D"
-                    {
-                    "Name" = "8:DLExt.Builder.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:DLExt.Builder.DLL"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D0E21066E0B2468C829BB852032F0B3C"
@@ -558,40 +639,15 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8591140F1B2B4242BD6FD35F26D6025E"
-            {
-            "SourcePath" = "8:..\\DLExt.Outlook2010AddIn\\bin\\Release\\DLExt.Outlook2010AddIn.vsto"
-            "TargetName" = "8:DLExt.Outlook2010AddIn.vsto"
-            "Tag" = "8:"
-            "Folder" = "8:_D0E21066E0B2468C829BB852032F0B3C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A5FB47B5999580418C842F5F7ED9CB5E"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8100B5E23D71FE5FEF473CB214E717DD"
             {
             "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:TRUE"
-            "AssemblyAsmDisplayName" = "8:office, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DLExt.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_A5FB47B5999580418C842F5F7ED9CB5E"
-                    {
-                    "Name" = "8:office.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
-            "SourcePath" = "8:office.dll"
+            "SourcePath" = "8:DLExt.Infrastructure.DLL"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D0E21066E0B2468C829BB852032F0B3C"
@@ -609,21 +665,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AE73A7ADFEB841509180E437EC4D237F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8591140F1B2B4242BD6FD35F26D6025E"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DLExt.Builder, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_AE73A7ADFEB841509180E437EC4D237F"
-                    {
-                    "Name" = "8:DLExt.Builder.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\DLExt.Outlook2010AddIn\\bin\\Release\\DLExt.Builder.dll"
-            "TargetName" = "8:"
+            "SourcePath" = "8:..\\DLExt.Outlook2010AddIn\\bin\\Release\\DLExt.Outlook2010AddIn.vsto"
+            "TargetName" = "8:DLExt.Outlook2010AddIn.vsto"
             "Tag" = "8:"
             "Folder" = "8:_D0E21066E0B2468C829BB852032F0B3C"
             "Condition" = "8:"
@@ -671,14 +716,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C0CCD322AA13A7B5AEA4CF316EA35721"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C5D83F7459408354067F4B22019D39A0"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:TRUE"
-            "AssemblyAsmDisplayName" = "8:Microsoft.Vbe.Interop.Forms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Microsoft.Vbe.Interop.Forms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
                 "ScatterAssemblies"
                 {
-                    "_C0CCD322AA13A7B5AEA4CF316EA35721"
+                    "_C5D83F7459408354067F4B22019D39A0"
                     {
                     "Name" = "8:Microsoft.Vbe.Interop.Forms.dll"
                     "Attributes" = "3:512"
@@ -716,37 +761,6 @@
                     }
                 }
             "SourcePath" = "8:Microsoft.Office.Tools.v9.0.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_D0E21066E0B2468C829BB852032F0B3C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E800FB8021A92ACC9196F8DBC8D8C751"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:TRUE"
-            "AssemblyAsmDisplayName" = "8:Microsoft.Office.Interop.Outlook, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_E800FB8021A92ACC9196F8DBC8D8C751"
-                    {
-                    "Name" = "8:Microsoft.Office.Interop.Outlook.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Microsoft.Office.Interop.Outlook.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D0E21066E0B2468C829BB852032F0B3C"
