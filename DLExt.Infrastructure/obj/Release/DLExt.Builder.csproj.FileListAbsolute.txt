@@ -1,7 +1,0 @@
-c:\GIT\DLExt\DLExt.Builder\bin\Release\DLExt.Builder.dll
-c:\GIT\DLExt\DLExt.Builder\bin\Release\DLExt.Builder.pdb
-c:\GIT\DLExt\DLExt.Builder\bin\Release\log4net.dll
-c:\GIT\DLExt\DLExt.Builder\bin\Release\log4net.xml
-c:\GIT\DLExt\DLExt.Builder\obj\Release\ResolveAssemblyReference.cache
-c:\GIT\DLExt\DLExt.Builder\obj\Release\DLExt.Builder.dll
-c:\GIT\DLExt\DLExt.Builder\obj\Release\DLExt.Builder.pdb

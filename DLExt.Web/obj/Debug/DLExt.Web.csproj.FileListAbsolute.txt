@@ -1,5 +1,0 @@
-C:\GIT\DLExt\DLExt.Web\bin\DLExt.Web.dll
-C:\GIT\DLExt\DLExt.Web\bin\DLExt.Web.pdb
-C:\GIT\DLExt\DLExt.Web\obj\Debug\ResolveAssemblyReference.cache
-C:\GIT\DLExt\DLExt.Web\obj\Debug\DLExt.Web.dll
-C:\GIT\DLExt\DLExt.Web\obj\Debug\DLExt.Web.pdb

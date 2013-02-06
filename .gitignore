@@ -1,13 +1,2 @@
 DLExt.suo
-_ReSharper.DLExt
-DLExt.Builder/obj
-DLExt.Builder/bin
-DLExt.OutlookAddin/obj
-DLExt.OutlookAddin/bin
-DLExt.Outlook2010Addin/obj
-DLExt.Outlook2010Addin/bin
-DLExt.OUtlookAddin.Setup/Debug
-DLExt.OUtlookAddin.Setup/Release
-DLExt.OUtlook2010Addin.Setup/Debug
-DLExt.OUtlook2010Addin.Setup/Release
-packages
+DLExt.sln.DotSettings.user

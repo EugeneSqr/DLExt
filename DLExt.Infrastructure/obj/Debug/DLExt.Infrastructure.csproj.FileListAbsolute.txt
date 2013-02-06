@@ -1,9 +1,0 @@
-c:\GIT\DLExt\DLExt.Infrastructure\bin\Debug\DLExt.Infrastructure.dll
-c:\GIT\DLExt\DLExt.Infrastructure\bin\Debug\DLExt.Infrastructure.pdb
-c:\GIT\DLExt\DLExt.Infrastructure\bin\Debug\DLExt.Model.dll
-c:\GIT\DLExt\DLExt.Infrastructure\bin\Debug\log4net.dll
-c:\GIT\DLExt\DLExt.Infrastructure\bin\Debug\DLExt.Model.pdb
-c:\GIT\DLExt\DLExt.Infrastructure\bin\Debug\log4net.xml
-c:\GIT\DLExt\DLExt.Infrastructure\obj\Debug\ResolveAssemblyReference.cache
-c:\GIT\DLExt\DLExt.Infrastructure\obj\Debug\DLExt.Infrastructure.dll
-c:\GIT\DLExt\DLExt.Infrastructure\obj\Debug\DLExt.Infrastructure.pdb

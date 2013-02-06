@@ -1,5 +1,0 @@
-c:\GIT\DLExt\DLExt.Model\bin\Debug\DLExt.Model.dll
-c:\GIT\DLExt\DLExt.Model\bin\Debug\DLExt.Model.pdb
-c:\GIT\DLExt\DLExt.Model\obj\Debug\ResolveAssemblyReference.cache
-c:\GIT\DLExt\DLExt.Model\obj\Debug\DLExt.Model.dll
-c:\GIT\DLExt\DLExt.Model\obj\Debug\DLExt.Model.pdb
