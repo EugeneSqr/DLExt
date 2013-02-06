@@ -67,3 +67,7 @@ div.header {
 .handCursor {
     cursor: hand;   
 }
+
+.inlineElements {
+    margin-left: 5px;
+}

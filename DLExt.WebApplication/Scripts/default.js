@@ -24,7 +24,7 @@ $(document).ready(function () {
     });
 
     $.ajax({
-        url: 'http://dlext.ru/Service.svc/GetGroupedPersons',
+        url: 'http://localhost:57630/Service.svc/GetGroupedPersons',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -42,8 +42,12 @@ $(document).ready(function () {
                     onPropertyChanged();
                 });
 
-                $(checkbox).appendTo($('#checkBoxListLocations'));
-                $('#checkBoxListLocations').append(this.Name + '<br/>');
+                var div = $('<div></div>');
+                div.addClass('checkbox');
+                div.append($(checkbox));
+                div.append(this.Name + '<br/>');
+
+                div.appendTo($('#checkBoxListLocations'));
             });
             var dropDownList = $('#personsDropDownList');
             $(persons).each(function () {
@@ -110,11 +114,12 @@ function onPropertyChanged() {
         var person = getPersonByIndex(value);
         var div = $('<div></div>');
         div.attr('id', 'personSelector' + i);
-        div.append($('<label>' + person.Name + '</label>'));
+        div.append(person.Name);
 
         var hyperlink = document.createElement("a");
         hyperlink.href = '';
         hyperlink.textContent = 'удалить';
+        $(hyperlink).addClass('inlineElements');
         $(hyperlink).click(function (e) {
             e.preventDefault();
             excludedPersonIndexes = $.grep(excludedPersonIndexes, function (value1) {
