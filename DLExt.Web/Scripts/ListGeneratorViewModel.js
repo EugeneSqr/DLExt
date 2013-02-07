@@ -25,6 +25,8 @@
     self.addressList = ko.observable();
     self.addressListBuilt = ko.observable(false);
 
+    self.personsExcluded = ko.observable(false);
+
     self.filterByLocation = function (locations) {
         var filteredPersons = [];
         for (i in locations) {
@@ -50,6 +52,7 @@
                 self.filteredPersons.remove(function(item) {
                     return item.id == personToExclude.id;
                 });
+                self.personsExcluded(true);
             }
         }
     };
@@ -60,6 +63,8 @@
             self.excludedPersons.remove(function (item) {
                 return item.id == personToInclude.id;
             });
+            if (self.excludedPersons().length == 0)
+                self.personsExcluded(false);
 
             self.filterByLocation(self.checkedLocations());
         }

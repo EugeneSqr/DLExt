@@ -342,6 +342,10 @@ div#title {
 .persons-to-exclude-box {
 }
 
+.persons-to-exclude-box select {
+    display: block;
+}
+
 .create-list-box {
     clear: left;
 }

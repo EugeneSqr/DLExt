@@ -20,7 +20,7 @@
         <select data-bind="options: filteredPersons, optionsText: 'name', value: personToExclude, optionsCaption: 'Choose a person to exclude'"></select>
         <input type="button" value="Exclude" data-bind="event: {click: excludePerson }" />
     </div>
-    <div class="persons-to-exclude-box">
+    <div class="persons-to-exclude-box" data-bind="visible: personsExcluded">
         <select data-bind="options: excludedPersons, optionsText: 'name', value: personToInclude" size="3"></select>
         <input type="button" value="Include" data-bind="event: {click: includePerson }" />
     </div>
