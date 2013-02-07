@@ -1,35 +1,41 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using LocalizedStrings = Resources.CommonResources;
+@{
+    ViewBag.Title = LocalizedStrings.HomeTitle;
+    
 }
 <div class="locations-box">
-    Locations:
+    @LocalizedStrings.LocationsHeader
     <div data-bind="visible : locationsLoading">
-        <img style="background: transparent; border: 0px" src="/Content/Images/AreaLoader.gif" alt="loading"/>
+        <img style="background: transparent; border: 0px" src="/Content/Images/AreaLoader.gif"
+            alt="loading" />
     </div>
     <div data-bind="visible : locationsLoadingCompleted">
         <ul data-bind="foreach: locations" class="noshift">
             <li class="unmark">
                 <input type="checkbox" data-bind="value: $data, checked: $parent.checkedLocations" />
-                <span data-bind="text: $data"></span>
-            </li>
+                <span data-bind="text: $data"></span></li>
         </ul>
     </div>
 </div>
 <div class="persons-box">
     <div class="all-persons-box">
-        <select data-bind="options: filteredPersons, optionsText: 'name', value: personToExclude, optionsCaption: 'Choose a person to exclude'"></select>
-        <input type="button" value="Exclude" data-bind="event: {click: excludePerson }" />
+        <select data-bind="options: filteredPersons, optionsText: 'name', value: personToExclude, optionsCaption: '@LocalizedStrings.ChoosePersonHint'">
+        </select>
+        <input type="button" value="@LocalizedStrings.ExcludeButtonLabel" data-bind="event: {click: excludePerson }" />
     </div>
     <div class="persons-to-exclude-box" data-bind="visible: personsExcluded">
-        <select data-bind="options: excludedPersons, optionsText: 'name', value: personToInclude" size="3"></select>
-        <input type="button" value="Include" data-bind="event: {click: includePerson }" />
+        <select data-bind="options: excludedPersons, optionsText: 'name', value: personToInclude"
+            size="3">
+        </select>
+        <input type="button" value="@LocalizedStrings.IncludeButtonLabel" data-bind="event: {click: includePerson }" />
     </div>
 </div>
 <div class="create-list-box">
-    <input type="button" value="Create List" data-bind="event: {click: createAddress}"/>
+    <input type="button" value="@LocalizedStrings.CreateListButtonLabel"
+        data-bind="event: {click: createAddress}" />
 </div>
 <div class="address-list">
-    <a data-bind="attr: { href: addressList }, visible: addressListBuilt">Click this link to send an email</a>
+    <a data-bind="attr: { href: addressList }, visible: addressListBuilt">@LocalizedStrings.SendEmailHeader</a>
 </div>
 <script type="text/javascript">
     ko.applyBindings(new ListGeneratorViewModel());
