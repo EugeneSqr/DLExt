@@ -347,3 +347,12 @@ div#title {
 
 .address-list {  
 }
+
+li.unmark {
+    list-style-type: none;
+}
+   
+ul.noshift {    
+    margin-left: 0;
+    padding-left: 0;
+}

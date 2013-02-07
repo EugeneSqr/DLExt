@@ -9,8 +9,8 @@
         <img style="background: transparent; border: 0px" src="/Content/Images/AreaLoader.gif" alt="loading"/>
     </div>
     <div data-bind="visible : locationsLoadingCompleted">
-        <ul data-bind="foreach: locations">
-            <li>
+        <ul data-bind="foreach: locations" class="noshift">
+            <li class="unmark">
                 <input type="checkbox" data-bind="value: $data, checked: $parent.checkedLocations" />
                 <span data-bind="text: $data"></span>
             </li>
