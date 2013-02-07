@@ -322,3 +322,28 @@ div#title {
 .tri-state {
     width: 6em;
 }
+
+/* Styles for main distribution context
+----------------------------------------------------------*/
+.locations-box {
+    width: 30%;
+    float: left;
+}
+
+.persons-box {
+    width: 70%;
+    float: right;
+}
+
+.all-persons-box {  
+}
+
+.persons-to-exclude-box {
+}
+
+.create-list-box {
+    clear: left;
+}
+
+.address-list {  
+}
