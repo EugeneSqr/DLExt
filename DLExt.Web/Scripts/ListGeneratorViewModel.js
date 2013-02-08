@@ -1,7 +1,8 @@
-﻿var MAX_MAILTO_LENGTH = 2083;
-var MAIL_TO = "mailto:";
-function ListGeneratorViewModel() {
+﻿function ListGeneratorViewModel() {
     var self = this;
+
+    self.maxMailToLength = 2083;
+    self.mailToText = "mailto:";
 
     self.persons = [];
     self.filteredPersons = ko.observableArray();
@@ -26,7 +27,7 @@ function ListGeneratorViewModel() {
 
     self.addressList = ko.observable();
     self.mailtoAddressList = ko.computed(function () {
-        return MAIL_TO + self.addressList();
+        return self.mailToText + self.addressList();
     });
     self.addressListBuilt = ko.observable(false);
 
@@ -114,7 +115,7 @@ function ListGeneratorViewModel() {
             var person = filteredPersons[index];
             address = person.email + ';' + address;
         }
-        self.mailtoLengthExceeded(MAIL_TO.length + address.length > MAX_MAILTO_LENGTH);
+        self.mailtoLengthExceeded(self.mailToText.length + address.length > self.maxMailToLength);
         self.addressList(address);
         self.addressListBuilt(true);
     };
