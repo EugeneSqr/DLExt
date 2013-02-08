@@ -147,7 +147,4 @@
   <data name="SendEmailHeader" xml:space="preserve">
     <value>Отправить почту</value>
   </data>
-  <data name="WelcomeLabel" xml:space="preserve">
-    <value>Здравствуйте,</value>
-  </data>
 </root>

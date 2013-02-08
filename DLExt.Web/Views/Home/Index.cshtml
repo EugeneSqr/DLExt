@@ -32,11 +32,25 @@
 </div>
 <div class="create-list-box">
     <input type="button" value="@LocalizedStrings.CreateListButtonLabel"
-        data-bind="event: {click: createAddress}" />
+           data-bind="event: {click: createAddress}" />
+    <span data-bind="text: errorNoPersonsSelected" />
 </div>
 <div class="address-list">
-    <a data-bind="attr: { href: addressList }, visible: addressListBuilt">@LocalizedStrings.SendEmailHeader</a>
+    <a data-bind="attr: { href: mailtoAddressList }, visible: shortEmailListExists">@LocalizedStrings.SendEmailHeader</a>
+    <a href="mailto:" data-bind="visible: longEmailListExists, event:{click: onSendEmailClick}">@LocalizedStrings.SendEmailHeader</a>
+</div>
+<div id="dialog" title="Confirm copy to clipboard">
+    <span id="copyClipboardMessage">Please press Ctrl + C to copy emails</span>
+    <div id="textareaContainer">
+        <textarea data-bind="value: addressList" onfocus="this.select();"></textarea>
+    </div>
 </div>
 <script type="text/javascript">
+    $("#dialog").dialog({
+        modal: true,
+        autoOpen: false,
+        minHeight: 200
+    });
+
     ko.applyBindings(new ListGeneratorViewModel());
 </script>

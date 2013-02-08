@@ -149,14 +149,5 @@ namespace Resources {
                 return ResourceManager.GetString("SendEmailHeader", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Welcome.
-        /// </summary>
-        internal static string WelcomeLabel {
-            get {
-                return ResourceManager.GetString("WelcomeLabel", resourceCulture);
-            }
-        }
     }
 }

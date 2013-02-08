@@ -1,4 +1,6 @@
-﻿function ListGeneratorViewModel() {
+﻿var MAX_MAILTO_LENGTH = 2083;
+var MAIL_TO = "mailto:";
+function ListGeneratorViewModel() {
     var self = this;
 
     self.persons = [];
@@ -23,9 +25,24 @@
     });
 
     self.addressList = ko.observable();
+    self.mailtoAddressList = ko.computed(function () {
+        return MAIL_TO + self.addressList();
+    });
     self.addressListBuilt = ko.observable(false);
 
     self.personsExcluded = ko.observable(false);
+
+    self.mailtoLengthExceeded = ko.observable(false);
+
+    self.shortEmailListExists = ko.computed(function () {
+        return self.addressListBuilt() && !self.mailtoLengthExceeded();
+    });
+
+    self.longEmailListExists = ko.computed(function () {
+        return self.addressListBuilt() && self.mailtoLengthExceeded();
+    });
+
+    self.errorNoPersonsSelected = ko.observable();
 
     self.filterByLocation = function (locations) {
         var filteredPersons = [];
@@ -49,7 +66,7 @@
         if (typeof personToExclude != 'undefined') {
             if (!self.containsPerson(self.excludedPersons(), self.personToExclude())) {
                 self.excludedPersons.push(personToExclude);
-                self.filteredPersons.remove(function(item) {
+                self.filteredPersons.remove(function (item) {
                     return item.id == personToExclude.id;
                 });
                 self.personsExcluded(true);
@@ -84,15 +101,27 @@
     self.createAddress = function () {
         self.addressListBuilt(false);
         var filteredPersons = self.filteredPersons();
+        if (self.filteredPersons().length == 0) {
+            //todo: string localization
+            self.errorNoPersonsSelected('В листе рассылки нет ни одного сотрудника');
+            return;
+        }
+        self.errorNoPersonsSelected('');
         var address = "";
         for (index in filteredPersons) {
             var person = filteredPersons[index];
             address = person.email + ';' + address;
         }
-        self.addressList("mailto:" + address);
+        self.mailtoLengthExceeded(MAIL_TO.length + address.length > MAX_MAILTO_LENGTH);
+        self.addressList(address);
         self.addressListBuilt(true);
     };
-    
+
+    self.onSendEmailClick = function () {
+        $("#dialog").dialog("open");
+        self.addressListBuilt(false);
+    };
+
     $.ajax({
         url: 'http://localhost:8888/DistributionList.svc/rest/GetLocations',
         type: 'GET',

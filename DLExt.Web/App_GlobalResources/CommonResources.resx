@@ -147,7 +147,4 @@
   <data name="SendEmailHeader" xml:space="preserve">
     <value>Send email</value>
   </data>
-  <data name="WelcomeLabel" xml:space="preserve">
-    <value>Welcome</value>
-  </data>
 </root>

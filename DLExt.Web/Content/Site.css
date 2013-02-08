@@ -360,3 +360,33 @@ ul.noshift {
     margin-left: 0;
     padding-left: 0;
 }
+
+#copyClipboardMessage {
+    position: absolute;
+    top: 0px;
+    height: 30px;
+    left: 0px;
+    right: 0px;
+}
+
+#textareaContainer {
+    border: none;
+    position: absolute;
+    top: 30px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+textarea {
+    width: 98%;
+    height: 98%;
+    resize: none;
+    -webkit-box-sizing: border-box; /* <=iOS4, <= Android  2.3 */
+    -moz-box-sizing: border-box; /* FF1+ */
+    box-sizing: border-box; /* Chrome, IE8, Opera, Safari 5.1*/
+}
