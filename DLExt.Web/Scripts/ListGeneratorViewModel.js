@@ -44,6 +44,8 @@ function ListGeneratorViewModel() {
 
     self.errorNoPersonsSelected = ko.observable();
 
+    self.isOpen = ko.observable(false);
+
     self.filterByLocation = function (locations) {
         var filteredPersons = [];
         for (i in locations) {
@@ -117,9 +119,8 @@ function ListGeneratorViewModel() {
         self.addressListBuilt(true);
     };
 
-    self.onSendEmailClick = function () {
-        $("#dialog").dialog("open");
-        self.addressListBuilt(false);
+    self.displayDialog = function() {
+        self.isOpen(true);
     };
 
     $.ajax({

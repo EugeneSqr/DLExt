@@ -150,6 +150,7 @@
     <Content Include="Scripts\jquery-ui-1.10.0.min.js" />
     <Content Include="Scripts\knockout-2.2.1.debug.js" />
     <Content Include="Scripts\knockout-2.2.1.js" />
+    <Content Include="Scripts\ko.custom.js" />
     <Content Include="Scripts\ListGeneratorViewModel.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
