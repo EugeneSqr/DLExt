@@ -15,13 +15,16 @@
     <div class="page">
         <div id="header">
             <div id="title">
-                <h1>@LocalizedStrings.MainHeader</h1>
+                <div id="logo">
+                    <img  src="/Content/Images/fls_logo.png" alt="First Line Software"/>
+                </div>
+                <div align="right">
+                    <h1 align="right">@LocalizedStrings.MainHeader</h1>
+                </div>
             </div>
         </div>
         <div id="main">
             @RenderBody()
-        </div>
-        <div id="footer">
         </div>
     </div>
 </body>

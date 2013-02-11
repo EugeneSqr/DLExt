@@ -4,7 +4,7 @@ to use a different color start by replacing all instances of
 #ddd with your new color.
 ----------------------------------------------------------*/
 body {
-    background-color: #ddd;
+    background-color: #fff;
     font-size: .85em;
     font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
     margin: 0;
@@ -77,35 +77,41 @@ h5, h6 {
 /* you can specify a greater or lesser percentage for the 
 page width. Or, you can specify an exact pixel width. */
 .page {
-    width: 90%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
 }
 
 header, #header {
     position: relative;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
+    margin-top: 20px;
     color: #000;
     padding: 0;
 }
 
 header h1, #header h1 {
     font-weight: bold;
-    padding: 5px 0;
+    padding: 0;
     margin: 0;
-    color: #fff;
+    color: #333399;
     border: none;
     line-height: 2em;
-    font-size: 32px !important;
-    text-shadow: 1px 1px 2px #111;
+    font-size: 24px !important;
+    display: inline;
+}
+
+header, #logo {
+    float: left;
 }
 
 #main {
     padding: 30px 30px 15px 30px;
-    background-color: #fff;
-    border-radius: 4px 0 0 0;
-    -webkit-border-radius: 4px 0 0 0;
-    -moz-border-radius: 4px 0 0 0;
+    background-color: #F8F8F8;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px 0 0 0;
+    border: 1px solid #D8D8D8;
     clear: both;
 }
 
