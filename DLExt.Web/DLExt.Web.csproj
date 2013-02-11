@@ -67,10 +67,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CommonResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="App_GlobalResources\CommonResources.ru-RU.designer.cs">
+    <Compile Include="App_GlobalResources\CommonResources.ru.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CommonResources.ru-RU.resx</DependentUpon>
+      <DependentUpon>CommonResources.ru.resx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -177,9 +177,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\CommonResources.ru-RU.resx">
+    <Content Include="App_GlobalResources\CommonResources.ru.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>CommonResources.ru-RU.designer.cs</LastGenOutput>
+      <LastGenOutput>CommonResources.ru.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
