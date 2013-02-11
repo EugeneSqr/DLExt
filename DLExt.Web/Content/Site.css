@@ -1,10 +1,10 @@
 ﻿/*----------------------------------------------------------
-The base color for this template is #ddd. If you'd like
+The base color for this template is#d4dbe2. If you'd like
 to use a different color start by replacing all instances of
 #ddd with your new color.
 ----------------------------------------------------------*/
 body {
-    background-color: #fff;
+    background-color:#d4dbe2;
     font-size: .85em;
     font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
     margin: 0;
@@ -117,7 +117,7 @@ header, #logo {
 
 footer, 
 #footer {
-    background-color: #fff;
+    background-color:#d4dbe2;
     color: #999;
     padding: 10px 0;
     text-align: center;
@@ -132,7 +132,7 @@ footer,
 /* TAB MENU   
 ----------------------------------------------------------*/
 ul#menu {
-    border-bottom: 1px #ddd solid;
+    border-bottom: 1px#d4dbe2 solid;
     padding: 0 0 2px;
     position: relative;
     margin: 0;
@@ -149,7 +149,7 @@ ul#menu li#greeting {
     font-weight: bold;
     text-decoration: none;
     line-height: 2.8em;
-    color: #fff;
+    color:#d4dbe2;
 }
 
 ul#menu li a {
@@ -165,7 +165,7 @@ ul#menu li a {
 }
 
 ul#menu li a:hover {
-    background-color: #fff;
+    background-color:#d4dbe2;
     text-decoration: none;
 }
 
@@ -175,7 +175,7 @@ ul#menu li a:active {
 }
 
 ul#menu li.selected a {
-    background-color: #fff;
+    background-color:#d4dbe2;
     color: #000;
 }
 
@@ -183,7 +183,7 @@ ul#menu li.selected a {
 ----------------------------------------------------------*/
 
 fieldset {
-    border: 1px solid #ddd;
+    border: 1px solid#d4dbe2;
     padding: 0 1.4em 1.4em 1.4em;
     margin: 0 0 1.5em 0;
 }
@@ -395,4 +395,8 @@ textarea {
     -webkit-box-sizing: border-box; /* <=iOS4, <= Android  2.3 */
     -moz-box-sizing: border-box; /* FF1+ */
     box-sizing: border-box; /* Chrome, IE8, Opera, Safari 5.1*/
+}
+
+.title-block-line {
+    background: #8ac1eb url("Images/bg_logo.jpg") 100% 0 repeat-y;
 }
