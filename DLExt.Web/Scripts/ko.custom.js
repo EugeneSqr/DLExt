@@ -4,6 +4,7 @@
             modal: true,
             autoOpen: false,
             minHeight: 200,
+            minWidth: 400,
             close: function () { viewModel.isOpen(false); }
         });
     },

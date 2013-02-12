@@ -4,7 +4,7 @@
     
 }
 <div class="locations-box">
-    @LocalizedStrings.LocationsHeader
+    <h3>@LocalizedStrings.LocationsHeader</h3>
     <div data-bind="visible : locationsLoading">
         <img style="background: transparent; border: 0px" src="/Content/Images/AreaLoader.gif"
             alt="loading" />
@@ -18,20 +18,21 @@
     </div>
 </div>
 <div class="persons-box">
+    <h3>@LocalizedStrings.RemoveFromDistribution</h3>
     <div class="all-persons-box">
         <select data-bind="options: filteredPersons, optionsText: 'name', value: personToExclude, optionsCaption: '@LocalizedStrings.ChoosePersonHint'">
         </select>
-        <input type="button" value="@LocalizedStrings.ExcludeButtonLabel" data-bind="event: {click: excludePerson }" />
+        <input type="button" class="ui-widget ui-button ui-state-default" value="@LocalizedStrings.ExcludeButtonLabel" data-bind="event: {click: excludePerson }" />
     </div>
     <div class="persons-to-exclude-box" data-bind="visible: personsExcluded">
         <select data-bind="options: excludedPersons, optionsText: 'name', value: personToInclude"
-            size="3">
+                size="3">
         </select>
-        <input type="button" value="@LocalizedStrings.IncludeButtonLabel" data-bind="event: {click: includePerson }" />
+        <input type="button" class="ui-widget ui-button ui-state-default" value="@LocalizedStrings.IncludeButtonLabel" data-bind="event: {click: includePerson }" />
     </div>
 </div>
 <div class="create-list-box">
-    <input type="button" value="@LocalizedStrings.CreateListButtonLabel"
+    <input type="button" class="ui-widget ui-button ui-state-default" value="@LocalizedStrings.CreateListButtonLabel"
            data-bind="event: {click: createAddress}" />
     <span data-bind="text: errorNoPersonsSelected" />
 </div>
@@ -39,12 +40,15 @@
     <a data-bind="attr: { href: mailtoAddressList }, visible: shortEmailListExists">@LocalizedStrings.SendEmailHeader</a>
     <a href="mailto:" data-bind="visible: longEmailListExists, event:{click: displayDialog}">@LocalizedStrings.SendEmailHeader</a>
 </div>
-<div id="dialog" title="Confirm copy to clipboard" data-bind="dialog: isOpen">
-    <span id="copyClipboardMessage">Please press Ctrl + C to copy emails</span>
+<div id="dialog" title="@LocalizedStrings.DialogCopyEmailsHeader" data-bind="dialog: isOpen">
+    <span id="copyClipboardMessage" class="paddedSpan">@LocalizedStrings.DialogCopyEmailsBody</span>
     <div id="textareaContainer">
         <textarea data-bind="value: addressList" onfocus="this.select();"></textarea>
     </div>
 </div>
 <script type="text/javascript">
+    $(':button').button().on('hover blur', function () {
+        $(this).toggleClass('ui-state-hover');
+    });
     ko.applyBindings(new ListGeneratorViewModel());
 </script>

@@ -123,6 +123,12 @@
   <data name="CreateListButtonLabel" xml:space="preserve">
     <value>Создать лист</value>
   </data>
+  <data name="DialogCopyEmailsBody" xml:space="preserve">
+    <value>Нажмите Ctrl+C для копирования списка</value>
+  </data>
+  <data name="DialogCopyEmailsHeader" xml:space="preserve">
+    <value>Лист рассылки</value>
+  </data>
   <data name="ExcludeButtonLabel" xml:space="preserve">
     <value>Исключить</value>
   </data>
@@ -143,6 +149,9 @@
   </data>
   <data name="MainHeader" xml:space="preserve">
     <value>Составитель списка рассылки</value>
+  </data>
+  <data name="RemoveFromDistribution" xml:space="preserve">
+    <value>Удалить из рассылки</value>
   </data>
   <data name="SendEmailHeader" xml:space="preserve">
     <value>Отправить почту</value>

@@ -5,8 +5,8 @@ to use a different color start by replacing all instances of
 ----------------------------------------------------------*/
 body {
     background-color:#d4dbe2;
-    font-size: .85em;
-	font-family:Arial, Helvetica, sans-serif;
+    font-size: 0.85em;
+    font-family: Verdana, Arial, sans-serif;
     margin: 0;
     padding: 0;
     color: #696969;
@@ -98,7 +98,7 @@ header h1, #header h1 {
     color: #333399;
     border: none;
     line-height: 2em;
-    font-size: 24px !important;
+    /*font-size: 24px !important;*/
     display: inline;
 }
 
@@ -107,7 +107,7 @@ header, #logo {
 }
 
 #main {
-    padding: 30px 30px 15px 30px;
+    padding: 0px 30px 15px 30px;
     background-color: #F8F8F8;
     clear: both;
 }
@@ -126,204 +126,9 @@ footer,
     -moz-border-radius: 0 0 4px 4px;
 }
 
-/* TAB MENU   
-----------------------------------------------------------*/
-ul#menu {
-    border-bottom: 1px#d4dbe2 solid;
-    padding: 0 0 2px;
-    position: relative;
-    margin: 0;
-    text-align: right;
-}
-
-ul#menu li {
-    display: inline;
-    list-style: none;
-}
-
-ul#menu li#greeting {
-    padding: 10px 20px;
-    font-weight: bold;
-    text-decoration: none;
-    line-height: 2.8em;
-    color:#d4dbe2;
-}
-
-ul#menu li a {
-    padding: 10px 20px;
-    font-weight: bold;
-    text-decoration: none;
-    line-height: 2.8em;
-    background-color: #e8eef4;
-    color: #034af3;
-    border-radius: 4px 4px 0 0;
-    -webkit-border-radius: 4px 4px 0 0;
-    -moz-border-radius: 4px 4px 0 0;
-}
-
-ul#menu li a:hover {
-    background-color:#d4dbe2;
-    text-decoration: none;
-}
-
-ul#menu li a:active {
-    background-color: #a6e2a6;
-    text-decoration: none;
-}
-
-ul#menu li.selected a {
-    background-color:#d4dbe2;
-    color: #000;
-}
-
-/* FORM LAYOUT ELEMENTS   
-----------------------------------------------------------*/
-
-fieldset {
-    border: 1px solid#d4dbe2;
-    padding: 0 1.4em 1.4em 1.4em;
-    margin: 0 0 1.5em 0;
-}
-
-legend {
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-textarea {
-    min-height: 75px;
-}
-
-input[type="text"], 
-input[type="password"] {
-    border: 1px solid #ccc;
-    padding: 2px;
-    font-size: 1.2em;
-    color: #444;
-    width: 200px;
-}
-
+ul,
 select {
-    border: 1px solid #ccc;
-    padding: 2px;
-    font-size: 1.2em;
-    color: #444;
-}
-
-input[type="submit"] {
-    font-size: 1.2em;
-    padding: 5px;
-}
-
-/* TABLE
-----------------------------------------------------------*/
-
-table {
-    border: solid 1px #e8eef4;
-    border-collapse: collapse;
-}
-
-table td {
-    padding: 5px;
-    border: solid 1px #e8eef4;
-}
-
-table th {
-    padding: 6px 5px;
-    text-align: left;
-    background-color: #e8eef4;
-    border: solid 1px #e8eef4;
-}
-
-/* MISC  
-----------------------------------------------------------*/
-.clear {
-    clear: both;
-}
-
-.error {
-    color: Red;
-}
-
-nav, 
-#menucontainer {
-    margin-top: 40px;
-}
-
-div#title {
-    display: block;
-    text-align: left;
-}
-
-#logindisplay {
     font-size: 1.1em;
-    display: block;
-    text-align: right;
-    margin: 10px;
-    color: White;
-}
-
-#logindisplay a:link {
-    color: white;
-    text-decoration: underline;
-}
-
-#logindisplay a:visited {
-    color: white;
-    text-decoration: underline;
-}
-
-#logindisplay a:hover {
-    color: white;
-    text-decoration: none;
-}
-
-/* Styles for validation helpers
------------------------------------------------------------*/
-.field-validation-error {
-    color: #ff0000;
-}
-
-.field-validation-valid {
-    display: none;
-}
-
-.input-validation-error {
-    border: 1px solid #ff0000;
-    background-color: #ffeeee;
-}
-
-.validation-summary-errors {
-    font-weight: bold;
-    color: #ff0000;
-}
-
-.validation-summary-valid {
-    display: none;
-}
-
-/* Styles for editor and display helpers
-----------------------------------------------------------*/
-.display-label, 
-.editor-label {
-    margin: 1em 0 0 0;
-}
-
-.display-field, 
-.editor-field {
-    margin: 0.5em 0 0 0;
-}
-
-.text-box {
-    width: 30em;
-}
-
-.text-box.multi-line {
-    height: 6.5em;
-}
-
-.tri-state {
-    width: 6em;
 }
 
 /* Styles for main distribution context
@@ -338,21 +143,12 @@ div#title {
     float: right;
 }
 
-.all-persons-box {  
-}
-
-.persons-to-exclude-box {
-}
-
 .persons-to-exclude-box select {
     display: block;
 }
 
 .create-list-box {
     clear: left;
-}
-
-.address-list {  
 }
 
 li.unmark {
@@ -396,4 +192,9 @@ textarea {
 
 .title-block-line {
     background: #8ac1eb url("Images/bg_logo.jpg") 100% 0 repeat-y;
+}
+
+.paddedSpan {
+    padding-top: 10px;
+    padding-left: 10px;
 }

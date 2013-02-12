@@ -79,6 +79,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Press Ctrl+C to copy to clipboard.
+        /// </summary>
+        internal static string DialogCopyEmailsBody {
+            get {
+                return ResourceManager.GetString("DialogCopyEmailsBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distribution list.
+        /// </summary>
+        internal static string DialogCopyEmailsHeader {
+            get {
+                return ResourceManager.GetString("DialogCopyEmailsHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exclude.
         /// </summary>
         internal static string ExcludeButtonLabel {
@@ -138,6 +156,15 @@ namespace Resources {
         internal static string MainHeader {
             get {
                 return ResourceManager.GetString("MainHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove from distribution.
+        /// </summary>
+        internal static string RemoveFromDistribution {
+            get {
+                return ResourceManager.GetString("RemoveFromDistribution", resourceCulture);
             }
         }
         
