@@ -134,12 +134,12 @@ select {
 /* Styles for main distribution context
 ----------------------------------------------------------*/
 .locations-box {
-    width: 20%;
+    width: 15%;
     float: left;
 }
 
 .persons-box {
-    width: 80%;
+    width: 85%;
     float: right;
 }
 
@@ -206,5 +206,5 @@ textarea {
 }
 
 .persons-selection {
-    width: 205px;    
+    width: 200px;    
 }
