@@ -20,7 +20,8 @@
     <h3>@LocalizedStrings.RemoveFromDistribution</h3>
     
     <div class="persons-selection-box">
-        <select class="persons-selection" data-bind="options: filteredPersons, optionsText: 'name', value: personToExclude, optionsCaption: '@LocalizedStrings.ChoosePersonHint'">
+        <select class="persons-selection" data-bind="options: filteredPersons, optionsText: 'name', value: personToExclude"
+            size="6">
         </select>
     </div>
     <div class="persons-selection-box">
@@ -29,7 +30,7 @@
     </div>
     <div class="persons-selection-box" data-bind="visible: personsExcluded">
         <select class="persons-selection" data-bind="options: excludedPersons, optionsText: 'name', value: personToInclude"
-                size="7">
+            size="6">
         </select>
     </div>
     
