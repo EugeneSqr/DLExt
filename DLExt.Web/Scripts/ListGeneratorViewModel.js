@@ -6,6 +6,10 @@
 
     self.persons = [];
     self.filteredPersons = ko.observableArray();
+    self.filteredPersonsCount = ko.computed(function () {
+        return self.filteredPersons().length;
+    });
+    
     self.excludedPersons = ko.observableArray();
     self.personToExclude = ko.observable();
     self.personToInclude = ko.observable();

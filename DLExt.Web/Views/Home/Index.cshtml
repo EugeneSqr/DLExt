@@ -34,13 +34,14 @@
     </div>
 </div>
 <div class="create-list-container">
+    <span>Number of persons in list:</span><span id="persons-count-span" data-bind="text: filteredPersonsCount"></span>
     <input type="button" class="ui-widget ui-button ui-state-default" value="@LocalizedStrings.CreateListButtonLabel"
            data-bind="event: {click: generateList}" /><div class="no-persons-notice" data-bind="visibility: errorNoPersonsSelected">
-        <div class="ui-state-error ui-corner-all">
-            <span class="ui-icon ui-icon-info"></span>
-            <span>@LocalizedStrings.ErrorNobodySelected</span>
-        </div>
-    </div>
+                                                          <div class="ui-state-error ui-corner-all">
+                                                              <span class="ui-icon ui-icon-info"></span>
+                                                              <span>@LocalizedStrings.ErrorNobodySelected</span>
+                                                          </div>
+                                                      </div>
 </div>
 <div id="dialog" title="@LocalizedStrings.DialogCopyEmailsHeader" data-bind="dialog: isOpen">
     <span id="copyClipboardMessage">@LocalizedStrings.DialogCopyEmailsBody</span>
@@ -52,5 +53,6 @@
     $(':button').button().on('hover blur', function () {
         $(this).toggleClass('ui-state-hover');
     });
+   
     ko.applyBindings(new ListGeneratorViewModel());
 </script>

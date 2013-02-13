@@ -238,6 +238,13 @@ li.unmark {
     float: left; 
 }
 
+#persons-count-span {
+    width: 35px;
+    text-align: right;
+    display: inline-block;
+    font-weight: bold
+}
+
 /* Email list dialog window (pop-up)
 ----------------------------------------------------------*/
 #copyClipboardMessage {
