@@ -126,6 +126,9 @@
   <data name="DialogCopyEmailsHeader" xml:space="preserve">
     <value>Лист рассылки</value>
   </data>
+  <data name="ErrorNobodySelected" xml:space="preserve">
+    <value>Лист рассылки пуст</value>
+  </data>
   <data name="ExcludeButtonLabel" xml:space="preserve">
     <value>Исключить</value>
   </data>

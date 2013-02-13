@@ -88,6 +88,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Distribution list is empty.
+        /// </summary>
+        internal static string ErrorNobodySelected {
+            get {
+                return ResourceManager.GetString("ErrorNobodySelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exclude.
         /// </summary>
         internal static string ExcludeButtonLabel {

@@ -13,3 +13,9 @@
             $(element).dialog("open");
     }
 };
+
+ko.bindingHandlers.visibility = {
+    update: function (element, valueAccessor) {
+        $(element).css('visibility', ko.utils.unwrapObservable(valueAccessor()) ? 'visible' : 'hidden');
+    }
+};

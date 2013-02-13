@@ -25,26 +25,10 @@
         return !self.personsLoading();
     });
 
-    self.addressList = ko.observable();
-    self.mailtoAddressList = ko.computed(function () {
-        return self.mailToText + self.addressList();
-    });
-    self.addressListBuilt = ko.observable(false);
+    self.dialogWindowAddressList = ko.observable();
 
     self.personsExcluded = ko.observable(false);
-
-    self.mailtoLengthExceeded = ko.observable(false);
-
-    self.shortEmailListExists = ko.computed(function () {
-        return self.addressListBuilt() && !self.mailtoLengthExceeded();
-    });
-
-    self.longEmailListExists = ko.computed(function () {
-        return self.addressListBuilt() && self.mailtoLengthExceeded();
-    });
-
-    self.errorNoPersonsSelected = ko.observable();
-
+    self.errorNoPersonsSelected = ko.observable(false);
     self.isOpen = ko.observable(false);
 
     self.filterByLocation = function (locations) {
@@ -101,27 +85,25 @@
         return false;
     };
 
-    self.createAddress = function () {
-        self.addressListBuilt(false);
+    self.generateList = function () {
         var filteredPersons = self.filteredPersons();
         if (self.filteredPersons().length == 0) {
-            //todo: string localization
-            self.errorNoPersonsSelected('В листе рассылки нет ни одного сотрудника');
+            self.errorNoPersonsSelected(true);
             return;
         }
-        self.errorNoPersonsSelected('');
+        self.errorNoPersonsSelected(false);
+
         var address = "";
         for (index in filteredPersons) {
             var person = filteredPersons[index];
             address = person.email + ';' + address;
         }
-        self.mailtoLengthExceeded(self.mailToText.length + address.length > self.maxMailToLength);
-        self.addressList(address);
-        self.addressListBuilt(true);
-    };
-
-    self.displayDialog = function() {
-        self.isOpen(true);
+        if (self.mailToText.length + address.length > self.maxMailToLength) {
+            self.dialogWindowAddressList(address);
+            self.isOpen(true);
+        } else {
+            window.location = self.mailToText + address;
+        }
     };
 
     $.ajax({

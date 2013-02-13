@@ -126,6 +126,9 @@
   <data name="DialogCopyEmailsHeader" xml:space="preserve">
     <value>Distribution list</value>
   </data>
+  <data name="ErrorNobodySelected" xml:space="preserve">
+    <value>Distribution list is empty</value>
+  </data>
   <data name="ExcludeButtonLabel" xml:space="preserve">
     <value>Exclude</value>
   </data>

@@ -18,14 +18,13 @@
 </div>
 <div class="persons-box">
     <h3>@LocalizedStrings.RemoveFromDistribution</h3>
-    
     <div class="persons-selection-box">
         <select class="persons-selection" data-bind="options: filteredPersons, optionsText: 'name', value: personToExclude"
             size="6">
         </select>
     </div>
     <div class="persons-selection-box">
-        <input type="button" style="width: 115px; margin-bottom: 4px" class="ui-widget ui-button ui-state-default" value="@LocalizedStrings.ExcludeButtonLabel" data-bind="event: {click: excludePerson }" /><br/>
+        <input type="button" style="width: 115px; margin-bottom: 4px" class="ui-widget ui-button ui-state-default" value="@LocalizedStrings.ExcludeButtonLabel" data-bind="event: {click: excludePerson }" /><br />
         <input type="button" style="width: 115px" class="ui-widget ui-button ui-state-default" value="@LocalizedStrings.IncludeButtonLabel" data-bind="event: {click: includePerson }, visible: personsExcluded" />
     </div>
     <div class="persons-selection-box" data-bind="visible: personsExcluded">
@@ -33,22 +32,21 @@
             size="6">
         </select>
     </div>
-    
-    
 </div>
 <div class="create-list-box">
     <input type="button" class="ui-widget ui-button ui-state-default" value="@LocalizedStrings.CreateListButtonLabel"
-           data-bind="event: {click: createAddress}" />
-    <span data-bind="text: errorNoPersonsSelected" />
+           data-bind="event: {click: generateList}" />
 </div>
-<div class="address-list">
-    <a data-bind="attr: { href: mailtoAddressList }, visible: shortEmailListExists">@LocalizedStrings.SendEmailHeader</a>
-    <a href="mailto:" data-bind="visible: longEmailListExists, event:{click: displayDialog}">@LocalizedStrings.SendEmailHeader</a>
+<div class="ui-widget" data-bind="visibility: errorNoPersonsSelected" style="display: inline-block">
+    <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+		<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+		<span >@LocalizedStrings.ErrorNobodySelected</span>
+	</div>
 </div>
 <div id="dialog" title="@LocalizedStrings.DialogCopyEmailsHeader" data-bind="dialog: isOpen">
     <span id="copyClipboardMessage" class="paddedSpan">@LocalizedStrings.DialogCopyEmailsBody</span>
     <div id="textareaContainer">
-        <textarea data-bind="value: addressList" onfocus="this.select();"></textarea>
+        <textarea data-bind="value: dialogWindowAddressList" onfocus="this.select();"></textarea>
     </div>
 </div>
 <script type="text/javascript">
