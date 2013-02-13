@@ -6,8 +6,7 @@
 <div class="locations-box">
     <h3>@LocalizedStrings.LocationsHeader</h3>
     <div data-bind="visible : locationsLoading">
-        <img style="background: transparent; border: 0px" src="/Content/Images/AreaLoader.gif"
-            alt="loading" />
+        <img class="loader" src="/Content/Images/AreaLoader.gif" alt="loading" />
     </div>
     <div data-bind="visible : locationsLoadingCompleted">
         <ul data-bind="foreach: locations" class="noshift">
@@ -19,17 +18,22 @@
 </div>
 <div class="persons-box">
     <h3>@LocalizedStrings.RemoveFromDistribution</h3>
-    <div class="all-persons-box">
-        <select data-bind="options: filteredPersons, optionsText: 'name', value: personToExclude, optionsCaption: '@LocalizedStrings.ChoosePersonHint'">
+    
+    <div class="persons-selection-box">
+        <select class="persons-selection" data-bind="options: filteredPersons, optionsText: 'name', value: personToExclude, optionsCaption: '@LocalizedStrings.ChoosePersonHint'">
         </select>
-        <input type="button" class="ui-widget ui-button ui-state-default" value="@LocalizedStrings.ExcludeButtonLabel" data-bind="event: {click: excludePerson }" />
     </div>
-    <div class="persons-to-exclude-box" data-bind="visible: personsExcluded">
-        <select data-bind="options: excludedPersons, optionsText: 'name', value: personToInclude"
+    <div class="persons-selection-box">
+        <input type="button" style="width: 115px; margin-bottom: 4px" class="ui-widget ui-button ui-state-default" value="@LocalizedStrings.ExcludeButtonLabel" data-bind="event: {click: excludePerson }" /><br/>
+        <input type="button" style="width: 115px" class="ui-widget ui-button ui-state-default" value="@LocalizedStrings.IncludeButtonLabel" data-bind="event: {click: includePerson }, visible: personsExcluded" />
+    </div>
+    <div class="persons-selection-box" data-bind="visible: personsExcluded">
+        <select class="persons-selection" data-bind="options: excludedPersons, optionsText: 'name', value: personToInclude"
                 size="3">
         </select>
-        <input type="button" class="ui-widget ui-button ui-state-default" value="@LocalizedStrings.IncludeButtonLabel" data-bind="event: {click: includePerson }" />
     </div>
+    
+    
 </div>
 <div class="create-list-box">
     <input type="button" class="ui-widget ui-button ui-state-default" value="@LocalizedStrings.CreateListButtonLabel"

@@ -134,17 +134,18 @@ select {
 /* Styles for main distribution context
 ----------------------------------------------------------*/
 .locations-box {
-    width: 30%;
+    width: 20%;
     float: left;
 }
 
 .persons-box {
-    width: 70%;
+    width: 80%;
     float: right;
 }
 
-.persons-to-exclude-box select {
-    display: block;
+.persons-selection-box {
+    float: left;
+    padding-right: 10px;
 }
 
 .create-list-box {
@@ -197,4 +198,13 @@ textarea {
 .paddedSpan {
     padding-top: 10px;
     padding-left: 10px;
+}
+
+.loader {
+    background: transparent;
+    border: 0px;
+}
+
+.persons-selection {
+    width: 205px;    
 }
