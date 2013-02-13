@@ -3,12 +3,35 @@ The base color for this template is#d4dbe2. If you'd like
 to use a different color start by replacing all instances of
 #ddd with your new color.
 ----------------------------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,cite,code,del,dfn,em,img,q,s,samp,small,strike,sub,sup,tt,var,dd,dl,dt,li,ol,ul,fieldset,form,label,legend,button,table,caption,tbody,tfoot,thead,tr,th,td {
+    border: 0;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 100%;
+    line-height: 1;
+    font-family: inherit;
+}
+
+button, input, select, textarea, li {
+    font-size: 110%;
+    margin: 0;
+    vertical-align: baseline;
+    text-decoration:none;
+}
+
 body {
     background-color:#d4dbe2;
     font-size: 0.85em;
     font-family: Verdana, Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     color: #696969;
 	overflow: scroll;
 }
@@ -62,6 +85,8 @@ h2 {
 
 h3 {
     font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 h4 {
@@ -107,7 +132,7 @@ header, #logo {
 }
 
 #main {
-    padding: 0px 30px 15px 30px;
+    padding: 20px 30px 15px 30px;
     background-color: #F8F8F8;
     clear: both;
 }
@@ -126,47 +151,103 @@ footer,
     -moz-border-radius: 0 0 4px 4px;
 }
 
-ul,
-select {
-    font-size: 1.1em;
+.inline-block {
+    min-height: 150px;
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: top;
+    /* attributes for old IE versions
+    zoom: 1;
+    *display: inline;
+    _height: 250px;*/
 }
 
-/* Styles for main distribution context
+/* Header block (top most)
+----------------------------------------------------------*/
+.title-block-line {
+    background: #8ac1eb url("Images/bg_logo.jpg") 100% 0 repeat-y;
+}
+
+
+/* Locations block (top-left)
 ----------------------------------------------------------*/
 .locations-box {
     width: 15%;
-    float: left;
-}
-
-.persons-box {
-    width: 85%;
-    float: right;
-}
-
-.persons-selection-box {
-    float: left;
-    padding-right: 10px;
-}
-
-.create-list-box {
-    clear: left;
 }
 
 li.unmark {
     list-style-type: none;
-}
-   
-ul.noshift {    
-    margin-left: 0;
-    padding-left: 0;
+    margin-top: 10px;
 }
 
+.loader {
+    background: transparent;
+    border: 0px;
+}
+
+/* Persons removal block (top-right)
+----------------------------------------------------------*/
+.persons-box {
+    width: 80%;
+}
+
+.persons-box div {
+    float: left;
+    padding-right: 10px;
+}
+
+.persons-box input {
+    width: 115px;
+    margin-bottom: 4px
+}
+
+.persons-selection {
+    width: 200px;    
+}
+
+/* Commands block (bottom most)
+----------------------------------------------------------*/
+.create-list-container {
+    height: 35px;
+    line-height: 35px;
+}
+
+.create-list-container input.ui-button {
+    padding: 0 10px;
+    margin: 0;
+    height: 33px;
+    line-height: 33px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.no-persons-notice {
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px 0 0 10px;
+}
+
+.no-persons-notice .ui-state-error {
+    height: 20px;
+    line-height: 20px;
+    padding: 0 10px;
+}
+
+.ui-state-error .ui-icon {
+    margin: 2px;
+    float: left; 
+}
+
+/* Email list dialog window (pop-up)
+----------------------------------------------------------*/
 #copyClipboardMessage {
     position: absolute;
     top: 0px;
     height: 30px;
     left: 0px;
     right: 0px;
+    margin-top: 5px;
+    margin-left: 5px;
 }
 
 #textareaContainer {
@@ -176,35 +257,15 @@ ul.noshift {
     bottom: 0px;
     left: 0px;
     right: 0px;
-    margin: 0px;
-    padding: 0px;
     overflow: hidden;
     overflow-y: auto;
 }
 
-textarea {
+#textareaContainer textarea {
     width: 98%;
     height: 98%;
     resize: none;
     -webkit-box-sizing: border-box; /* <=iOS4, <= Android  2.3 */
     -moz-box-sizing: border-box; /* FF1+ */
     box-sizing: border-box; /* Chrome, IE8, Opera, Safari 5.1*/
-}
-
-.title-block-line {
-    background: #8ac1eb url("Images/bg_logo.jpg") 100% 0 repeat-y;
-}
-
-.paddedSpan {
-    padding-top: 10px;
-    padding-left: 10px;
-}
-
-.loader {
-    background: transparent;
-    border: 0px;
-}
-
-.persons-selection {
-    width: 200px;    
 }
