@@ -41,3 +41,12 @@ ko.bindingHandlers.visibility = {
         $(element).css('visibility', ko.utils.unwrapObservable(valueAccessor()) ? 'visible' : 'hidden');
     }
 };
+
+ko.bindingHandlers.autoScroll = {
+    update: function (element, valueAccessor, allBindingAccessor, viewModel) {
+        if (ko.utils.unwrapObservable(valueAccessor())) {
+            $(element).scrollTop(0);
+            viewModel.scrollTop(false);
+        }
+    }
+}

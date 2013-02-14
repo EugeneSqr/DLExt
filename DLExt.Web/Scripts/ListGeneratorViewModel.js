@@ -11,13 +11,24 @@
     });
     
     self.excludedPersons = ko.observableArray();
-    self.personToExclude = ko.observable();
-    self.personToInclude = ko.observable();
+    self.personsToExclude = ko.observableArray();
+    self.personsToInclude = ko.observableArray();
 
+    self.scrollTop = ko.observable(false);
     self.locations = ko.observableArray();
     self.checkedLocations = ko.observableArray();
+    self.checkedLocationCount = ko.observable(0);
+
     self.checkedLocations.subscribe(function (newLocations) {
+        self.errorNoPersonsSelected(false);
+        self.excludedPersons.remove(function (person) {
+            return newLocations.indexOf(person.location) == -1;
+        });
         self.filterByLocation(newLocations);
+
+        if (self.checkedLocationCount() > newLocations.length)
+            self.scrollTop(true);
+        self.checkedLocationCount(newLocations.length);
     });
 
     self.locationsLoading = ko.observable(true);
@@ -53,12 +64,13 @@
     };
 
     self.excludePerson = function () {
-        var personToExclude = self.personToExclude();
-        if (typeof personToExclude != 'undefined') {
-            if (!self.containsPerson(self.excludedPersons(), self.personToExclude())) {
-                self.excludedPersons.push(personToExclude);
+        var personsToExclude = self.personsToExclude();
+        for (i in personsToExclude) {
+            var person = personsToExclude[i];
+            if (!self.containsPerson(self.excludedPersons(), person)) {
+                self.excludedPersons.push(person);
                 self.filteredPersons.remove(function (item) {
-                    return item.id == personToExclude.id;
+                    return item.id == person.id;
                 });
                 self.personsExcluded(true);
             }
@@ -66,10 +78,11 @@
     };
 
     self.includePerson = function () {
-        var personToInclude = self.personToInclude();
-        if (typeof personToInclude != 'undefined') {
+        var personsToInclude = self.personsToInclude();
+        for (i in personsToInclude) {
+            var person = personsToInclude[i];
             self.excludedPersons.remove(function (item) {
-                return item.id == personToInclude.id;
+                return item.id == person.id;
             });
             if (self.excludedPersons().length == 0)
                 self.personsExcluded(false);
