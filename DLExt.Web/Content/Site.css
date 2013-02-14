@@ -103,7 +103,7 @@ h5, h6 {
 /* you can specify a greater or lesser percentage for the 
 page width. Or, you can specify an exact pixel width. */
 .page {
-    width: 60%;
+    width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -172,7 +172,7 @@ footer,
 /* Locations block (top-left)
 ----------------------------------------------------------*/
 .locations-box {
-    width: 15%;
+    width: 100px;
 }
 
 li.unmark {
@@ -188,21 +188,31 @@ li.unmark {
 /* Persons removal block (top-right)
 ----------------------------------------------------------*/
 .persons-box {
-    width: 80%;
+    width: 635px;
 }
 
 .persons-box div {
     float: left;
-    padding-right: 10px;
+    
 }
 
 .persons-box input {
-    width: 115px;
-    margin-bottom: 4px
+    width: 33px;
+    height: 33px;
+    margin: 0 21px 10px 21px;
+}
+
+.persons-box input.ui-button {
+    padding: 0;
+    padding-bottom: 4px;
 }
 
 .persons-selection {
-    width: 200px;    
+    width: 280px;    
+}
+
+#middleControls {
+    margin-top: 40px;
 }
 
 /* Commands block (bottom most)

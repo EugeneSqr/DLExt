@@ -132,6 +132,9 @@
   <data name="ExcludeButtonLabel" xml:space="preserve">
     <value>Исключить</value>
   </data>
+  <data name="ExcludedRecipients" xml:space="preserve">
+    <value>Исключенные получатели</value>
+  </data>
   <data name="HomeHeader" xml:space="preserve">
     <value>Добро пожаловать!</value>
   </data>
@@ -150,8 +153,8 @@
   <data name="MainHeader" xml:space="preserve">
     <value>Составитель списка рассылки</value>
   </data>
-  <data name="RemoveFromDistribution" xml:space="preserve">
-    <value>Удалить из рассылки</value>
+  <data name="RecipientsInList" xml:space="preserve">
+    <value>Выбранные получатели</value>
   </data>
   <data name="SendEmailHeader" xml:space="preserve">
     <value>Отправить почту</value>

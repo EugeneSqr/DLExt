@@ -17,19 +17,20 @@
     </div>
 </div>
 <div class="persons-box inline-block">
-    <h3>@LocalizedStrings.RemoveFromDistribution</h3>
     <div>
+        <h3>@LocalizedStrings.RecipientsInList</h3>
         <select class="persons-selection" data-bind="options: filteredPersons, optionsText: 'name', selectedOptions: personsToExclude, autoScroll: scrollTop"
             size="6" multiple="multiple">
         </select>
     </div>
-    <div>
-        <input type="button" class="ui-widget ui-button ui-state-default" value="@LocalizedStrings.ExcludeButtonLabel" data-bind="event: {click: excludePerson }" /><br />
-        <input type="button" class="ui-widget ui-button ui-state-default" value="@LocalizedStrings.IncludeButtonLabel" data-bind="event: {click: includePerson }" />
+    <div id="middleControls">
+        <input type="button" class="ui-widget ui-button ui-state-default" value=">" data-bind="event: {click: excludePerson }" /><br />
+        <input type="button" class="ui-widget ui-button ui-state-default" value="<" data-bind="event: {click: includePerson }" />
     </div>
     <div>
+        <h3>@LocalizedStrings.ExcludedRecipients</h3>
         <select class="persons-selection" data-bind="options: excludedPersons, optionsText: 'name', selectedOptions: personsToInclude"
-            size="6" multiple="multiple">
+                size="6" multiple="multiple">
         </select>
     </div>
 </div>

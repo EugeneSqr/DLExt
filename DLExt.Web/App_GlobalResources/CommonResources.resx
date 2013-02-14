@@ -132,6 +132,9 @@
   <data name="ExcludeButtonLabel" xml:space="preserve">
     <value>Exclude</value>
   </data>
+  <data name="ExcludedRecipients" xml:space="preserve">
+    <value>Excluded recipients</value>
+  </data>
   <data name="HomeHeader" xml:space="preserve">
     <value>Welcome to ASP Net application!</value>
   </data>
@@ -150,8 +153,8 @@
   <data name="MainHeader" xml:space="preserve">
     <value>Distribution list creator</value>
   </data>
-  <data name="RemoveFromDistribution" xml:space="preserve">
-    <value>Remove from distribution</value>
+  <data name="RecipientsInList" xml:space="preserve">
+    <value>Selected recipients</value>
   </data>
   <data name="SendEmailHeader" xml:space="preserve">
     <value>Send email</value>
