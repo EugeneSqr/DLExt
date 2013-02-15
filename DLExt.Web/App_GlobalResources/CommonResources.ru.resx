@@ -120,6 +120,9 @@
   <data name="CreateListButtonLabel" xml:space="preserve">
     <value>Создать лист</value>
   </data>
+  <data name="DialogCopyByPressingLink" xml:space="preserve">
+    <value>или откройте почтовый клиент, используя</value>
+  </data>
   <data name="DialogCopyEmailsBody" xml:space="preserve">
     <value>Нажмите Ctrl+C для копирования списка</value>
   </data>
@@ -147,11 +150,17 @@
   <data name="IncludeButtonLabel" xml:space="preserve">
     <value>Включить</value>
   </data>
+  <data name="LinkLabel" xml:space="preserve">
+    <value>ссылку</value>
+  </data>
   <data name="LocationsHeader" xml:space="preserve">
     <value>Офисы</value>
   </data>
   <data name="MainHeader" xml:space="preserve">
     <value>Составитель списка рассылки</value>
+  </data>
+  <data name="PersonsNumberLabel" xml:space="preserve">
+    <value>Получателей в листе рассылки:</value>
   </data>
   <data name="RecipientsInList" xml:space="preserve">
     <value>Выбранные получатели</value>

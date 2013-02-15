@@ -30,12 +30,12 @@
     <div>
         <h3>@LocalizedStrings.ExcludedRecipients</h3>
         <select class="persons-selection" data-bind="options: excludedPersons, optionsText: 'name', selectedOptions: personsToInclude, event: {keyup: includePersonsByKeypress }"
-                size="6" multiple="multiple">
+            size="6" multiple="multiple">
         </select>
     </div>
 </div>
 <div class="create-list-container">
-    <span style="display: inline-block">Number of persons in list:</span><span id="persons-count-span"
+    <span style="display: inline-block">@LocalizedStrings.PersonsNumberLabel</span><span id="persons-count-span"
         data-bind="text: filteredPersonsCount"></span>
     <div style="display: inline-block">
         <div class="no-persons-notice" data-bind="visibility: errorNoPersonsSelected">
@@ -48,10 +48,13 @@
     </div>
 </div>
 <div id="dialog" title="@LocalizedStrings.DialogCopyEmailsHeader" data-bind="dialog: isOpen">
-    <span id="copyClipboardMessage">@LocalizedStrings.DialogCopyEmailsBody</span>
-    <div id="textareaContainer">
-        <textarea data-bind="value: dialogWindowAddressList" onfocus="this.select();"></textarea>
+    <div id="copyClipboardMessage">
+        <span>@LocalizedStrings.DialogCopyEmailsBody</span><span
+            data-bind="if: isMailToPossible">.</span> <span data-bind="ifnot: isMailToPossible">@LocalizedStrings.DialogCopyByPressingLink</span>
+        <span data-bind="ifnot: isMailToPossible"><a data-bind="attr: { href: mailToAddressList }">@LocalizedStrings.LinkLabel</a></span><span
+            data-bind="ifnot: isMailToPossible">.</span>
     </div>
+    <textarea id="textarea" data-bind="style: {height : isMailToPossible() ? '270px' : '250px'}, value: dialogWindowAddressList"></textarea>
 </div>
 <script type="text/javascript">
     $(':button').button().on('hover blur', function () {
@@ -61,6 +64,6 @@
     $('select').on('focusout', function () {
         $(this).val([]);
     });
-    
+
     ko.applyBindings(new ListGeneratorViewModel());
 </script>

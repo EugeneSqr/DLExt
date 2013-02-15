@@ -120,6 +120,9 @@
   <data name="CreateListButtonLabel" xml:space="preserve">
     <value>Create List</value>
   </data>
+  <data name="DialogCopyByPressingLink" xml:space="preserve">
+    <value>or open a default email client by using this</value>
+  </data>
   <data name="DialogCopyEmailsBody" xml:space="preserve">
     <value>Press Ctrl+C to copy to clipboard</value>
   </data>
@@ -147,11 +150,17 @@
   <data name="IncludeButtonLabel" xml:space="preserve">
     <value>Include</value>
   </data>
+  <data name="LinkLabel" xml:space="preserve">
+    <value>link</value>
+  </data>
   <data name="LocationsHeader" xml:space="preserve">
     <value>Locations</value>
   </data>
   <data name="MainHeader" xml:space="preserve">
     <value>Distribution list creator</value>
+  </data>
+  <data name="PersonsNumberLabel" xml:space="preserve">
+    <value>Number of persons in list:</value>
   </data>
   <data name="RecipientsInList" xml:space="preserve">
     <value>Selected recipients</value>

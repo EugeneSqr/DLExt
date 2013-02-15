@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to or open a default email client by using this.
+        /// </summary>
+        internal static string DialogCopyByPressingLink {
+            get {
+                return ResourceManager.GetString("DialogCopyByPressingLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Press Ctrl+C to copy to clipboard.
         /// </summary>
         internal static string DialogCopyEmailsBody {
@@ -151,6 +160,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to link.
+        /// </summary>
+        internal static string LinkLabel {
+            get {
+                return ResourceManager.GetString("LinkLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Locations.
         /// </summary>
         internal static string LocationsHeader {
@@ -165,6 +183,15 @@ namespace Resources {
         internal static string MainHeader {
             get {
                 return ResourceManager.GetString("MainHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of persons in list:.
+        /// </summary>
+        internal static string PersonsNumberLabel {
+            get {
+                return ResourceManager.GetString("PersonsNumberLabel", resourceCulture);
             }
         }
         

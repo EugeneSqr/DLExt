@@ -10,7 +10,7 @@
     self.filteredPersonsCount = ko.computed(function () {
         return self.filteredPersons().length;
     });
-    
+
     self.excludedPersons = ko.observableArray();
     self.personsToExclude = ko.observableArray();
     self.personsToInclude = ko.observableArray();
@@ -46,6 +46,9 @@
     self.personsExcluded = ko.observable(false);
     self.errorNoPersonsSelected = ko.observable(false);
     self.isOpen = ko.observable(false);
+
+    self.isMailToPossible = ko.observable(false);
+    self.mailToAddressList = ko.observable();
 
     self.filterByLocation = function (locations) {
         var filteredPersons = [];
@@ -107,7 +110,7 @@
     };
 
     // preventing selection side-effects after manipulations with person lists
-    self.clearSelectedPersons = function() {
+    self.clearSelectedPersons = function () {
         self.personsToExclude([]);
         self.personsToInclude([]);
     };
@@ -136,12 +139,10 @@
             var person = filteredPersons[index];
             address = person.email + ';' + address;
         }
-        if (self.mailToText.length + address.length > self.maxMailToLength) {
-            self.dialogWindowAddressList(address);
-            self.isOpen(true);
-        } else {
-            window.location = self.mailToText + address;
-        }
+        self.isMailToPossible(self.mailToText.length + address.length > self.maxMailToLength);
+        self.mailToAddressList(self.mailToText + address);
+        self.dialogWindowAddressList(address);
+        self.isOpen(true);
     };
 
     $.ajax({

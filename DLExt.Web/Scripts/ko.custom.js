@@ -2,9 +2,10 @@
     init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
         $(element).dialog({
             modal: true,
+            resizable: false,
             autoOpen: false,
-            minHeight: 200,
-            minWidth: 400,
+            minHeight: 350,
+            minWidth: 500,
             close: function () {
                 viewModel.isOpen(false);
             }
@@ -16,11 +17,12 @@
         var el = $(element);
         if (viewModel.isOpen()) {
             el.dialog("open");
+            el.find('textarea').focus().select();
             el.bind('keydown', function (e) {
                 if (e.keyCode == ctrlKey)
                     ctrlDown = true;
                 if (ctrlDown && e.keyCode == cKey && el.dialog("isOpen")) {
-                    
+
                     // closing the dialog window initiated by timeout to allow a browser
                     // copy text to a clipboard
                     setTimeout(function () {
