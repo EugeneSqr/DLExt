@@ -86,7 +86,7 @@ namespace DLExt.Infrastructure
             }
             catch (Exception exception)
             {
-                Logger.Error("Error retrieving persons", exception);
+                Logger.Error("Error retrieving items", exception);
             }
 
             return result.OrderBy(orderFieldSelector).ToList();
