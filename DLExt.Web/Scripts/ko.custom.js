@@ -38,12 +38,6 @@
     }
 };
 
-ko.bindingHandlers.visibility = {
-    update: function (element, valueAccessor) {
-        $(element).css('visibility', ko.utils.unwrapObservable(valueAccessor()) ? 'visible' : 'hidden');
-    }
-};
-
 ko.bindingHandlers.autoScroll = {
     update: function (element, valueAccessor, allBindingAccessor, viewModel) {
         if (ko.utils.unwrapObservable(valueAccessor())) {
