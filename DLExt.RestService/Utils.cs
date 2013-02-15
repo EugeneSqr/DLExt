@@ -5,7 +5,9 @@
     using System.Runtime.Serialization.Json;
     using System.Text;
     using System.Web.Script.Serialization;
-    using Newtonsoft.Json;    using log4net;    public static class Utils
+    using log4net;    
+
+    public static class Utils
     {
         private static ILog logger = LogManager.GetLogger(typeof(Utils));        public static string CallRestGet(string uri)
         {
