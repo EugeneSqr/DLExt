@@ -19,17 +19,17 @@
 <div class="persons-box inline-block">
     <div>
         <h3>@LocalizedStrings.RecipientsInList</h3>
-        <select class="persons-selection" data-bind="options: filteredPersons, optionsText: 'name', selectedOptions: personsToExclude, autoScroll: scrollTop"
+        <select class="persons-selection" data-bind="options: filteredPersons, optionsText: 'name', selectedOptions: personsToExclude, autoScroll: scrollTop, event: {keyup: excludePersonsByKeypress }"
             size="6" multiple="multiple">
         </select>
     </div>
     <div id="middleControls">
-        <input type="button" class="ui-widget ui-button ui-state-default" value=">" data-bind="event: {click: excludePerson }" /><br />
-        <input type="button" class="ui-widget ui-button ui-state-default" value="<" data-bind="event: {click: includePerson }" />
+        <input type="button" class="ui-widget ui-button ui-state-default" value=">" data-bind="event: {click: excludePersons }" /><br />
+        <input type="button" class="ui-widget ui-button ui-state-default" value="<" data-bind="event: {click: includePersons }" />
     </div>
     <div>
         <h3>@LocalizedStrings.ExcludedRecipients</h3>
-        <select class="persons-selection" data-bind="options: excludedPersons, optionsText: 'name', selectedOptions: personsToInclude"
+        <select class="persons-selection" data-bind="options: excludedPersons, optionsText: 'name', selectedOptions: personsToInclude, event: {keyup: includePersonsByKeypress }"
                 size="6" multiple="multiple">
         </select>
     </div>
@@ -58,5 +58,9 @@
         $(this).toggleClass('ui-state-hover');
     });
 
+    $('select').on('focusout', function () {
+        $(this).val([]);
+    });
+    
     ko.applyBindings(new ListGeneratorViewModel());
 </script>

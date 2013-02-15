@@ -3,6 +3,7 @@
 
     self.maxMailToLength = 2083;
     self.mailToText = "mailto:";
+    self.keyCodeDelete = 46;
 
     self.persons = [];
     self.filteredPersons = ko.observableArray();
@@ -63,7 +64,7 @@
         self.filteredPersons(filteredPersons);
     };
 
-    self.excludePerson = function () {
+    self.excludePersons = function () {
         var personsToExclude = self.personsToExclude();
         for (i in personsToExclude) {
             var person = personsToExclude[i];
@@ -75,9 +76,16 @@
                 self.personsExcluded(true);
             }
         }
+        self.clearSelectedPersons();
     };
 
-    self.includePerson = function () {
+    self.excludePersonsByKeypress = function (data, event) {
+        if (event.keyCode == self.keyCodeDelete) {
+            self.excludePersons();
+        }
+    };
+
+    self.includePersons = function () {
         var personsToInclude = self.personsToInclude();
         for (i in personsToInclude) {
             var person = personsToInclude[i];
@@ -89,6 +97,19 @@
 
             self.filterByLocation(self.checkedLocations());
         }
+        self.clearSelectedPersons();
+    };
+
+    self.includePersonsByKeypress = function (data, event) {
+        if (event.keyCode == self.keyCodeDelete) {
+            self.includePersons();
+        }
+    };
+
+    // preventing selection side-effects after manipulations with person lists
+    self.clearSelectedPersons = function() {
+        self.personsToExclude([]);
+        self.personsToInclude([]);
     };
 
     self.containsPerson = function (collection, item) {
