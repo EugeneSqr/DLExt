@@ -9,6 +9,7 @@ namespace DLExt.Infrastructure
     public class AddressBuilder
     {
         private static readonly ILog Logger = LogManager.GetLogger(typeof(AddressBuilder));
+        private const char EmailSeparator = ';';
 
         public string ResultAddress { get; private set; }
 
@@ -17,7 +18,6 @@ namespace DLExt.Infrastructure
         public AddressBuilder(IList<Person> persons)
         {
             this.persons = persons;
-            ResultAddress = string.Empty;
         }
 
         public void Build()
@@ -38,7 +38,7 @@ namespace DLExt.Infrastructure
             var builder = new StringBuilder();
             foreach (Person person in persons)
             {
-                builder.Append(person.Email).Append(';');
+                builder.Append(person.Email).Append(EmailSeparator);
             }
 
             ResultAddress = builder.ToString();

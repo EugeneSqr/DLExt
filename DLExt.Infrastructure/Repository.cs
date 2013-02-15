@@ -9,50 +9,74 @@ namespace DLExt.Infrastructure
 {
     public class Repository
     {
-        private const string RootPath = "OU=Sites,OU=Company,DC=domain,DC=corp";
         private const string PersonNameFieldKey = "displayName";
         private const string PersonMailFieldKey = "mail";
         private const string PersonLocarionFieldKey = "physicalDeliveryOfficeName";
-        
+
+        private readonly string rootPath;
         private static readonly ILog Logger = LogManager.GetLogger(typeof(Repository));
-        
-        public string ControllerName { get; private set; }
-        
+
         public Repository(string controllerName)
         {
-            ControllerName = controllerName;
+            rootPath = string.Format("LDAP://{0}/OU=Sites,OU=Company,DC=domain,DC=corp", controllerName);
         }
 
         public virtual IList<Person> GetPersons()
         {
-            Logger.Info("Retrieving persons.");
-            var result = new List<Person>();
+            return GetItem(
+                "(objectCategory=Person)",
+                SearchScope.Subtree,
+                (id, searchResult) => new Person(
+                    id,
+                    searchResult.Properties[PersonNameFieldKey][0].ToString(),
+                    searchResult.Properties[PersonMailFieldKey][0].ToString(),
+                    searchResult.Properties[PersonLocarionFieldKey][0].ToString()),
+                result => (IsPropertyValid(result, PersonNameFieldKey) &&
+                           IsPropertyValid(result, PersonMailFieldKey) &&
+                           IsPropertyValid(result, PersonLocarionFieldKey)),
+                person => person.Name);
+        }
+
+        public virtual IList<string> GetLocations()
+        {
+            return GetItem(
+                "(objectClass=organizationalUnit)",
+                SearchScope.OneLevel,
+                (id, searchResult) => searchResult.Properties["name"][0].ToString(),
+                searchResult => IsPropertyValid(searchResult, "name"),
+                item => item);
+        }
+
+        private IList<T> GetItem<T>(
+            string filter,
+            SearchScope searchScope,
+            Func<int, SearchResult, T> factoryMethod,
+            Func<SearchResult, bool> validationFunction,
+            Func<T, string> orderFieldSelector) where T : class
+        {
+            Logger.InfoFormat("Retrieving items of type {0}.", typeof(T));
+            var result = new List<T>();
             try
             {
-                using (DirectoryEntry entry = new DirectoryEntry(string.Format("LDAP://{0}/{1}", ControllerName, RootPath)))
+                using (DirectoryEntry entry = new DirectoryEntry(string.Format(rootPath)))
                 {
-                    using (DirectorySearcher searcher = new DirectorySearcher(entry, "(objectCategory=Person)"))
+                    using (DirectorySearcher searcher = new DirectorySearcher(entry, filter)
+                                                            {
+                                                                SearchScope = searchScope
+                                                            })
                     {
-                        SearchResultCollection persons = searcher.FindAll();
-                        if (persons.Count == 0)
+                        SearchResultCollection searchItems = searcher.FindAll();
+                        if (searchItems.Count == 0)
                         {
                             return result;
                         }
 
                         int index = 1;
-                        foreach (SearchResult person in persons)
+                        foreach (SearchResult searchItem in searchItems)
                         {
-                            if (IsPropertyValid(person, PersonNameFieldKey) && IsPropertyValid(person, PersonMailFieldKey) && IsPropertyValid(person, PersonLocarionFieldKey))
+                            if (validationFunction(searchItem))
                             {
-                                result.Add(new Person(
-                                    index,
-                                    person.Properties[PersonNameFieldKey][0].ToString(),
-                                    person.Properties[PersonMailFieldKey][0].ToString(),
-                                    person.Properties[PersonLocarionFieldKey][0].ToString()));
-                            }
-                            else
-                            {
-                                Logger.WarnFormat("Some of the required fields are empty. Person is skipped");
+                                result.Add(factoryMethod(index, searchItem));
                             }
 
                             index++;
@@ -65,37 +89,7 @@ namespace DLExt.Infrastructure
                 Logger.Error("Error retrieving persons", exception);
             }
 
-            return result.OrderBy(person => person.Name).ToList();
-        }
-
-        public virtual IList<string> GetLocations()
-        {
-            Logger.Info("RetrievingLocations");
-            var result = new List<string>();
-            try
-            {
-                using (DirectoryEntry entry = new DirectoryEntry(string.Format("LDAP://{0}/{1}", ControllerName, RootPath)))
-                {
-                    using (DirectorySearcher searcher = new DirectorySearcher(entry, "(objectClass=organizationalUnit)") { SearchScope = SearchScope.OneLevel })
-                    {
-                        SearchResultCollection locations = searcher.FindAll();
-                        if (locations.Count == 0)
-                        {
-                            return result;
-                        }
-
-                        result.AddRange(from SearchResult location in locations
-                                        where IsPropertyValid(location, "name")
-                                        select location.Properties["name"][0].ToString());
-                    }
-                }
-            }
-            catch (Exception exception)
-            {
-                Logger.Error("Error retrieving locations: ", exception);
-            }
-
-            return result;
+            return result.OrderBy(orderFieldSelector).ToList();
         }
 
         protected virtual bool IsPropertyValid(SearchResult item, string propertyName)
