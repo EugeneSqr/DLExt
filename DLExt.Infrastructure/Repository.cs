@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.DirectoryServices;
 using System.Linq;
@@ -9,79 +10,94 @@ namespace DLExt.Infrastructure
 {
     public class Repository
     {
+        private const string DistinguishedNameKey = "distinguishedName";
+        private const string NameKey = "name";
         private const string PersonNameFieldKey = "displayName";
         private const string PersonMailFieldKey = "mail";
-        private const string PersonLocarionFieldKey = "physicalDeliveryOfficeName";
 
+        private readonly string root;
         private readonly string rootPath;
         private static readonly ILog Logger = LogManager.GetLogger(typeof(Repository));
 
         public Repository(string controllerName)
         {
-            rootPath = string.Format("LDAP://{0}/OU=Sites,OU=Company,DC=domain,DC=corp", controllerName);
+            root = string.Format("LDAP://{0}/", controllerName);
+            rootPath = string.Concat(root, "OU=Sites,OU=Company,DC=domain,DC=corp");
         }
 
         public virtual IList<Person> GetPersons()
         {
-            return GetItem(
-                "(objectCategory=Person)",
-                SearchScope.Subtree,
-                (id, searchResult) => new Person(
-                    id,
-                    searchResult.Properties[PersonNameFieldKey][0].ToString(),
-                    searchResult.Properties[PersonMailFieldKey][0].ToString(),
-                    searchResult.Properties[PersonLocarionFieldKey][0].ToString()),
-                result => (IsPropertyValid(result, PersonNameFieldKey) &&
-                           IsPropertyValid(result, PersonMailFieldKey) &&
-                           IsPropertyValid(result, PersonLocarionFieldKey)),
-                person => person.Name);
+            var result = new List<Person>();
+            SearchResultCollection locationsSearchResult = GetLocationsSearchResult();
+            foreach (SearchResult locationSearchResult in locationsSearchResult)
+            {
+                if (IsPropertyValid(locationSearchResult, DistinguishedNameKey) && IsPropertyValid(locationSearchResult, NameKey))
+                {
+                    var distinguishedName = locationSearchResult.Properties[DistinguishedNameKey][0].ToString();
+                    var name = locationSearchResult.Properties[NameKey][0].ToString();
+                    using (var container = new DirectoryEntry(string.Concat(root, distinguishedName)))
+                    {
+                        result.AddRange(GetItem(
+                            GetSearchResult("(objectCategory=Person)", SearchScope.Subtree, container),
+                            (id, searchResult) => new Person(
+                                                      id,
+                                                      searchResult.Properties[PersonNameFieldKey][0].ToString(),
+                                                      searchResult.Properties[PersonMailFieldKey][0].ToString(),
+                                                      name),
+                            searchResult => (IsPropertyValid(searchResult, PersonNameFieldKey) &&
+                                             IsPropertyValid(searchResult, PersonMailFieldKey)),
+                            null));
+                    }
+                }
+            }
+            
+            return result.OrderBy(person => person.Name).ToList();
         }
 
         public virtual IList<string> GetLocations()
         {
             return GetItem(
-                "(objectClass=organizationalUnit)",
-                SearchScope.OneLevel,
-                (id, searchResult) => searchResult.Properties["name"][0].ToString(),
-                searchResult => IsPropertyValid(searchResult, "name"),
+                GetLocationsSearchResult(),
+                (id, searchResult) => searchResult.Properties[NameKey][0].ToString(),
+                searchResult => IsPropertyValid(searchResult, NameKey),
                 item => item);
         }
 
-        private IList<T> GetItem<T>(
-            string filter,
-            SearchScope searchScope,
-            Func<int, SearchResult, T> factoryMethod,
-            Func<SearchResult, bool> validationFunction,
-            Func<T, string> orderFieldSelector) where T : class
+        private SearchResultCollection GetLocationsSearchResult()
         {
-            Logger.InfoFormat("Retrieving items of type {0}.", typeof(T));
-            var result = new List<T>();
+            return GetSearchResult("(objectClass=organizationalUnit)", SearchScope.OneLevel);
+        }
+
+        private SearchResultCollection GetSearchResult(string filter, SearchScope searchScope)
+        {
             try
             {
                 using (DirectoryEntry entry = new DirectoryEntry(string.Format(rootPath)))
                 {
-                    using (DirectorySearcher searcher = new DirectorySearcher(entry, filter)
-                                                            {
-                                                                SearchScope = searchScope
-                                                            })
-                    {
-                        SearchResultCollection searchItems = searcher.FindAll();
-                        if (searchItems.Count == 0)
-                        {
-                            return result;
-                        }
+                    return GetSearchResult(filter, searchScope, entry);
+                }
+            }
+            catch (Exception exception)
+            {
+                Logger.Error("Error creating container entry", exception);
+            }
 
-                        int index = 1;
-                        foreach (SearchResult searchItem in searchItems)
-                        {
-                            if (validationFunction(searchItem))
-                            {
-                                result.Add(factoryMethod(index, searchItem));
-                            }
+            return null;
+        }
 
-                            index++;
-                        }
-                    }
+        private static SearchResultCollection GetSearchResult(
+            string filter, 
+            SearchScope searchScope, 
+            DirectoryEntry container)
+        {
+            try
+            {
+                using (DirectorySearcher searcher = new DirectorySearcher(container, filter)
+                                                        {
+                                                            SearchScope = searchScope
+                                                        })
+                {
+                    return searcher.FindAll();
                 }
             }
             catch (Exception exception)
@@ -89,10 +105,39 @@ namespace DLExt.Infrastructure
                 Logger.Error("Error retrieving items", exception);
             }
 
-            return result.OrderBy(orderFieldSelector).ToList();
+            return null;
         }
 
-        protected virtual bool IsPropertyValid(SearchResult item, string propertyName)
+        private static IList<T> GetItem<T>(
+            ICollection searchResult,
+            Func<int, SearchResult, T> factoryMethod,
+            Func<SearchResult, bool> validationFunction,
+            Func<T, string> orderFieldSelector) where T : class
+        {
+            Logger.InfoFormat("Retrieving items of type {0}.", typeof(T));
+            var result = new List<T>();
+            if (searchResult == null || searchResult.Count == 0)
+            {
+                return result;
+            }
+
+            int index = 1;
+            foreach (SearchResult searchItem in searchResult)
+            {
+                if (validationFunction(searchItem))
+                {
+                    result.Add(factoryMethod(index, searchItem));
+                }
+
+                index++;
+            }
+
+            return (orderFieldSelector == null) 
+                ? result 
+                : result.OrderBy(orderFieldSelector).ToList();
+        }
+
+        private static bool IsPropertyValid(SearchResult item, string propertyName)
         {
             if (item != null && item.Properties != null && item.Properties.Contains(propertyName))
             {
