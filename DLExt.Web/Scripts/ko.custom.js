@@ -17,12 +17,11 @@
         var el = $(element);
         if (viewModel.isOpen()) {
             el.dialog("open");
-            el.find('textarea').focus().select();
             el.bind('keydown', function (e) {
                 if (e.keyCode == ctrlKey)
                     ctrlDown = true;
                 if (ctrlDown && e.keyCode == cKey && el.dialog("isOpen")) {
-
+                    el.find('textarea').focus().select();
                     // closing the dialog window initiated by timeout to allow a browser
                     // copy text to a clipboard
                     setTimeout(function () {
