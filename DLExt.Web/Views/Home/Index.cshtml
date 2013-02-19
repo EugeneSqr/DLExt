@@ -6,10 +6,10 @@
 }
 <div class="locations-box inline-block">
     <h3>@LocalizedStrings.LocationsHeader</h3>
-    <div data-bind="visible : locationsLoading">
+    <div data-bind="if: locationsLoading">
         <img class="loader" src="/Content/Images/AreaLoader.gif" alt="loading" />
     </div>
-    <div data-bind="visible : locationsLoadingCompleted">
+    <div data-bind="ifnot: locationsLoading">
         <ul data-bind="foreach: locations">
             <li class="unmark">
                 <input type="checkbox" data-bind="value: $data, checked: $parent.checkedLocations" />
@@ -36,8 +36,8 @@
     </div>
 </div>
 <div class="create-list-container">
-    <span style="display: inline-block">@LocalizedStrings.PersonsNumberLabel</span><span id="persons-count-span"
-        data-bind="text: filteredPersonsCount"></span>
+    <span style="display: inline-block">@LocalizedStrings.PersonsNumberLabel</span><span
+        id="persons-count-span" data-bind="text: filteredPersonsCount"></span>
     <div style="display: inline-block">
         <div class="no-persons-notice" data-bind="if: errorNoPersonsSelected">
             <div class="ui-state-error ui-corner-all">
@@ -50,12 +50,12 @@
 </div>
 <div id="dialog" title="@LocalizedStrings.DialogCopyEmailsHeader" data-bind="dialog: isOpen">
     <div id="copyClipboardMessage">
-        <span>@LocalizedStrings.DialogCopyEmailsBody</span><span
-            data-bind="if: isMailToPossible">.</span> <span data-bind="ifnot: isMailToPossible">@LocalizedStrings.DialogCopyByPressingLink</span>
+        <span>@LocalizedStrings.DialogCopyEmailsBody</span><span data-bind="if: isMailToPossible">.</span>
+        <span data-bind="ifnot: isMailToPossible">@LocalizedStrings.DialogCopyByPressingLink</span>
         <span data-bind="ifnot: isMailToPossible"><a data-bind="attr: { href: mailToAddressList }">@LocalizedStrings.LinkLabel</a></span><span
             data-bind="ifnot: isMailToPossible">.</span>
     </div>
-    <textarea id="textarea" readonly="readonly" data-bind="style: {height : isMailToPossible() ? '270px' : '250px'}, value: dialogWindowAddressList"></textarea>
+    <textarea id="textarea" readonly="readonly" data-bind="style: {height : isMailToPossible() ? '270px' : '250px'}, value: copyToAddressList"></textarea>
 </div>
 <script type="text/javascript">
     $(':button').button().on('hover blur', function () {

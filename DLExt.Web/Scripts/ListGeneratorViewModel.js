@@ -6,6 +6,7 @@
     self.keyCodeDelete = 46;
 
     self.persons = [];
+    
     self.filteredPersons = ko.observableArray();
     self.filteredPersonsCount = ko.computed(function () {
         return self.filteredPersons().length;
@@ -18,7 +19,6 @@
     self.scrollTop = ko.observable(false);
     self.locations = ko.observableArray();
     self.checkedLocations = ko.observableArray();
-    self.checkedLocationCount = ko.observable(0);
 
     self.checkedLocations.subscribe(function (newLocations) {
         self.excludedPersons.remove(function (person) {
@@ -35,21 +35,15 @@
         self.checkedLocationCount(newLocations.length);
     });
 
-    self.locationsLoading = ko.observable(true);
-    self.locationsLoadingCompleted = ko.computed(function () {
-        return !self.locationsLoading();
-    });
-    self.personsLoading = ko.observable(true);
-    self.personsLoadingCompleted = ko.computed(function () {
-        return !self.personsLoading();
-    });
+    self.checkedLocationCount = ko.observable(0);
 
-    self.dialogWindowAddressList = ko.observable();
-    
     self.errorNoPersonsSelected = ko.observable(false);
-    self.isOpen = ko.observable(false);
 
+    self.locationsLoading = ko.observable(true);
+
+    self.isOpen = ko.observable(false);
     self.isMailToPossible = ko.observable(false);
+    self.copyToAddressList = ko.observable();
     self.mailToAddressList = ko.observable();
 
     self.filterByLocation = function (locations) {
@@ -161,7 +155,7 @@
         }
         self.isMailToPossible(self.mailToText.length + address.length > self.maxMailToLength);
         self.mailToAddressList(self.mailToText + address);
-        self.dialogWindowAddressList(address);
+        self.copyToAddressList(address);
         self.isOpen(true);
     };
 
@@ -190,7 +184,6 @@
                 self.persons.push(data[index]);
             }
 
-            self.personsLoading(false);
         },
         error: function (data, textStatus, errorThrown) {
             console.log("Error getting persons");
