@@ -1,4 +1,4 @@
-﻿function ListGeneratorViewModel() {
+﻿function ListGeneratorViewModel(restServiceUrl) {
     var self = this;
 
     self.maxMailToLength = 2083;
@@ -151,7 +151,7 @@
     };
 
     $.ajax({
-        url: 'http://localhost:8888/DistributionList.svc/rest/GetLocations',
+        url: restServiceUrl + '/GetLocations',
         type: 'GET',
         dataType: 'jsonp',
         success: function (data) {
@@ -167,7 +167,7 @@
     });
 
     $.ajax({
-        url: 'http://localhost:8888/DistributionList.svc/rest/GetPersons',
+        url: restServiceUrl + '/GetPersons',
         type: 'GET',
         dataType: 'jsonp',
         success: function (data) {

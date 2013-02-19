@@ -1,7 +1,8 @@
-﻿@using LocalizedStrings = Resources.CommonResources;
+﻿@using System.Configuration
+@using LocalizedStrings = Resources.CommonResources;
 @{
     ViewBag.Title = LocalizedStrings.HomeTitle;
-    
+    ViewBag.RestServiceUrl = ConfigurationManager.AppSettings["RestServiceUrl"];
 }
 <div class="locations-box inline-block">
     <h3>@LocalizedStrings.LocationsHeader</h3>
@@ -65,5 +66,5 @@
         $(this).val([]);
     });
 
-    ko.applyBindings(new ListGeneratorViewModel());
+    ko.applyBindings(new ListGeneratorViewModel("@ViewBag.RestServiceUrl"));
 </script>
