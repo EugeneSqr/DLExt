@@ -17,6 +17,8 @@ namespace DLExt.Infrastructure
 
         private readonly string root;
         private readonly string rootPath;
+
+        private int index;
         private static readonly ILog Logger = LogManager.GetLogger(typeof(Repository));
 
         public Repository(string controllerName)
@@ -29,6 +31,7 @@ namespace DLExt.Infrastructure
         {
             var result = new List<Person>();
             SearchResultCollection locationsSearchResult = GetLocationsSearchResult();
+            index = 1;
             foreach (SearchResult locationSearchResult in locationsSearchResult)
             {
                 if (IsPropertyValid(locationSearchResult, DistinguishedNameKey) && IsPropertyValid(locationSearchResult, NameKey))
@@ -108,7 +111,7 @@ namespace DLExt.Infrastructure
             return null;
         }
 
-        private static IList<T> GetItem<T>(
+        private IList<T> GetItem<T>(
             ICollection searchResult,
             Func<int, SearchResult, T> factoryMethod,
             Func<SearchResult, bool> validationFunction,
@@ -121,7 +124,6 @@ namespace DLExt.Infrastructure
                 return result;
             }
 
-            int index = 1;
             foreach (SearchResult searchItem in searchResult)
             {
                 if (validationFunction(searchItem))

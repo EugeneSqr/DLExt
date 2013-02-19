@@ -21,7 +21,6 @@
     self.checkedLocationCount = ko.observable(0);
 
     self.checkedLocations.subscribe(function (newLocations) {
-        self.errorNoPersonsSelected(false);
         self.excludedPersons.remove(function (person) {
             return newLocations.indexOf(person.location) == -1;
         });
@@ -64,6 +63,8 @@
             }
         }
 
+        if (filteredPersons.length > 0)
+            self.errorNoPersonsSelected(false);
         self.filteredPersons(filteredPersons);
     };
 
