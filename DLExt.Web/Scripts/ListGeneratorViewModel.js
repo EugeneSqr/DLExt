@@ -45,8 +45,7 @@
     });
 
     self.dialogWindowAddressList = ko.observable();
-
-    self.personsExcluded = ko.observable(false);
+    
     self.errorNoPersonsSelected = ko.observable(false);
     self.isOpen = ko.observable(false);
 
@@ -74,16 +73,21 @@
 
     self.excludePersons = function () {
         var personsToExclude = self.personsToExclude();
+        var excludedPersons = self.excludedPersons();
+        var filteredPersons = self.filteredPersons();
+        var person;
+
         for (i in personsToExclude) {
-            var person = personsToExclude[i];
-            if (!self.containsPerson(self.excludedPersons(), person)) {
-                self.excludedPersons.push(person);
-                self.filteredPersons.remove(function (item) {
-                    return item.id == person.id;
-                });
-                self.personsExcluded(true);
+            person = personsToExclude[i];
+            if (!self.containsPerson(excludedPersons, person)) {
+                excludedPersons.push(person);
+                var index = filteredPersons.indexOf(person);
+                delete filteredPersons[index];
             }
         }
+        self.excludedPersons(excludedPersons);
+        self.filteredPersons(self.clearUndefinedFromArray(filteredPersons));
+
         self.clearSelectedPersons();
     };
 
@@ -95,17 +99,28 @@
 
     self.includePersons = function () {
         var personsToInclude = self.personsToInclude();
+        var excludedPersons = self.excludedPersons();
         for (i in personsToInclude) {
             var person = personsToInclude[i];
-            self.excludedPersons.remove(function (item) {
-                return item.id == person.id;
-            });
-            if (self.excludedPersons().length == 0)
-                self.personsExcluded(false);
-
-            self.filterByLocation(self.checkedLocations());
+            var index = excludedPersons.indexOf(person);
+            delete excludedPersons[index];
         }
+
+        self.excludedPersons(self.clearUndefinedFromArray(excludedPersons));
+
+        self.filterByLocation(self.checkedLocations());
+
         self.clearSelectedPersons();
+    };
+
+    self.clearUndefinedFromArray = function(array) {
+        var newArray = [];
+        for (index in array) {
+            var item = array[index];
+            if (item !== undefined)
+                newArray.push(item);
+        }
+        return newArray;
     };
 
     self.includePersonsByKeypress = function (data, event) {
