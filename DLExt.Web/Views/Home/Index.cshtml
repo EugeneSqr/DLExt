@@ -54,7 +54,7 @@
         <span data-bind="ifnot: isMailToPossible"><a data-bind="attr: { href: mailToAddressList }">@LocalizedStrings.LinkLabel</a></span><span
             data-bind="ifnot: isMailToPossible">.</span>
     </div>
-    <textarea id="textarea" data-bind="style: {height : isMailToPossible() ? '270px' : '250px'}, value: dialogWindowAddressList"></textarea>
+    <textarea id="textarea" readonly="readonly" data-bind="style: {height : isMailToPossible() ? '270px' : '250px'}, value: dialogWindowAddressList"></textarea>
 </div>
 <script type="text/javascript">
     $(':button').button().on('hover blur', function () {

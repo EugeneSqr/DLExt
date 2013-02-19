@@ -28,6 +28,10 @@
 
         if (self.checkedLocationCount() > newLocations.length)
             self.scrollTop(true);
+        if (newLocations.length == 0) {
+            self.personsToExclude([]);
+            self.personsToInclude([]);
+        }
         self.checkedLocationCount(newLocations.length);
     });
 

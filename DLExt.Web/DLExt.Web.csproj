@@ -84,6 +84,7 @@
     <Content Include="Content\Images\AreaLoader.gif" />
     <Content Include="Content\Images\fls_logo.png" />
     <Content Include="Content\Images\bg_logo.jpg" />
+    <Content Include="Content\jQueryUI_theme_url.txt" />
     <Content Include="Content\themes\fls\images\animated-overlay.gif" />
     <Content Include="Content\themes\fls\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\fls\images\ui-bg_flat_0_e3cece_40x100.png" />
