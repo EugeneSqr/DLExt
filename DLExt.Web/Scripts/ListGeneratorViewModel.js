@@ -4,6 +4,8 @@
     self.maxMailToLength = 2083;
     self.mailToText = "mailto:";
     self.keyCodeDelete = 46;
+    self.keyCodeLeftArrow = 37;
+    self.keyCodeRightArrow = 39;
 
     self.persons = [];
     
@@ -13,8 +15,8 @@
     });
 
     self.excludedPersons = ko.observableArray();
-    self.personsToExclude = ko.observableArray();
-    self.personsToInclude = ko.observableArray();
+    self.personsToExclude = [];
+    self.personsToInclude = [];
 
     self.scrollTop = ko.observable(false);
     self.locations = ko.observableArray();
@@ -29,8 +31,8 @@
         if (self.checkedLocationCount() > newLocations.length)
             self.scrollTop(true);
         if (newLocations.length == 0) {
-            self.personsToExclude([]);
-            self.personsToInclude([]);
+            self.personsToExclude = [];
+            self.personsToInclude = [];
         }
         self.checkedLocationCount(newLocations.length);
     });
@@ -66,12 +68,12 @@
     };
 
     self.excludePersons = function () {
-        var personsToExclude = self.personsToExclude();
+        var personsToExclude = self.personsToExclude;
         var excludedPersons = self.excludedPersons();
         var filteredPersons = self.filteredPersons();
         var person;
 
-        for (i in personsToExclude) {
+        for (var i = 0; i < personsToExclude.length; i++) {
             person = personsToExclude[i];
             if (!self.containsPerson(excludedPersons, person)) {
                 excludedPersons.push(person);
@@ -79,22 +81,27 @@
                 delete filteredPersons[index];
             }
         }
+
         self.excludedPersons(excludedPersons);
         self.filteredPersons(self.clearUndefinedFromArray(filteredPersons));
 
-        self.clearSelectedPersons();
+        self.personsToExclude = [];
     };
 
     self.excludePersonsByKeypress = function (data, event) {
-        if (event.keyCode == self.keyCodeDelete) {
+        if (event.keyCode == self.keyCodeDelete ||
+            event.keyCode == self.keyCodeRightArrow) {
             self.excludePersons();
+        }
+        if (event.keyCode == self.keyCodeLeftArrow) {
+            self.includePersons();
         }
     };
 
     self.includePersons = function () {
-        var personsToInclude = self.personsToInclude();
+        var personsToInclude = self.personsToInclude;
         var excludedPersons = self.excludedPersons();
-        for (i in personsToInclude) {
+        for (var i = 0; i < personsToInclude.length; i++) {
             var person = personsToInclude[i];
             var index = excludedPersons.indexOf(person);
             delete excludedPersons[index];
@@ -104,7 +111,7 @@
 
         self.filterByLocation(self.checkedLocations());
 
-        self.clearSelectedPersons();
+        self.personsToInclude = [];
     };
 
     self.clearUndefinedFromArray = function(array) {
@@ -118,15 +125,14 @@
     };
 
     self.includePersonsByKeypress = function (data, event) {
-        if (event.keyCode == self.keyCodeDelete) {
+        if (event.keyCode == self.keyCodeDelete ||
+            event.keyCode == self.keyCodeLeftArrow) {
             self.includePersons();
         }
-    };
 
-    // preventing selection side-effects after manipulations with person lists
-    self.clearSelectedPersons = function () {
-        self.personsToExclude([]);
-        self.personsToInclude([]);
+        if (event.keyCode == self.keyCodeRightArrow) {
+            self.excludePersons();
+        }
     };
 
     self.containsPerson = function (collection, item) {
@@ -157,6 +163,15 @@
         self.mailToAddressList(self.mailToText + address);
         self.copyToAddressList(address);
         self.isOpen(true);
+    };
+
+    self.getPersonByID = function (id) {
+        for (i in self.persons) {
+            var person = self.persons[i];
+            if (person.id == id)
+                return person;
+        }
+        return null;
     };
 
     $.ajax({

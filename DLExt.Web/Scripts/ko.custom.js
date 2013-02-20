@@ -48,4 +48,28 @@ ko.bindingHandlers.autoScroll = {
             viewModel.scrollTop(false);
         }
     }
-}
+};
+
+ko.bindingHandlers.selectedExcludedPersons = {
+    update: function (element, valueAccessor, allBindingAccessor, viewModel) {
+        var el = $(element);
+        el.change(function () {
+            var persons = el.find(":selected").map(function () {
+                return viewModel.getPersonByID(this.value);
+            });
+            viewModel.personsToExclude = persons;
+        });
+    }
+};
+
+ko.bindingHandlers.selectedIncludedPersons = {
+    update: function (element, valueAccessor, allBindingAccessor, viewModel) {
+        var el = $(element);
+        el.change(function () {
+            var persons = el.find(":selected").map(function () {
+                return viewModel.getPersonByID(this.value);
+            });
+            viewModel.personsToInclude = persons;
+        });
+    }
+};

@@ -293,6 +293,7 @@ li.unmark {
     width: 480px;
     display: block;
     resize: none;
+    padding: 5px;
     -webkit-box-sizing: border-box; /* <=iOS4, <= Android  2.3 */
     -moz-box-sizing: border-box; /* FF1+ */
     box-sizing: border-box; /* Chrome, IE8, Opera, Safari 5.1*/
