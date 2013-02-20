@@ -64,7 +64,7 @@
 
         if (filteredPersons.length > 0)
             self.errorNoPersonsSelected(false);
-        self.filteredPersons(filteredPersons);
+        self.filteredPersons(filteredPersons.sort(self.stringComparer));
     };
 
     self.excludePersons = function () {
@@ -82,7 +82,7 @@
             }
         }
 
-        self.excludedPersons(excludedPersons);
+        self.excludedPersons(excludedPersons.sort(self.stringComparer));
         self.filteredPersons(self.clearUndefinedFromArray(filteredPersons));
 
         self.personsToExclude = [];
@@ -107,7 +107,7 @@
             delete excludedPersons[index];
         }
 
-        self.excludedPersons(self.clearUndefinedFromArray(excludedPersons));
+        self.excludedPersons(self.clearUndefinedFromArray(excludedPersons).sort(self.stringComparer));
 
         self.filterByLocation(self.checkedLocations());
 
@@ -172,6 +172,10 @@
                 return person;
         }
         return null;
+    };
+
+    self.stringComparer = function(a, b) {
+        return a.name > b.name ? 1 : -1;
     };
 
     $.ajax({
