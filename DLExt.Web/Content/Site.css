@@ -111,7 +111,7 @@ page width. Or, you can specify an exact pixel width. */
 header, #header {
     position: relative;
     margin-bottom: 10px;
-    margin-top: 20px;
+    margin-top: 120px;
     color: #000;
     padding: 0;
 }
@@ -129,6 +129,12 @@ header h1, #header h1 {
 
 header, #logo {
     float: left;
+}
+
+#header #logo {
+    left: -40px;
+    position: absolute;
+    top: -50px;
 }
 
 #main {
@@ -166,6 +172,7 @@ footer,
 ----------------------------------------------------------*/
 .title-block-line {
     background: #8ac1eb url("Images/bg_logo.jpg") 100% 0 repeat-y;
+    min-height: 80px;
 }
 
 
