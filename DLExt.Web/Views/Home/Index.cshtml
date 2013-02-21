@@ -20,7 +20,7 @@
 <div class="persons-box inline-block">
     <div>
         <h3>@LocalizedStrings.RecipientsInList</h3>
-        <select class="persons-selection" data-bind="options: filteredPersons, optionsValue:'id', optionsText: 'name', selectedExcludedPersons: personsToExclude, autoScroll: scrollTop, event: {keyup: excludePersonsByKeypress }"
+        <select class="persons-selection" data-bind="options: filteredPersons, optionsValue:'id', optionsText: 'name', selectedExcludedPersons: personsToExclude, autoScroll: scrollTop, event: {keyup: excludePersonsByKeypress, dblclick: excludePersons}"
             size="6" multiple="multiple">
         </select>
     </div>
@@ -30,7 +30,7 @@
     </div>
     <div>
         <h3>@LocalizedStrings.ExcludedRecipients</h3>
-        <select class="persons-selection" data-bind="options: excludedPersons,  optionsValue:'id', optionsText: 'name', selectedIncludedPersons: personsToInclude, event: {keyup: includePersonsByKeypress }"
+        <select class="persons-selection" data-bind="options: excludedPersons,  optionsValue:'id', optionsText: 'name', selectedIncludedPersons: personsToInclude, event: {keyup: includePersonsByKeypress, dblclick: includePersons }"
             size="6" multiple="multiple">
         </select>
     </div>
