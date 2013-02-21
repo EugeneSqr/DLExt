@@ -73,3 +73,12 @@ ko.bindingHandlers.selectedIncludedPersons = {
         });
     }
 };
+
+ko.bindingHandlers.buttonEnable = {
+    update: function (element, valueAccessor) {
+        var el = $(element);
+        var enabled = ko.utils.unwrapObservable(valueAccessor());
+        el.toggleClass('ui-state-disabled', !enabled);
+        el.prop('disabled', enabled ? '' : 'disabled');
+    }
+}

@@ -25,8 +25,10 @@
         </select>
     </div>
     <div id="middleControls">
-        <input type="button" class="ui-widget ui-button ui-state-default" value=">" tabindex="-1" data-bind="event: {click: excludePersons }" /><br />
-        <input type="button" class="ui-widget ui-button ui-state-default" value="<" tabindex="-1" data-bind="event: {click: includePersons }" />
+        <input type="button" class="ui-widget ui-button ui-state-default" value=">" tabindex="-1"
+            data-bind="event: {click: excludePersons }, buttonEnable: filteredPersonsExist" /><br />
+        <input type="button" class="ui-widget ui-button ui-state-default" value="<" tabindex="-1"
+            data-bind="event: {click: includePersons }, buttonEnable: excludedPersonsExist" />
     </div>
     <div>
         <h3>@LocalizedStrings.ExcludedRecipients</h3>
@@ -58,8 +60,18 @@
     <textarea id="textarea" readonly="readonly" data-bind="style: {height : isMailToPossible() ? '270px' : '250px'}, value: copyToAddressList"></textarea>
 </div>
 <script type="text/javascript">
-    $(':button').button().on('hover blur', function () {
+    $(':button').button().on('hover', function () {
         $(this).toggleClass('ui-state-hover');
+    }).on('click keypress', function () {
+        var btn = $(this);
+
+        // a hack for IE and Firefox, turns off button hightlight after pressing it
+        setTimeout(function () {
+            btn.blur();
+        }, 1);
+        btn.blur();
+    }).on('blur', function () {
+        $(this).removeClass('ui-state-hover');
     });
 
     ko.applyBindings(new ListGeneratorViewModel("@ViewBag.RestServiceUrl"));

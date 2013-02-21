@@ -48,6 +48,14 @@
     self.copyToAddressList = ko.observable();
     self.mailToAddressList = ko.observable();
 
+    self.filteredPersonsExist = ko.computed(function () {
+        return self.filteredPersons().length > 0;
+    });
+
+    self.excludedPersonsExist = ko.computed(function () {
+        return self.excludedPersons().length > 0;
+    });
+
     self.filterByLocation = function (locations) {
         var filteredPersons = [];
         for (i in locations) {
@@ -114,16 +122,6 @@
         self.personsToInclude = [];
     };
 
-    self.clearUndefinedFromArray = function(array) {
-        var newArray = [];
-        for (index in array) {
-            var item = array[index];
-            if (item !== undefined)
-                newArray.push(item);
-        }
-        return newArray;
-    };
-
     self.includePersonsByKeypress = function (data, event) {
         if (event.keyCode == self.keyCodeDelete ||
             event.keyCode == self.keyCodeLeftArrow) {
@@ -176,6 +174,16 @@
 
     self.stringComparer = function(a, b) {
         return a.name > b.name ? 1 : -1;
+    };
+
+    self.clearUndefinedFromArray = function (array) {
+        var newArray = [];
+        for (index in array) {
+            var item = array[index];
+            if (item !== undefined)
+                newArray.push(item);
+        }
+        return newArray;
     };
 
     $.ajax({
