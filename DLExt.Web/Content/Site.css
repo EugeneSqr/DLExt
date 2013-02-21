@@ -66,6 +66,14 @@ section {
     display: block;
 }
 
+input[type=checkbox]:focus {
+    outline: 1px dotted #FF6D0A;
+}
+
+select:focus {
+    outline: 1px dotted #FF6D0A;
+}
+
 /* HEADINGS   
 ----------------------------------------------------------*/
 h1, h2, h3, h4, h5, h6 {
