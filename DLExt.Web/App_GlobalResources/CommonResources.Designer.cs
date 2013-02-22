@@ -151,7 +151,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Home Page.
+        ///   Looks up a localized string similar to Pechkin the postman.
         /// </summary>
         internal static string HomeTitle {
             get {
