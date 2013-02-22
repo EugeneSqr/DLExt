@@ -190,6 +190,7 @@
         url: restServiceUrl + '/GetLocations',
         type: 'GET',
         dataType: 'jsonp',
+        jsonpCallback: 'getLocations',
         success: function (data) {
             self.locations(data);
             self.locationsLoading(false);
@@ -206,6 +207,7 @@
         url: restServiceUrl + '/GetPersons',
         type: 'GET',
         dataType: 'jsonp',
+        jsonpCallback: 'getPersons',
         success: function (data) {
             for (index in data) {
                 self.persons.push(data[index]);
