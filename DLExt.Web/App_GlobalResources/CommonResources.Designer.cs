@@ -124,6 +124,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;Hot keys&lt;/p&gt;&lt;hr&gt;&lt;p style=&apos;margin-top:10px;&apos;&gt;right arrow - exclude a recipient from a distribution&lt;/p&gt;&lt;p&gt;left arrow - include a recipient in a distribution&lt;/p&gt;&lt;p&gt;delete - exclude a recipient from a current list&lt;/p&gt;.
+        /// </summary>
+        internal static string HelpBody {
+            get {
+                return ResourceManager.GetString("HelpBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome to ASP Net application!.
         /// </summary>
         internal static string HomeHeader {

@@ -38,9 +38,9 @@
     </div>
 </div>
 <div class="create-list-container">
-    <span style="display: inline-block">@LocalizedStrings.PersonsNumberLabel</span><span
+    <span class="inline-block" >@LocalizedStrings.PersonsNumberLabel</span><span
         id="persons-count-span" data-bind="text: filteredPersonsCount"></span>
-    <div style="display: inline-block">
+    <div id="right-block">
         <div class="no-persons-notice" data-bind="if: errorNoPersonsSelected">
             <div class="ui-state-error ui-corner-all">
                 <span class="ui-icon ui-icon-info"></span><span>@LocalizedStrings.ErrorNobodySelected</span>
@@ -48,6 +48,12 @@
         </div>
         <input type="button" class="ui-widget ui-button ui-state-default" value="@LocalizedStrings.CreateListButtonLabel"
                data-bind="event: {click: generateList}" />
+        <div class="help">
+            <span></span>
+            <div class="help-container">
+                @Html.Raw(LocalizedStrings.HelpBody)
+            </div>
+        </div>
     </div>
 </div>
 <div id="dialog" title="@LocalizedStrings.DialogCopyEmailsHeader" data-bind="dialog: isOpen">

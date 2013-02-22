@@ -138,6 +138,9 @@
   <data name="ExcludedRecipients" xml:space="preserve">
     <value>Исключенные получатели</value>
   </data>
+  <data name="HelpBody" xml:space="preserve">
+    <value>&lt;p&gt;Список горячих клавиш&lt;/p&gt;&lt;hr&gt;&lt;p  style='margin-top:10px;'&gt;стрелка вправо - исключить из списка рассылки&lt;/p&gt;&lt;p&gt;стрелка влево - включить в список рассылки&lt;/p&gt;&lt;p&gt;delete - исключить адресата из текущего листа&lt;/p&gt;</value>
+  </data>
   <data name="HomeHeader" xml:space="preserve">
     <value>Добро пожаловать!</value>
   </data>

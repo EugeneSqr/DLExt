@@ -138,6 +138,9 @@
   <data name="ExcludedRecipients" xml:space="preserve">
     <value>Excluded recipients</value>
   </data>
+  <data name="HelpBody" xml:space="preserve">
+    <value>&lt;p&gt;Hot keys&lt;/p&gt;&lt;hr&gt;&lt;p style='margin-top:10px;'&gt;right arrow - exclude a recipient from a distribution&lt;/p&gt;&lt;p&gt;left arrow - include a recipient in a distribution&lt;/p&gt;&lt;p&gt;delete - exclude a recipient from a current list&lt;/p&gt;</value>
+  </data>
   <data name="HomeHeader" xml:space="preserve">
     <value>Welcome to ASP Net application!</value>
   </data>
