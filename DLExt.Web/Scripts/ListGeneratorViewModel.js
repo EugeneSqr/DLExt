@@ -48,6 +48,8 @@
     self.copyToAddressList = ko.observable();
     self.mailToAddressList = ko.observable();
 
+    self.emailsForParse = ko.observable();
+
     self.filteredPersonsExist = ko.computed(function () {
         return self.filteredPersons().length > 0;
     });
@@ -184,6 +186,61 @@
                 newArray.push(item);
         }
         return newArray;
+    };
+
+    self.parsePersons = function () {
+        var checkedLocations = [];
+        var selectedRecipients = [];
+        var personStrings = self.emailsForParse().replace( /\s+/g , '').split(';');
+
+        // parsing all persons in a target list of emails
+        for (i in personStrings) {
+            var person = self.getPersonByNameMail(personStrings[i]);
+            selectedRecipients.push(person);
+            if (person === undefined)
+                console.log('"' + personStrings[i] + '"');
+            if (checkedLocations.indexOf(person.location) == -1)
+                checkedLocations.push(person.location);
+        }
+
+        // get all persons in mentioned locaions
+        self.excludedPersons([]);
+        var filteredPersons = [];
+        for (i in checkedLocations) {
+            var location = checkedLocations[i];
+            for (j in self.persons) {
+                person = self.persons[j];
+                if (person.location == location) {
+                    if (!self.containsPerson(self.excludedPersons(), person)) {
+                        filteredPersons.push(person);
+                    }
+                }
+            }
+        }
+
+        self.personsToExclude = [];
+        for (var i = 0; i < filteredPersons.length; i++) {
+            if (!self.containsPerson(selectedRecipients, filteredPersons[i])) {
+                self.personsToExclude.push(filteredPersons[i]);
+            }
+        }
+
+        self.checkedLocations(checkedLocations);
+        self.excludePersons();
+    };
+
+    self.getPersonByNameMail = function (mailEmail) {
+        for (var i = 0; i < self.persons.length; i++) {
+            var person = self.persons[i];
+            if (mailEmail.indexOf('@') != -1) {
+                if (person.email == mailEmail)
+                    return person;
+            } else {
+                if (person.name == mailEmail)
+                    return person;
+            }
+        }
+        return undefined;
     };
 
     $.ajax({
