@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\AreaLoader.gif" />
+    <Content Include="Content\Images\favicon.ico" />
     <Content Include="Content\Images\fls_logo.png" />
     <Content Include="Content\Images\bg_logo.jpg" />
     <Content Include="Content\Images\pechkin_logo.png" />

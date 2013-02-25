@@ -155,7 +155,7 @@
         var address = "";
         for (index in filteredPersons) {
             var person = filteredPersons[index];
-            address = person.email + ';' + address;
+            address += person.email + ';';
         }
         self.isMailToPossible(self.mailToText.length + address.length > self.maxMailToLength);
         self.mailToAddressList(self.mailToText + address);
