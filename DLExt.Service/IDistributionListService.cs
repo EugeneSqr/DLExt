@@ -8,9 +8,6 @@ namespace DLExt.Service
     public interface IDistributionListService
     {
         [OperationContract]
-        IList<Person> GetPersons();
-
-        [OperationContract]
-        IList<string> GetLocations();
+        IList<Location> GetData();
     }
 }

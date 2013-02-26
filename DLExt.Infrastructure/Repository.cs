@@ -27,9 +27,9 @@ namespace DLExt.Infrastructure
             rootPath = string.Concat(root, "OU=Sites,OU=Company,DC=domain,DC=corp");
         }
 
-        public virtual IList<Person> GetPersons()
+        public virtual IList<Location> GetData()
         {
-            var result = new List<Person>();
+            var result = new List<Location>();
             SearchResultCollection locationsSearchResult = GetLocationsSearchResult();
             index = 1;
             foreach (SearchResult locationSearchResult in locationsSearchResult)
@@ -40,7 +40,7 @@ namespace DLExt.Infrastructure
                     var name = locationSearchResult.Properties[NameKey][0].ToString();
                     using (var container = new DirectoryEntry(string.Concat(root, distinguishedName)))
                     {
-                        result.AddRange(GetItem(
+                        IList<Person> persons = GetItem(
                             GetSearchResult("(objectCategory=Person)", SearchScope.Subtree, container),
                             (id, searchResult) => new Person(
                                                       id,
@@ -49,21 +49,16 @@ namespace DLExt.Infrastructure
                                                       name),
                             searchResult => (IsPropertyValid(searchResult, PersonNameFieldKey) &&
                                              IsPropertyValid(searchResult, PersonMailFieldKey)),
-                            null));
+                            null);
+                        if (persons.Count > 0)
+                        {
+                            result.Add(new Location {Name = name, Persons = persons});
+                        }
                     }
                 }
             }
             
-            return result.OrderBy(person => person.Name).ToList();
-        }
-
-        public virtual IList<string> GetLocations()
-        {
-            return GetItem(
-                GetLocationsSearchResult(),
-                (id, searchResult) => searchResult.Properties[NameKey][0].ToString(),
-                searchResult => IsPropertyValid(searchResult, NameKey),
-                item => item);
+            return result;
         }
 
         private SearchResultCollection GetLocationsSearchResult()

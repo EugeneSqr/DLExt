@@ -187,35 +187,24 @@
     };
 
     $.ajax({
-        url: restServiceUrl + '/GetLocations',
+        url: restServiceUrl + '/GetData',
         type: 'GET',
         dataType: 'jsonp',
-        jsonpCallback: 'getLocations',
+        jsonpCallback: 'getData',
         success: function (data) {
-            self.locations(data);
+            var locations = [];
+            for (i in data) {
+                var location = data[i];
+                locations.push(location.name);
+                for (j in location.persons) {
+                    self.persons.push(location.persons[j]);
+                }
+            }
+            self.locations(locations);
             self.locationsLoading(false);
         },
         error: function (data, textStatus, errorThrown) {
-            console.log("Error getting locations");
-            console.log(data);
-            console.log(textStatus);
-            console.log(errorThrown);
-        }
-    });
-
-    $.ajax({
-        url: restServiceUrl + '/GetPersons',
-        type: 'GET',
-        dataType: 'jsonp',
-        jsonpCallback: 'getPersons',
-        success: function (data) {
-            for (index in data) {
-                self.persons.push(data[index]);
-            }
-
-        },
-        error: function (data, textStatus, errorThrown) {
-            console.log("Error getting persons");
+            console.log("Error getting data");
             console.log(data);
             console.log(textStatus);
             console.log(errorThrown);

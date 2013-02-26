@@ -18,16 +18,9 @@ namespace DLExt.Service
 
         [WebGet(ResponseFormat = WebMessageFormat.Json)]
         [AspNetCacheProfile("CacheFor120Seconds")]
-        public IList<Person> GetPersons()
+        public IList<Location> GetData()
         {
-            return repository.GetPersons();
-        }
-
-        [WebGet(ResponseFormat = WebMessageFormat.Json)]
-        [AspNetCacheProfile("CacheFor120Seconds")]
-        public IList<string> GetLocations()
-        {
-            return repository.GetLocations();
+            return repository.GetData();
         }
     }
 }

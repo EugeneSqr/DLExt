@@ -45,13 +45,14 @@ namespace DLExt.OutlookAddin
             loadingWorker.DoWork += (o, args) =>
             {
                 IsProcessing = true;
-                Logger.Info("WorkerThread: retrieving locations.");
+                // TODO: fix this
+                /*Logger.Info("WorkerThread: retrieving locations.");
                 locations = repository
                     .GetLocations()
                     .Select(item => new Location{ Name = item })
                     .ToList();
                 Logger.Info("WorkerThread: retrieving persons.");
-                allPersons = repository.GetPersons();
+                allPersons = repository.GetPersons();*/
             };
 
             loadingWorker.RunWorkerCompleted += (sender, args) =>
